@@ -1,5 +1,5 @@
 
 
-const Footer = () => {
-  
+export const Footer = () => {
+
 }

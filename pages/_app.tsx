@@ -18,7 +18,7 @@ const GlobalStyle = createGlobalStyle`
     
   }
   body {
-    max-width: 1400px;
+    max-width: 1220px;
     height: auto;
     border: 1px solid #ff00f2;
     display: flex;

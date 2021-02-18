@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image'
 import styled from 'styled-components';
 
 const Wrapper = styled.header`
@@ -16,20 +17,37 @@ const HeaderWrapper = styled.div`
   width: 80%;
   border: 1px solid blue;
   margin: auto;
+  display: flex;
+  flex-wrap: nowrap;
 `
 const SiteTitle = styled.h1`
-  font-size: 40px;
+  font-size: 32px;
   font-weight: 700;
   text-align: center;
+  margin: auto;
+`
+const LogoImage = styled(Image)`
 `
 
 export const Header = () => {
   return (
     <Wrapper>
       <HeaderWrapper>
+      <Link href='/'> 
+      <a>
+        <LogoImage 
+          width={128}
+          height={128}
+          src='/disco-ball-128.png'
+          alt='disco ball'
+        />
+      </a>
+      </Link> 
         <SiteTitle>
-          Techno & House Live Stream Guide
-        </SiteTitle>
+          <Link href='/'>  
+          <a>Techno & House Live Stream Guide</a>
+          </Link>
+        </SiteTitle> 
       </HeaderWrapper>
     </Wrapper>
   )

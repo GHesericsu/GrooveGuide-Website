@@ -7,6 +7,10 @@ const Wrapper = styled.div`
   margin: auto;
   display: flex;
   flex-direction: column;
+  max-width: 1100px;
+  min-width: 900px;
+  border: 1px solid pink;
+  padding: 4px;
 `;
 
 interface LayoutProps {

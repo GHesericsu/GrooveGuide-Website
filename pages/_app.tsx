@@ -1,5 +1,4 @@
-import withReduxStore from '../lib/with-redux-store';
-import { Provider } from 'react-redux';
+
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { AppProps } from 'next/app';
@@ -15,21 +14,25 @@ const GlobalStyle = createGlobalStyle`
     height: 100%;
     width: auto;
     background: #070606;
+    
+  }
+  body {
+    max-width: 1200px;
+    height: 100%;
+    border: 1px solid red;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     font-family: 'Nunito', sans-serif;
   }
 `;
 
-interface AppPropsWithRedux extends AppProps {
-  reduxStore: any;
-}
-
-function MyApp({ Component, pageProps, reduxStore }: AppPropsWithRedux) {
+export default function App({ Component, pageProps }: AppProps) {
   return (
-    <Provider store={reduxStore}>
-      <Component {...pageProps} />
+    <>
       <GlobalStyle />
-    </Provider>
+      <Component {...pageProps} />
+    </>
   );
 }
 
-export default withReduxStore(MyApp);

@@ -19,6 +19,7 @@ const HeaderWrapper = styled.div`
   margin: auto;
   display: flex;
   flex-wrap: nowrap;
+  justify-content: center;
 `;
 
 const SiteTitleWrapper = styled.div`
@@ -52,17 +53,19 @@ export const Header = () => {
   return (
     <Wrapper>
       <HeaderWrapper>
-      <Link href='/'> 
-      <a>
-        <LogoImage 
-          priority
-          width={128}
-          height={128}
-          src='/disco-ball-128.png'
-          alt='disco ball'
-        />
-      </a>
-      </Link> 
+
+        <Link href='/'> 
+        <a>
+          <LogoImage 
+            priority
+            width={128}
+            height={128}
+            src='/disco-ball-128.png'
+            alt='disco ball'
+          />
+        </a>
+        </Link>
+
         <SiteTitleWrapper>
           <SiteTitle>
             <Link href='/'>  
@@ -70,6 +73,7 @@ export const Header = () => {
             </Link>
           </SiteTitle> 
         </SiteTitleWrapper>
+        
       </HeaderWrapper>
     </Wrapper>
   )

@@ -33,6 +33,8 @@ export default class MyDocument extends Document {
       <Html lang="en">
         <Head>
           <meta charSet="utf-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <meta name="robots" content="index, follow" />
           <link rel='icon' type="image/png" sizes="32x32" href='/disco32.png' /> 
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link rel="preload" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" as="style"/>

@@ -7,21 +7,20 @@ const Wrapper = styled.div`
   border: 1px solid blue;
   width: 100%;
   min-height: 300px;
-  margin: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
 `
 const IconsWrapper = styled.div`
-  width: 140px;
+  width: auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   margin-top: 20px;
 `
 const FacebookIcon = styled(Facebook)`
   color: #C0C0C0;
-
+  margin: 7px;
   &:hover {
     transition: 0.1s;
     transform: rotate(5deg) scale(1.3);
@@ -32,7 +31,7 @@ const FacebookIcon = styled(Facebook)`
 
 const InstagramIcon = styled(Instagram)`
   color: #C0C0C0;
-
+  margin: 7px;
   &:hover {
       transition: 0.1s;
       transform: rotate(5deg) scale(1.2);
@@ -47,7 +46,7 @@ const FooterTextWrapper = styled.div`
 
 const TwitterIcon = styled(Twitter)`
   color: #C0C0C0;
-
+  margin: 7px;
   &:hover {
       transition: 0.1s;
       transform: rotate(5deg) scale(1.2);
@@ -60,8 +59,8 @@ export const Footer = () => {
   return (
     <Wrapper>
       <IconsWrapper>
-        <FacebookIcon size='31' /> 
-        <InstagramIcon size='36' />
+        <FacebookIcon size='32' /> 
+        <InstagramIcon size='34' />
         <TwitterIcon size='32' />
       </IconsWrapper>
       <FooterTextWrapper>

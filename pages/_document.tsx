@@ -34,6 +34,9 @@ export default class MyDocument extends Document {
         <Head>
           <meta charSet="utf-8" />
           <link rel='icon' type="image/png" sizes="32x32" href='/disco32.png' /> 
+          <link rel="preconnect" href="https://fonts.gstatic.com" />
+          <link rel="preload" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" as="style"/>
+          <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet" />
         </Head>
         <body>
           <Main />

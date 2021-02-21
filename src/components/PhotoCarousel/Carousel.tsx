@@ -39,7 +39,6 @@ export const Carousel = () => {
           />
         </ImageWrapper>
       </Wrapper>
-    </Container>
-    
+    </Container>    
   )
-}
+};

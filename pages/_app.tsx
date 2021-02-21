@@ -83,7 +83,7 @@ const GlobalStyle = createGlobalStyle`
     margin-left: auto;
     margin-right: auto;
     font-size: 20px;
-    color: #E0E0E0;
+    color: #C0C0C0;
     padding: 5px;
   }
 `;

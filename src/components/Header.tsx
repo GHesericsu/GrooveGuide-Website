@@ -73,8 +73,8 @@ export const Header = () => {
             </Link>
           </SiteTitle> 
         </SiteTitleWrapper>
-        
+
       </HeaderWrapper>
     </Wrapper>
   )
-}
+};

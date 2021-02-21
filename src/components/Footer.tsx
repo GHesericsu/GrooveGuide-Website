@@ -64,7 +64,9 @@ export const Footer = () => {
         <TwitterIcon size='32' />
       </IconsWrapper>
       <FooterTextWrapper>
-        About Us | Contact
+        <Link href="aboutUs"><a>Home</a></Link>
+        {' | '}
+        <Link href="contact"><a>Contact Us</a></Link>
       </FooterTextWrapper>
     </Wrapper>
   )

@@ -2,7 +2,10 @@ import styled from 'styled-components';
 import Head from 'next/head';
 
 const Container = styled.div`
-
+  border: 1px solid #00ff15;
+  min-height: 600px;
+  height: auto;
+  width: 100%;
 `
 
 const AboutUsHeading = styled.h2`
@@ -29,4 +32,6 @@ export const AboutUs = () => {
       </Container>
     </> 
   )
-}
+};
+
+export default AboutUs;

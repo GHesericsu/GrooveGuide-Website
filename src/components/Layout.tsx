@@ -7,7 +7,6 @@ const Wrapper = styled.div`
   margin: auto;
   display: flex;
   flex-direction: column;
-  border: 1px solid pink;
   padding: 4px, 4px;
 
   @media only screen and (min-width: 544px) {
@@ -32,13 +31,12 @@ const Main = styled.main`
 interface LayoutProps {
   // eslint-disable-next-line no-undef
   children: React.ReactNode;
-  home: Boolean;
 }
 
-export const Layout = ({ children, home } : LayoutProps) => (
+export const Layout = ({ children } : LayoutProps) => (
   <Wrapper>
     <Header />
-    <Nav home={home} />
+    <Nav />
     <Main>{children}</Main>
     <Footer />
   </Wrapper>

@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { CalendarPlus } from '@styled-icons/boxicons-regular';
+import { ShareBoxed } from '@styled-icons/open-iconic';
 
 const Container = styled.div`
   width: 100%;
@@ -41,6 +43,28 @@ const EventName = styled.h3`
 
 `;
 
+const CalendarIcon = styled(CalendarPlus)`
+  margin: auto;
+  
+  &:hover {
+  transition: 0.2s;
+  transform: rotate(5deg) scale(1.3);
+  cursor: pointer;
+  color: #C71E1E;
+  }
+`;
+
+const ShareIcon = styled(ShareBoxed)`
+  margin: auto;
+  padding-left: 7px;
+  &:hover {
+  transition: 0.2s;
+  transform: rotate(5deg) scale(1.3);
+  cursor: pointer;
+  color: #C71E1E;
+  }
+`;
+
 export const Event = () => (
   <Container>
     <ContentContainer>
@@ -60,7 +84,8 @@ export const Event = () => (
         Image
       </FlyerContainer>
       <IconsContainer>
-        Icons
+        <CalendarIcon title="Add to your calendar" size="45px" />
+        <ShareIcon title="Share this page" size="43px" />
       </IconsContainer>
     </ContentContainer>
   </Container>

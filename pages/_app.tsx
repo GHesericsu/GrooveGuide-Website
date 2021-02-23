@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { AppProps } from 'next/app';
@@ -5,9 +6,15 @@ import { createGlobalStyle } from 'styled-components';
 import Head from 'next/head';
 import { Layout } from '../src/components/Layout';
 
-config.autoAddCss = false; // Tell Font Awesome to skip adding the CSS automatically since it's being imported above
+// Tell Font Awesome to skip adding the CSS automatically since it's being imported above
+config.autoAddCss = false;
 
 const GlobalStyle = createGlobalStyle`
+
+  @font-face {
+    font-family: 'Thousanddeep-Regular';
+    src: url('../fonts/Thousanddeep-Regular.otf') format('opentype');
+  }
  /* nunito-regular - latin */
   /* nunito-regular - latin */
   @font-face {
@@ -77,7 +84,6 @@ const GlobalStyle = createGlobalStyle`
   body {
     width: 100%;
     height: auto;
-    border: 1px solid #ff00f2;
     display: flex;
     justify-content: center;
     margin-left: auto;
@@ -95,7 +101,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <GlobalStyle />
-      <Layout home>
+      <Layout>
         <Component {...pageProps} />
       </Layout>
     </>

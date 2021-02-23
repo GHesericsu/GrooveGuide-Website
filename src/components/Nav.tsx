@@ -4,7 +4,7 @@ import { Search } from '@styled-icons/fa-solid';
 const Container = styled.div`
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   padding: 10px 30px;
 `;
 
@@ -14,9 +14,6 @@ const SearchWrapper = styled.div`
   justify-content: flex-end;
 `;
 
-const CurrentPageWrapper = styled.div`
-  width: 50%;
-`;
 const SearchIcon = styled(Search)`
   color: #DCDCDC;
   margin: 7px;
@@ -27,19 +24,10 @@ const SearchIcon = styled(Search)`
   }
 `;
 
-interface NavProps {
-  home: Boolean;
-}
-
-export const Nav = ({ home } : NavProps) => (
+export const Nav = () => (
   <Container>
-
-    <CurrentPageWrapper>
-      { home ? 'Main' : 'Not Main'}
-    </CurrentPageWrapper>
-
     <SearchWrapper>
-      <SearchIcon size="32" />
+      <SearchIcon title="Search" size="32" />
     </SearchWrapper>
 
   </Container>

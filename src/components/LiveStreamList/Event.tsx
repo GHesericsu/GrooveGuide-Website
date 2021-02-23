@@ -5,41 +5,41 @@ const Container = styled.div`
   height: 188px;
   background: #282828;
   border-radius: 15px;
-  padding: 10px;
+  padding: 8px 20px;
   margin: 10px 0px;
-`
+`;
 
 const ContentContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
-`
+`;
 
 const EventInfoContainer = styled.div`
   width: 50%;
   display: flex;
   flex-direction: column;
-`
+`;
 
 const DateTimeContainer = styled.div`
   width: 20%;
   display: flex;
   flex-direction: column;
-`
+`;
 
 const FlyerContainer = styled.div`
   width: 20%;
-`
+`;
 
 const IconsContainer = styled.div`
   width: 10%;
   display: flex;
   flex-direction: column;
-`
+`;
 
 const EventName = styled.h3`
 
-`
+`;
 
 export const Event = () => (
   <Container>
@@ -64,4 +64,4 @@ export const Event = () => (
       </IconsContainer>
     </ContentContainer>
   </Container>
-)
+);

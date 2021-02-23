@@ -5,6 +5,7 @@ const Container = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
+  margin: 25px auto;
 `;
 
 const Wrapper = styled.div`

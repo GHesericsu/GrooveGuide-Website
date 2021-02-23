@@ -5,18 +5,17 @@ const Container = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
+  padding: 10px 30px;
 `;
 
 const SearchWrapper = styled.div`
   width: 50%;
   display: flex;
   justify-content: flex-end;
-  border: 1px solid white;
 `;
 
 const CurrentPageWrapper = styled.div`
   width: 50%;
-  border: 1px solid white;
 `;
 const SearchIcon = styled(Search)`
   color: #DCDCDC;
@@ -36,7 +35,7 @@ export const Nav = ({ home } : NavProps) => (
   <Container>
 
     <CurrentPageWrapper>
-      { home ? 'Home' : 'Not Home'}
+      { home ? 'Main' : 'Not Main'}
     </CurrentPageWrapper>
 
     <SearchWrapper>

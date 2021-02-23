@@ -3,8 +3,7 @@ import styled from 'styled-components';
 import { Carousel } from '../src/components/PhotoCarousel/Carousel';
 import { EventList } from '../src/components/LiveStreamList/EventList';
 
-const Wrapper = styled.div`
-  border: 1px solid #00ff15;
+const Container = styled.div`
   min-height: 600px;
   height: auto;
   width: 100%;
@@ -17,10 +16,10 @@ export const Index = () => (
       <meta name="description" content="DJ Live Streams" />
       <meta name="keywords" content="techno, house, live streams, dj" />
     </Head>
-    <Wrapper>
+    <Container>
       <Carousel />
       <EventList />
-    </Wrapper>
+    </Container>
   </>
 );
 

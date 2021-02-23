@@ -20,42 +20,35 @@ const IconsWrapper = styled.div`
   justify-content: center;
   margin-top: 20px;
 `;
+
+const iconHover = `&:hover {
+  transition: 0.2s;
+  transform: rotate(5deg) scale(1.3);
+  cursor: pointer;
+  color: #C71E1E;
+}`;
+
 const FacebookIcon = styled(Facebook)`
   color: #C0C0C0;
   margin: 7px;
-  &:hover {
-    transition: 0.1s;
-    transform: rotate(5deg) scale(1.3);
-    cursor: pointer;
-    color: #C71E1E;
-  }
+  ${iconHover}
 `;
 
 const InstagramIcon = styled(Instagram)`
   color: #C0C0C0;
   margin: 7px;
-  &:hover {
-      transition: 0.1s;
-      transform: rotate(5deg) scale(1.2);
-      cursor: pointer;
-      color: #C71E1E
-  }
-`;
-
-const FooterTextWrapper = styled.div`
-  margin-top: 10px;
-  max-height: 20px;
+  ${iconHover}
 `;
 
 const TwitterIcon = styled(Twitter)`
   color: #C0C0C0;
   margin: 7px;
-  &:hover {
-      transition: 0.1s;
-      transform: rotate(5deg) scale(1.2);
-      cursor: pointer;
-      color: #C71E1E;
-  }
+  ${iconHover}
+`;
+
+const FooterTextWrapper = styled.div`
+  margin-top: 10px;
+  max-height: 20px;
 `;
 
 export const Footer = () => (

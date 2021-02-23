@@ -9,7 +9,7 @@ const Container = styled.div`
 `;
 const DateWrapper = styled.div`
   width: 100%;
-  margin: 12px 5px;
+  margin: 0px 5px;
 `;
 
 const DateHeading = styled.h2`
@@ -19,7 +19,7 @@ const DateHeading = styled.h2`
   text-underline-position: under;
 `;
 
-export const Events = () => (
+export const EventsOnDate = () => (
   <Container>
     <DateWrapper>
       <DateHeading>

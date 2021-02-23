@@ -1,12 +1,12 @@
 import styled from 'styled-components';
-import { Events } from './Events';
+import { EventsOnDate } from './EventsOnDate';
  
 const Container = styled.div`
   width: 95%;
   height: auto;
   display: flex;
   justify-content: center;
-  margin: auto;
+  margin: 25px auto;
 `;
 
 const ListContainer = styled.div`
@@ -14,7 +14,7 @@ const ListContainer = styled.div`
   height: auto;
   background: #1B1717;
   border-radius: 15px;
-  padding: 10px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
 `;
@@ -22,8 +22,8 @@ const ListContainer = styled.div`
 export const EventList = () => (
   <Container>
     <ListContainer>
-      <Events />
-      <Events />
+      <EventsOnDate />
+      <EventsOnDate />
     </ListContainer>
   </Container>
 );

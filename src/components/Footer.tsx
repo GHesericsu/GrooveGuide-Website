@@ -13,13 +13,13 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   text-align: center;
-`
+`;
 const IconsWrapper = styled.div`
   width: auto;
   display: flex;
   justify-content: center;
   margin-top: 20px;
-`
+`;
 const FacebookIcon = styled(Facebook)`
   color: #C0C0C0;
   margin: 7px;
@@ -29,7 +29,7 @@ const FacebookIcon = styled(Facebook)`
     cursor: pointer;
     color: #C71E1E;
   }
-`
+`;
 
 const InstagramIcon = styled(Instagram)`
   color: #C0C0C0;
@@ -40,12 +40,12 @@ const InstagramIcon = styled(Instagram)`
       cursor: pointer;
       color: #C71E1E
   }
-`
+`;
 
 const FooterTextWrapper = styled.div`
   margin-top: 10px;
   max-height: 20px;
-`
+`;
 
 const TwitterIcon = styled(Twitter)`
   color: #C0C0C0;
@@ -56,21 +56,19 @@ const TwitterIcon = styled(Twitter)`
       cursor: pointer;
       color: #C71E1E;
   }
-`
+`;
 
-export const Footer = () => {
-  return (
-    <Wrapper>
-      <IconsWrapper>
-        <FacebookIcon size='32' /> 
-        <InstagramIcon size='34' />
-        <TwitterIcon size='32' />
-      </IconsWrapper>
-      <FooterTextWrapper>
-        <Link href="/about-us"><LinkText>About Us</LinkText></Link>
-        {' | '}
-        <Link href="/contact"><LinkText>Contact Us</LinkText></Link>
-      </FooterTextWrapper>
-    </Wrapper>
-  )
-};
+export const Footer = () => (
+  <Wrapper>
+    <IconsWrapper>
+      <FacebookIcon size="32" />
+      <InstagramIcon size="34" />
+      <TwitterIcon size="32" />
+    </IconsWrapper>
+    <FooterTextWrapper>
+      <Link href="/about-us"><LinkText>About Us</LinkText></Link>
+      {' | '}
+      <Link href="/contact"><LinkText>Contact Us</LinkText></Link>
+    </FooterTextWrapper>
+  </Wrapper>
+);

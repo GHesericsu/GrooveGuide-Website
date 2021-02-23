@@ -8,22 +8,20 @@ const Wrapper = styled.div`
   min-height: 600px;
   height: auto;
   width: 100%;
-`
+`;
 
-export const Index = () => {
-  return (
-    <>
-      <Head>
-        <title>DJ Live Streams</title>
-        <meta name="description" content="DJ Live Streams" />
-        <meta name="keywords" content="techno, house, live streams, dj" />
-      </Head>
-      <Wrapper>
-        <Carousel />
-        <EventList />
-      </Wrapper>
-    </>
-  );
-};
+export const Index = () => (
+  <>
+    <Head>
+      <title>DJ Live Streams</title>
+      <meta name="description" content="DJ Live Streams" />
+      <meta name="keywords" content="techno, house, live streams, dj" />
+    </Head>
+    <Wrapper>
+      <Carousel />
+      <EventList />
+    </Wrapper>
+  </>
+);
 
 export default Index;

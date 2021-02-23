@@ -28,20 +28,18 @@ const Wrapper = styled.div`
 const Main = styled.main`
   width: 100%;
   height: auto;
-`
+`;
 
 interface LayoutProps {
   children: React.ReactNode;
   home: Boolean;
 }
 
-export const Layout = ({ children, home } : LayoutProps) => {
-  return (
-    <Wrapper>
-      <Header />
-      <Nav home={home} />
-      <Main>{children}</Main>
-      <Footer />
-    </Wrapper>
-  )
-};
+export const Layout = ({ children, home } : LayoutProps) => (
+  <Wrapper>
+    <Header />
+    <Nav home={home} />
+    <Main>{children}</Main>
+    <Footer />
+  </Wrapper>
+);

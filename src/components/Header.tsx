@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Image from 'next/image'
+import Image from 'next/image';
 import styled from 'styled-components';
 
 import { LinkText } from '../utils/styles';
@@ -10,14 +10,12 @@ const Wrapper = styled.header`
   position: relative;
   left: 0px;
   top: 0px;
-  border: 1px solid blue;
   margin: 5px, 5px;
   padding: 5px, 5px;
 `;
 
 const HeaderWrapper = styled.div`
   width: 95%;
-  border: 1px solid blue;
   margin: auto;
   display: flex;
   flex-wrap: nowrap;
@@ -46,38 +44,35 @@ const SiteTitle = styled.h1`
 
 const LogoWrapper = styled.div`
 
-`
+`;
 
 const LogoImage = styled(Image)`
 `;
 
+export const Header = () => (
+  <Wrapper>
+    <HeaderWrapper>
 
-export const Header = () => {
-  return (
-    <Wrapper>
-      <HeaderWrapper>
-
-        <Link href='/'> 
+      <Link href="/">
         <a>
-          <LogoImage 
+          <LogoImage
             priority
             width={128}
             height={128}
-            src='/disco-ball-128.png'
-            alt='disco ball'
+            src="/disco-ball-128.png"
+            alt="disco ball"
           />
         </a>
-        </Link>
+      </Link>
 
-        <SiteTitleWrapper>
-          <SiteTitle>
-            <Link href='/'>  
+      <SiteTitleWrapper>
+        <SiteTitle>
+          <Link href="/">
             <LinkText>Techno & House Live Stream Guide</LinkText>
-            </Link>
-          </SiteTitle> 
-        </SiteTitleWrapper>
+          </Link>
+        </SiteTitle>
+      </SiteTitleWrapper>
 
-      </HeaderWrapper>
-    </Wrapper>
-  )
-};
+    </HeaderWrapper>
+  </Wrapper>
+);

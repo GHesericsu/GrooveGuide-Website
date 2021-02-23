@@ -1,15 +1,15 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import Counter from '../pages/counter';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
+import Counter from '../pages/counter';
 import { rootReducer } from '../src/store/store';
 
 function renderWithRedux(ui: JSX.Element) {
   const store = createStore(rootReducer);
   return {
     ...render(<Provider store={store}>{ui}</Provider>),
-    store
+    store,
   };
 }
 

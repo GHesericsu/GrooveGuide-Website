@@ -1,10 +1,9 @@
-
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { AppProps } from 'next/app';
 import { createGlobalStyle } from 'styled-components';
-import { Layout } from '../src/components/Layout';
 import Head from 'next/head';
+import { Layout } from '../src/components/Layout';
 
 config.autoAddCss = false; // Tell Font Awesome to skip adding the CSS automatically since it's being imported above
 
@@ -102,4 +101,3 @@ export default function App({ Component, pageProps }: AppProps) {
     </>
   );
 }
-

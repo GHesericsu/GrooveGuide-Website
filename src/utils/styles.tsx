@@ -8,4 +8,4 @@ export const LinkText = styled.a`
       color: #C71E1E;
       
   }
-`
+`;

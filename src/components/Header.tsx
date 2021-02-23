@@ -1,83 +1,92 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import Link from 'next/link';
-import Image from 'next/image'
 import styled from 'styled-components';
 
-import { LinkText } from '../utils/styles';
-
-const Wrapper = styled.header`
+const Container = styled.header`
   width: 100%;
   height: 100%;
   position: relative;
   left: 0px;
-  top: 0px;
-  border: 1px solid blue;
+  top: 15px;
   margin: 5px, 5px;
   padding: 5px, 5px;
 `;
 
-const HeaderWrapper = styled.div`
-  width: 95%;
-  border: 1px solid blue;
+const HeaderContainer = styled.div`
+  width: 100%;
   margin: auto;
   display: flex;
   flex-wrap: nowrap;
-  justify-content: center;
+`;
+
+const SiteLogoWrapper = styled.div`
+  width: 30%;
+  height: 100%;
+  margin: auto;
+`;
+
+const SiteLogo = styled.h1`
+  margin: auto;
+
+`;
+
+const SiteLogoLink = styled.a`
+  font-family: 'Thousanddeep-Regular';
+  font-size: 70px;
+  font-weight: 10;
+  color: inherit;
+  display:inline-block;
+  &:hover {
+    transition: 0.2s;
+    transform: scale(1.05);
+    cursor: pointer;
+    color: #C71E1E;
+    text-decoration: none;
+  }
+
+  @media only screen and (max-width: 480px) {
+    font-size: 40px;
+  }
+  @media only screen and (min-width: 480px) and (max-width: 768px) {
+    font-size: 50px;
+  }
 `;
 
 const SiteTitleWrapper = styled.div`
   width: 100%;
   height: 100%;
   margin: auto;
+  @media only screen and (max-width: 480px) {
+    display: none;
+  }
 `;
 
 const SiteTitle = styled.h1`
-  font-size: 32px;
-  font-weight: 700;
-  text-align: center;
-  margin: auto;
+  font-size: 25px;
 
   @media only screen and (max-width: 480px) {
-    font-size: 18px;
+    display: none;
   }
   @media only screen and (min-width: 480px) and (max-width: 768px) {
-    font-size: 26px;
+    font-size: 18px;
   }
 `;
 
-const LogoWrapper = styled.div`
-
-`
-
-const LogoImage = styled(Image)`
-`;
-
-
-export const Header = () => {
-  return (
-    <Wrapper>
-      <HeaderWrapper>
-
-        <Link href='/'> 
-        <a>
-          <LogoImage 
-            priority
-            width={128}
-            height={128}
-            src='/disco-ball-128.png'
-            alt='disco ball'
-          />
-        </a>
-        </Link>
-
-        <SiteTitleWrapper>
-          <SiteTitle>
-            <Link href='/'>  
-            <LinkText>Techno & House Live Stream Guide</LinkText>
-            </Link>
-          </SiteTitle> 
-        </SiteTitleWrapper>
-
-      </HeaderWrapper>
-    </Wrapper>
-  )
-};
+export const Header = () => (
+  <Container>
+    <HeaderContainer>
+      <SiteLogoWrapper>
+        <SiteLogo>
+          <Link href="/">
+            <SiteLogoLink>GrooveGuide</SiteLogoLink>
+          </Link>
+        </SiteLogo>
+      </SiteLogoWrapper>
+      <SiteTitleWrapper>
+        <SiteTitle>
+          We Curate All The Best Techno & House Live Streams
+        </SiteTitle>
+      </SiteTitleWrapper>
+    </HeaderContainer>
+  </Container>
+);

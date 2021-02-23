@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import Head from 'next/head';
 import { Header } from './Header';
 import { Footer } from './Footer';
 import { Nav } from './Nav';
@@ -8,7 +7,6 @@ const Wrapper = styled.div`
   margin: auto;
   display: flex;
   flex-direction: column;
-  border: 1px solid pink;
   padding: 4px, 4px;
 
   @media only screen and (min-width: 544px) {
@@ -28,20 +26,18 @@ const Wrapper = styled.div`
 const Main = styled.main`
   width: 100%;
   height: auto;
-`
+`;
 
 interface LayoutProps {
+  // eslint-disable-next-line no-undef
   children: React.ReactNode;
-  home: Boolean;
 }
 
-export const Layout = ({ children, home } : LayoutProps) => {
-  return (
-    <Wrapper>
-      <Header />
-      <Nav home={home} />
-      <Main>{children}</Main>
-      <Footer />
-    </Wrapper>
-  )
-};
+export const Layout = ({ children } : LayoutProps) => (
+  <Wrapper>
+    <Header />
+    <Nav />
+    <Main>{children}</Main>
+    <Footer />
+  </Wrapper>
+);

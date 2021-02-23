@@ -6,32 +6,30 @@ const Container = styled.div`
   min-height: 600px;
   height: auto;
   width: 100%;
-`
+`;
 
 const AboutUsHeading = styled.h2`
 
-`
+`;
 
 const AboutUsText = styled.p`
 
-`
+`;
 
-export const AboutUs = () => {
-  return (
-    <>
-      <Head>
-        <title>About Us</title>
-      </Head>
-      <Container>
-        <AboutUsHeading>
-          About Us
-        </AboutUsHeading>
-        <AboutUsText>
-          This article is about us.
-        </AboutUsText>
-      </Container>
-    </> 
-  )
-};
+export const AboutUs = () => (
+  <>
+    <Head>
+      <title>About Us</title>
+    </Head>
+    <Container>
+      <AboutUsHeading>
+        About Us
+      </AboutUsHeading>
+      <AboutUsText>
+        This article is about us.
+      </AboutUsText>
+    </Container>
+  </>
+);
 
 export default AboutUs;

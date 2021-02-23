@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import Head from 'next/head';
 import { Header } from './Header';
 import { Footer } from './Footer';
+import { Nav } from './Nav';
 
 const Wrapper = styled.div`
   margin: auto;
@@ -38,8 +39,9 @@ export const Layout = ({ children, home } : LayoutProps) => {
   return (
     <Wrapper>
       <Header />
+      <Nav home={home} />
       <Main>{children}</Main>
       <Footer />
     </Wrapper>
   )
-}
+};

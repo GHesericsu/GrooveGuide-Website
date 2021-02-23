@@ -2,6 +2,8 @@ import Link from 'next/link';
 import Image from 'next/image'
 import styled from 'styled-components';
 
+import { LinkText } from '../utils/styles';
+
 const Wrapper = styled.header`
   width: 100%;
   height: 100%;
@@ -49,6 +51,7 @@ const LogoWrapper = styled.div`
 const LogoImage = styled(Image)`
 `;
 
+
 export const Header = () => {
   return (
     <Wrapper>
@@ -69,7 +72,7 @@ export const Header = () => {
         <SiteTitleWrapper>
           <SiteTitle>
             <Link href='/'>  
-            <a>Techno & House Live Stream Guide</a>
+            <LinkText>Techno & House Live Stream Guide</LinkText>
             </Link>
           </SiteTitle> 
         </SiteTitleWrapper>

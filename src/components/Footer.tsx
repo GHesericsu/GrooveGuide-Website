@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { Facebook } from '@styled-icons/simple-icons';
 import { Instagram, Twitter } from '@styled-icons/fa-brands';
 
+import { LinkText } from '../utils/styles';
+
 const Wrapper = styled.div`
   border: 1px solid blue;
   width: 100%;
@@ -41,7 +43,8 @@ const InstagramIcon = styled(Instagram)`
 `
 
 const FooterTextWrapper = styled.div`
-  width:auto;
+  margin-top: 10px;
+  max-height: 20px;
 `
 
 const TwitterIcon = styled(Twitter)`
@@ -64,9 +67,9 @@ export const Footer = () => {
         <TwitterIcon size='32' />
       </IconsWrapper>
       <FooterTextWrapper>
-        <Link href="aboutUs"><a>Home</a></Link>
+        <Link href="/about-us"><LinkText>About Us</LinkText></Link>
         {' | '}
-        <Link href="contact"><a>Contact Us</a></Link>
+        <Link href="/contact"><LinkText>Contact Us</LinkText></Link>
       </FooterTextWrapper>
     </Wrapper>
   )

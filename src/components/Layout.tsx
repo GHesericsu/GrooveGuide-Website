@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import Head from 'next/head';
 import { Header } from './Header';
 import { Footer } from './Footer';
 import { Nav } from './Nav';
@@ -31,6 +30,7 @@ const Main = styled.main`
 `;
 
 interface LayoutProps {
+  // eslint-disable-next-line no-undef
   children: React.ReactNode;
   home: Boolean;
 }

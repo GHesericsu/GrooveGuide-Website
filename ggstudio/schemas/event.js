@@ -16,10 +16,49 @@ export default {
     },
     {
       name: 'information',
-      type: 'string',
+      type: 'array',
       title: 'Information',
-      description: 'REQUIRED. More information about the event. 2 characters to 4000 characters',
-      validation: (Rule) => Rule.required().min(2).max(4000).warning('mind 2 characters and max 4000 characters'),
+      description: 'More information about the event. MAX 4000 characters',
+      validation: (Rule) => Rule.max(4000).warning('mind 2 characters and max 4000 characters'),
+      of: [{
+        type: 'block',
+        styles: [
+          {title: 'Normal', value: 'normal'},
+          {title: 'H3', value: 'h3'},
+        ],
+        lists: [
+          {title: 'Bullet', value: 'bullet'},
+        ],
+        marks: {
+          // Only allow these decorators
+          decorators: [
+            {title: 'Strong', value: 'strong'},
+            {title: 'Emphasis', value: 'em'}
+          ],
+        }
+      }],
+    },
+    {
+      name:'organization',
+      type: 'array',
+      title: 'Organization',
+      of: [{
+        type: 'reference',
+        to: [
+          {type: 'organization'},
+        ]
+      }],
+    },
+    {
+      name: 'performers',
+      type: 'array',
+      title: 'Performers/DJs',
+      of: [{
+        type: 'reference',
+        to: [
+          {type: 'dj'},
+        ]
+      }],
     },
     {
       name: 'liveStreamUrl',
@@ -29,13 +68,17 @@ export default {
     {
       name: 'startTime',
       type: 'datetime',
-      title: 'REQUIRED. START Date and Time',
+      title: 'REQUIRED. START Date and Time(PST)',
       validation: (Rule) => Rule.required(),
     },
     {
       name: 'endTime',
       type: 'datetime',
-      title: 'END Date and Time',
+      title: 'END Date and Time(PST)',
+      options: {
+        timeStep: 30,
+        
+      },
     },
     {
       name: 'slug',

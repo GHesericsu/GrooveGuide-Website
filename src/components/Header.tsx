@@ -20,14 +20,20 @@ const HeaderContainer = styled.div`
 `;
 
 const SiteLogoWrapper = styled.div`
-  width: 30%;
+  width: 40%;
   height: 100%;
   margin: auto;
 `;
 
 const SiteLogo = styled.h1`
   margin: auto;
+  ::before {
+    content: '💃';
+  }
 
+  ::after {
+    content: '🕺';
+  }
 `;
 
 const SiteLogoLink = styled.a`
@@ -36,6 +42,8 @@ const SiteLogoLink = styled.a`
   font-weight: 10;
   color: inherit;
   display:inline-block;
+  position: relative;
+  top: 7px;
   &:hover {
     transition: 0.2s;
     transform: scale(1.05);
@@ -72,6 +80,12 @@ const SiteTitle = styled.h1`
   }
 `;
 
+const Emojis = styled.p`
+  margin: 10px;
+  word-spacing: 30px;
+  padding-left: 30px;
+`;
+
 export const Header = () => (
   <Container>
     <HeaderContainer>
@@ -80,12 +94,14 @@ export const Header = () => (
           <Link href="/">
             <SiteLogoLink>GrooveGuide</SiteLogoLink>
           </Link>
+
         </SiteLogo>
       </SiteLogoWrapper>
       <SiteTitleWrapper>
         <SiteTitle>
-          We Curate All The Best Techno & House Live Streams
+          We Curate All The 🔥 Techno & House Live Streams
         </SiteTitle>
+        <Emojis>❤️   🙌   🎉   🎊   🥳   👯‍♂️   👯‍♀️   🙌   ❤️</Emojis>
       </SiteTitleWrapper>
     </HeaderContainer>
   </Container>

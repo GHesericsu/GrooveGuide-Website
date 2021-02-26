@@ -6,10 +6,10 @@ import { Instagram, Twitter } from '@styled-icons/fa-brands';
 import { LinkText } from '../utils/styles';
 
 const Wrapper = styled.div`
-  border: 1px solid blue;
   width: 100%;
-  min-height: 300px;
+  min-height: 150px;
   display: flex;
+  margin-bottom: 150px;
   flex-direction: column;
   justify-content: center;
   text-align: center;

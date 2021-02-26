@@ -1,12 +1,12 @@
 export default {
-  name: 'dj',
+  name: 'organization',
   type: 'document',
-  title: 'DJ',
+  title: 'Organization',
   fields: [
     {
       name: 'name',
       type: 'string',
-      title: 'DJ Name',
+      title: 'Organization Name',
     },
     {
       name: 'instagram',
@@ -19,9 +19,16 @@ export default {
       title: 'Facebook URL',
     },
     {
+      name: 'website',
+      type: 'url',
+      title: 'Website URL'
+    },
+    {
       name: 'soundcloud',
       type: 'url',
       title: 'SoundCloud URL',
     }
   ],
 };
+
+

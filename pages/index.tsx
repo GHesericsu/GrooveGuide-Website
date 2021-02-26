@@ -12,7 +12,7 @@ const Container = styled.div`
 export const Index = () => (
   <>
     <Head>
-      <title>DJ Live Streams</title>
+      <title>🔥 DJ Live Streams 🔥</title>
       <meta name="description" content="DJ Live Streams" />
       <meta name="keywords" content="techno, house, live streams, dj" />
     </Head>

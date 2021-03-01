@@ -23,4 +23,14 @@ export const Index = () => (
   </>
 );
 
+export const getStaticProps = async () => {
+  console.log(process.env.SANITY_PROJECT_ID);
+  const data: any = 'some data';
+  return {
+    props: {
+      data,
+    },
+  };
+};
+
 export default Index;

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Search } from '@styled-icons/fa-solid';
-
+console.log('ere')
 const Container = styled.div`
   width: 100%;
   display: flex;

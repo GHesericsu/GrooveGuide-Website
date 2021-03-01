@@ -7,3 +7,12 @@ build
 npm-debug.log*
 /.next/
 /out/
+
+package-lock.json
+
+mimi.d.ts
+
+mimi.ts
+
+.env
+.env*

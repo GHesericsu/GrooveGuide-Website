@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import Link from 'next/link';
 import styled from 'styled-components';
+import mimi from '../../mimi'
 
 const Container = styled.header`
   width: 100%;
@@ -86,23 +87,25 @@ const Emojis = styled.p`
   padding-left: 30px;
 `;
 
-export const Header = () => (
-  <Container>
-    <HeaderContainer>
-      <SiteLogoWrapper>
-        <SiteLogo>
-          <Link href="/">
-            <SiteLogoLink>GrooveGuide</SiteLogoLink>
-          </Link>
+export const Header = () => {
+  return (
+    <Container>
+      <HeaderContainer>
+        <SiteLogoWrapper>
+          <SiteLogo>
+            <Link href="/">
+              <SiteLogoLink>GrooveGuide</SiteLogoLink>
+            </Link>
 
-        </SiteLogo>
-      </SiteLogoWrapper>
-      <SiteTitleWrapper>
-        <SiteTitle>
-          We Curate All The 🔥 Techno & House Live Streams
-        </SiteTitle>
-        <Emojis>❤️   🙌   🎉   🎊   🥳   👯‍♂️   👯‍♀️   🙌   ❤️</Emojis>
-      </SiteTitleWrapper>
-    </HeaderContainer>
-  </Container>
-);
+          </SiteLogo>
+        </SiteLogoWrapper>
+        <SiteTitleWrapper>
+          <SiteTitle>
+            We Curate All The 🔥 Techno & House Live Streams
+          </SiteTitle>
+          <Emojis>❤️   🙌   🎉   🎊   🥳   👯‍♂️   👯‍♀️   🙌   ❤️</Emojis>
+        </SiteTitleWrapper>
+      </HeaderContainer>
+    </Container>
+  )
+};

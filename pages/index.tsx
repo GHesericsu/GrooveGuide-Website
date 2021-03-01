@@ -1,5 +1,8 @@
 import Head from 'next/head';
 import styled from 'styled-components';
+import { GetStaticProps, GetStaticPaths, GetServerSideProps } from 'next';
+import { fetchEventData } from '../lib/fetcher';
+
 import { Carousel } from '../src/components/PhotoCarousel/Carousel';
 import { EventList } from '../src/components/LiveStreamList/EventList';
 
@@ -23,9 +26,10 @@ export const Index = () => (
   </>
 );
 
-export const getStaticProps = async () => {
-  console.log(process.env.SANITY_PROJECT_ID);
-  const data: any = 'some data';
+export const getStaticProps: GetStaticProps = async () => {
+  const data = await fetchEventData();
+  console.log(data);
+
   return {
     props: {
       data,

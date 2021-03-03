@@ -1,12 +1,12 @@
 export default {
-  name: 'dj',
+  name: 'artist',
   type: 'document',
-  title: 'DJ',
+  title: 'Artist',
   fields: [
     {
       name: 'name',
       type: 'string',
-      title: 'DJ Name',
+      title: 'Artist Name',
     },
     {
       name: 'instagram',

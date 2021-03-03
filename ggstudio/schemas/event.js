@@ -1,3 +1,5 @@
+import richDate from 'part:@sanity/form-builder/input/rich-date/schema'
+
 export default {
   name: 'event',
   type: 'document',
@@ -50,13 +52,13 @@ export default {
       }],
     },
     {
-      name: 'performers',
+      name: 'artists',
       type: 'array',
-      title: 'Performers/DJs',
+      title: 'DJs/Artists',
       of: [{
         type: 'reference',
         to: [
-          {type: 'dj'},
+          {type: 'artist'},
         ]
       }],
     },
@@ -68,17 +70,20 @@ export default {
     {
       name: 'startTime',
       type: 'datetime',
-      title: 'REQUIRED. START Date and Time(PST)',
+      title: 'REQUIRED. START Date and Time(Your Current Local Time Zone)',
       validation: (Rule) => Rule.required(),
+      options: {
+        timeStep: 30,
+      }
     },
     {
       name: 'endTime',
       type: 'datetime',
-      title: 'END Date and Time(PST)',
+      title: 'END Date and Time(Your Current Local Time Zone)(Must be later than Start Time)',
       options: {
         timeStep: 30,
-        
       },
+      validation: (Rule) => Rule.min(Rule.valueOfField('startTime'))
     },
     {
       name: 'slug',
@@ -88,6 +93,7 @@ export default {
       options: {
         source: (doc) => `${doc.name}-${doc.startTime.slice(0, 10)}`,
       },
+      validation: (Rule) => Rule.required(),
     },
     {
       name: 'flyerImage',

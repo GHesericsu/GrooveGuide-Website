@@ -88,7 +88,7 @@ const GlobalStyle = createGlobalStyle`
     justify-content: center;
     margin-left: auto;
     margin-right: auto;
-    font-size: 20px;
+    font-size: 18px;
     color: #C0C0C0;
     padding: 5px;
   }

@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import Link from 'next/link';
 import styled from 'styled-components';
-import mimi from '../../mimi';
 
 const Container = styled.header`
   width: 100%;

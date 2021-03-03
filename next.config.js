@@ -1,3 +1,5 @@
 module.exports = {
-  /* config options here */
+  image: {
+    domains: ['cdn.sanity.io']
+  }
 }

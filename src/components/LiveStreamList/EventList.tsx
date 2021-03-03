@@ -19,11 +19,15 @@ const ListContainer = styled.div`
   flex-direction: column;
 `;
 
-export const EventList = () => (
+interface EventProps {
+  data: any;
+}
+
+export const EventList = ({ data }: EventProps) => (
   <Container>
     <ListContainer>
-      <EventsOnDate />
-      <EventsOnDate />
+      <EventsOnDate data={data[0]} />
+      <EventsOnDate data={data[1]} />
     </ListContainer>
   </Container>
 );

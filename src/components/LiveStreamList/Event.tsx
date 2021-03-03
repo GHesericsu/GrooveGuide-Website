@@ -1,10 +1,13 @@
 import styled from 'styled-components';
+import Image from 'next/image'
 import { CalendarPlus } from '@styled-icons/boxicons-regular';
 import { ShareBoxed } from '@styled-icons/open-iconic';
+import dayjs from 'dayjs';
+import { LinkText } from '../../utils/styles';
 
 const Container = styled.div`
   width: 100%;
-  height: 188px;
+  height: 160px;
   background: #282828;
   border-radius: 15px;
   padding: 8px 20px;
@@ -18,15 +21,17 @@ const ContentContainer = styled.div`
 `;
 
 const EventInfoContainer = styled.div`
-  width: 50%;
+  width: 55%;
   display: flex;
   flex-direction: column;
 `;
 
 const DateTimeContainer = styled.div`
-  width: 20%;
+  width: 15%;
   display: flex;
   flex-direction: column;
+  font-size: 16px;
+  padding-left: 10px;
 `;
 
 const FlyerContainer = styled.div`
@@ -65,28 +70,62 @@ const ShareIcon = styled(ShareBoxed)`
   }
 `;
 
-export const Event = () => (
-  <Container>
-    <ContentContainer>
-      <EventInfoContainer>
-        <EventName>
-          Move It Or Lose It
-        </EventName>
-        <p>- Mioli</p>
-        <p> Emanate, Dosc</p>
-        <p>https://www.twitch.tv/miolimusic</p>
-      </EventInfoContainer>
-      <DateTimeContainer>
-        <p>Start 9pm</p>
-        <p>End 10pm</p>
-      </DateTimeContainer>
-      <FlyerContainer>
-        Image
-      </FlyerContainer>
-      <IconsContainer>
-        <CalendarIcon title="Add to your calendar" size="45px" />
-        <ShareIcon title="Share this page" size="43px" />
-      </IconsContainer>
-    </ContentContainer>
-  </Container>
-);
+const ArtistNameWrapper = styled.div`
+  width: 100%;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 10px 0px;
+`;
+
+const ArtistName = styled.span`
+  padding-right: 10px;
+  
+`;
+
+
+interface EventProps {
+  data: any;
+}
+
+export const Event = ({ data }: EventProps) => {
+  console.log('artists', data.artists);
+  return (
+    <Container>
+      <ContentContainer>
+        <EventInfoContainer>
+          <EventName>
+            {data.name}
+          </EventName>
+          <ArtistNameWrapper>
+            {data.artists && data.artists.map((el: any) => (
+              <ArtistName>
+                {el.name}
+                {' '}
+                |
+              </ArtistName>
+            ))}
+          </ArtistNameWrapper>
+          <p><LinkText href={data.liveStreamUrl} target="_blank" >{data.liveStreamUrl}</LinkText></p>
+        </EventInfoContainer>
+        <DateTimeContainer>
+          <p>Start</p>
+          <p>{dayjs(data.startTime).format('MMM DD - HH:mm')}</p>
+          <br />
+          <p>End</p>
+          <p>{dayjs(data.endTime).format('MMM DD - HH:mm')}</p>
+        </DateTimeContainer>
+        <FlyerContainer>
+          img
+          {/* <Image src={data.imageUrl} alt={data.name} width={100} height={100} /> */}
+        </FlyerContainer>
+        <IconsContainer>
+          <CalendarIcon title="Add to your calendar" size="45px" />
+          <ShareIcon title="Share this page" size="43px" />
+        </IconsContainer>
+      </ContentContainer>
+    </Container>
+  );
+};

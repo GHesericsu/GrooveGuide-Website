@@ -19,16 +19,20 @@ const DateHeading = styled.h2`
   text-underline-position: under;
 `;
 
-export const EventsOnDate = () => (
+interface EventsOnDateProps {
+  data: any;
+}
+
+export const EventsOnDate = ({ data } : EventsOnDateProps) => (
   <Container>
     <DateWrapper>
       <DateHeading>
         Mon, Feb 22 2021
       </DateHeading>
     </DateWrapper>
-    <Event />
-    <Event />
-    <Event />
-    <Event />
+    <Event data={data} />
+    <Event data={data} />
+    <Event data={data} />
+    <Event data={data} />
   </Container>
 );

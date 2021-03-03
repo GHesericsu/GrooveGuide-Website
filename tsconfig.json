@@ -9,7 +9,7 @@
     ],
     "moduleResolution": "node",
     "allowJs": true,
-    "noEmit": false,
+    "noEmit": true,
     "strict": true,
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
@@ -21,10 +21,11 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
-    "isolatedModules": true
+    "isolatedModules": true,
   },
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "next.config.js"
   ],
   "include": [
     "next-env.d.ts",
@@ -34,6 +35,6 @@
     "**/*.d.ts",
     "*.tsx",
     "*.ts",
-    "*.d.ts" 
+    "*.d.ts",
   ]
 }

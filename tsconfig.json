@@ -25,16 +25,20 @@
   },
   "exclude": [
     "node_modules",
-    "next.config.js"
   ],
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "mimi.js",
     "**/*.d.ts",
     "*.tsx",
     "*.ts",
     "*.d.ts",
+    "sanityClient.js",
+    "next.config.js",
+  ],
+  "files": [
+    "sanityClient.js",
+    "next.config.js"
   ]
 }

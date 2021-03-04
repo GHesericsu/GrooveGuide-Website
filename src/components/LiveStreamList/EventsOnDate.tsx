@@ -32,7 +32,5 @@ export const EventsOnDate = ({ data } : EventsOnDateProps) => (
     </DateWrapper>
     <Event data={data} />
     <Event data={data} />
-    <Event data={data} />
-    <Event data={data} />
   </Container>
 );

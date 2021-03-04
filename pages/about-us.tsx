@@ -26,7 +26,9 @@ export const AboutUs = () => (
         About Us
       </AboutUsHeading>
       <AboutUsText>
-        This article is about us.
+        <p>"Life may not be the party we hoped for... but while we're here we may as well dance." - Jeanne C. Stein</p>
+        <p>With dance floors shut down, we’ve resorted to livestreaming.</p>
+        <p>But it’s hard to find out who’s streaming, when, and where. Streams are scattered across different platforms, and announcements are buried in social media.</p>
       </AboutUsText>
     </Container>
   </>

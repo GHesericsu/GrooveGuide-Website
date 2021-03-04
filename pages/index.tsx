@@ -52,7 +52,6 @@ export const getStaticProps: GetStaticProps = async () => {
       delete map[el[0]];
     }
   });
-  
   const dataTuples = Object.entries(map);
   console.log(dataTuples);
   return {

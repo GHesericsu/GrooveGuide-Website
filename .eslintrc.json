@@ -1,16 +1,17 @@
-{
+{ 
+  "root": true,
   "env": {
     "browser": true,
     "es6": true,
     "jest": true,
     "node": true
   },
-  "extends": ["airbnb-typescript", "airbnb"],
+  "extends": ["airbnb-typescript", "airbnb", "eslint:recommended", "plugin:@typescript-eslint/recommended"],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
   },
-  "parser": "@typescript-eslint-parser",
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "project": "./tsconfig.json",
     "ecmaFeatures": {
@@ -19,7 +20,7 @@
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "plugins": ["react", "@typescript-eslint"],
+  "plugins": ["@typescript-eslint", "react" ],
   "rules": {
     "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx"]}],
     "import/prefer-default-export": "off",

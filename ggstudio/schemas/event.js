@@ -114,4 +114,15 @@ export default {
       title: 'Feature this event?',
     },
   ],
+  orderings: [
+    {
+      title: 'Start Time, Latest',
+      name: 'startTimeLatest',
+      by: [
+        {
+          field: 'startTime', direction: 'desc',
+        }
+      ]
+    }
+  ]
 }

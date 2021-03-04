@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const sanityClient = require('@sanity/client');
 
 module.exports.client = sanityClient({

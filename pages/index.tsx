@@ -1,8 +1,10 @@
 import Head from 'next/head';
 import styled from 'styled-components';
+import dayjs from 'dayjs';
 import { useState, useEffect } from 'react';
 import { GetStaticProps, GetStaticPaths, GetServerSideProps } from 'next';
 import { fetchEventData } from '../lib/fetcher';
+import { datesMap } from '../lib/datesHelper';
 
 import { Carousel } from '../src/components/PhotoCarousel/Carousel';
 import { EventList } from '../src/components/LiveStreamList/EventList';
@@ -36,7 +38,16 @@ export const Index = ({ initialData }: IndexProps) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const initialData = await fetchEventData();
+  const todayDate = dayjs().format();
+  const initialData = await fetchEventData(todayDate);
+  const map = datesMap(todayDate);
+
+  for (let i = 0; i < initialData.length; i += 1) {
+    const parsedDate = dayjs(initialData[i].name).format('YYYY-MM-DD');
+
+    map[parsedDate] = initialData[i];
+  }
+
   console.log(initialData);
 
   return {

@@ -94,13 +94,13 @@ const LinkIcon = styled(Link)`
 `;
 
 interface EventProps {
-  data: any;
+  event: any;
 }
 
-export const Event = ({ data }: EventProps) => {
+export const Event = ({ event }: EventProps) => {
   const {
     name, artists, liveStreamUrl, startTime, endTime, imageUrl,
-  } = data;
+  } = event;
 
   return (
     <Container>

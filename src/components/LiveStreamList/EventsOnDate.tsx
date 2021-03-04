@@ -20,17 +20,22 @@ const DateHeading = styled.h2`
 `;
 
 interface EventsOnDateProps {
-  data: any;
+  date: string;
+  events: any[];
 }
 
-export const EventsOnDate = ({ data } : EventsOnDateProps) => (
-  <Container>
-    <DateWrapper>
-      <DateHeading>
-        Mon, Feb 22 2021
-      </DateHeading>
-    </DateWrapper>
-    <Event data={data} />
-    <Event data={data} />
-  </Container>
-);
+export const EventsOnDate = ({ date, events } : EventsOnDateProps) => {
+  console.log('date', date, 'events', events);
+  return (
+    <Container>
+      <DateWrapper>
+        <DateHeading>
+          {date}
+        </DateHeading>
+      </DateWrapper>
+      {events[0] && events.map((el: any) => (
+        <Event event={el} />
+      ))}
+    </Container>
+  )
+};

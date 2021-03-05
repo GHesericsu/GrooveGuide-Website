@@ -85,13 +85,13 @@ export const fetchEventSlugs = async (): Promise<any> => {
   }
 };
 
-fetchEventSlugs()
-  .then((res) => {
-    console.log(res.data.result.map((event: any) => (
-      {
-        params: {
-          slug: event.slug,
-        },
-      }
-    )));
-  });
+// fetchEventSlugs()
+//   .then((res) => {
+//     console.log(res.map((event: any) => (
+//       {
+//         params: {
+//           slug: event.slug,
+//         },
+//       }
+//     )));
+//   });

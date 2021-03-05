@@ -5,7 +5,7 @@ const Container = styled.div`
   width: 100%;
   height: auto;
   padding: 2px;
-  
+  margin-bottom: 15px;
 `;
 const DateWrapper = styled.div`
   width: 100%;
@@ -15,8 +15,8 @@ const DateWrapper = styled.div`
 const DateHeading = styled.h2`
   color: #C71E1E;
   /* border-bottom: 1px solid #C71E1E; */
-  text-decoration: underline;
-  text-underline-position: under;
+  /* text-decoration: underline; */
+  /* text-underline-position: under; */
 `;
 
 interface EventsOnDateProps {
@@ -34,8 +34,8 @@ export const EventsOnDate = ({ date, events } : EventsOnDateProps) => {
         </DateHeading>
       </DateWrapper>
       {events[0] && events.map((el: any) => (
-        <Event event={el} />
+        <Event event={el} key={el.slug} />
       ))}
     </Container>
-  )
+  );
 };

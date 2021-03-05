@@ -12,7 +12,7 @@ const Container = styled.div`
   background: #282828;
   border-radius: 15px;
   padding: 8px 20px;
-  margin: 10px 0px;
+  margin: 8px 0px;
 `;
 
 const ContentContainer = styled.div`
@@ -111,7 +111,7 @@ export const Event = ({ event }: EventProps) => {
           </EventName>
           <ArtistNameWrapper>
             {artists && artists.map((el: any) => (
-              <ArtistName>
+              <ArtistName key={el.name}>
                 {el.name}
                 {' '}
                 |

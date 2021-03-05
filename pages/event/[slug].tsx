@@ -2,11 +2,9 @@ import { useRouter } from 'next/router';
 import { ParsedUrlQuery } from 'querystring';
 import Head from 'next/head';
 import styled from 'styled-components';
-import { GetStaticProps, GetStaticPaths, GetStaticPropsContext } from 'next';
-import { faSignLanguage } from '@fortawesome/free-solid-svg-icons';
+import { GetStaticProps, GetStaticPaths } from 'next';
 
 import { fetchEventDetails, fetchEventSlugs } from '../../lib/fetcher';
-
 
 const Container = styled.div`
   min-height: 600px;
@@ -14,16 +12,31 @@ const Container = styled.div`
   width: 100%;
 `;
 
-const EventDetail = () => {
+interface EventDetailProps {
+  event: any;
+}
+
+export const EventDetail = ({ event }: EventDetailProps) => {
   const router = useRouter();
   const { slug } = router.query;
 
   return (
     <>
+      <Head>
+        <title>
+          {event.name}
+          -
+          {event.startTime.slice(5, 10)}
+        </title>
+        <meta name="description" content={`Get updated live stream information on ${event.name}`} />
+        <meta name="keywords" content="techno, house, live streams, dj" />
+      </Head>
       <Container>
         slug:
         {' '}
         {slug}
+        {' '}
+        {event.name}
       </Container>
     </>
   );

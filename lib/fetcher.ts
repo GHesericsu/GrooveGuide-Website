@@ -3,7 +3,6 @@ const dayjs = require('dayjs');
 
 const baseUrl = `https://${process.env.SANITY_PROJECT_ID}.api.sanity.io/v1/data/query/production?query=`;
 
-
 export const fetchEventData = async (date: string) : Promise<any> => {
   const startDate = dayjs(date).format('YYYY-MM-DD');
   const endDate = dayjs(date).add(7, 'day').format('YYYY-MM-DD');
@@ -33,16 +32,6 @@ export const fetchEventData = async (date: string) : Promise<any> => {
   }
 };
 
-// async function testFetcher() {
-//   const input = dayjs().format();
-
-//   const response = await fetchEventData(input);
-
-//   console.log(response);
-// }
-
-// testFetcher();
-
 export const fetchEventDetails = async (slug: string): Promise<any> => {
   const queryString = `*[_type == "event" && slug.current == "${slug}"] {
     _id,
@@ -62,7 +51,7 @@ export const fetchEventDetails = async (slug: string): Promise<any> => {
   const encodedString = encodeURIComponent(queryString);
 
   try {
-    const response = await axios.get(baseUrl + encodedString);
+    const response = await axios.get(`https://ny8bc8wr.api.sanity.io/v1/data/query/production?query=${encodedString}`);
     return response.data.result;
   } catch (error) {
     console.log(error);
@@ -70,3 +59,18 @@ export const fetchEventDetails = async (slug: string): Promise<any> => {
   }
 };
 
+export const fetchEventSlugs = async (): Promise<any> => {
+  const queryString = `*[_type == "event"] {
+    "slug": slug.current
+  }`;
+
+  const encodedString = encodeURIComponent(queryString);
+
+  try {
+    const response = await axios.get(baseUrl + encodedString);
+    return response.data.result;
+  } catch (error) {
+    console.log(error);
+    return false;
+  }
+};

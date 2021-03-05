@@ -94,7 +94,6 @@ export const Header = () => (
           <Link href="/">
             <SiteLogoLink>GrooveGuide</SiteLogoLink>
           </Link>
-
         </SiteLogo>
       </SiteLogoWrapper>
       <SiteTitleWrapper>

@@ -6,12 +6,12 @@ import { AnyRecordWithTtl, AnySoaRecord } from 'dns';
 // // console.log(dayjs(dayjs()).format());
 // console.log(typeof dayjs().format())
 
-const todayDate = dayjs().format();
+// const todayDate = dayjs().format();
 
-const startDate = dayjs(todayDate).format('YYYY-MM-DD');
-const endDate = dayjs(todayDate).add(7, 'day').format('YYYY-MM-DD');
-console.log(startDate, typeof startDate);
-console.log(endDate, typeof endDate);
+// const startDate = dayjs(todayDate).format('YYYY-MM-DD');
+// const endDate = dayjs(todayDate).add(7, 'day').format('YYYY-MM-DD');
+// console.log(startDate, typeof startDate);
+// console.log(endDate, typeof endDate);
 
 
 interface LooseObj {
@@ -30,6 +30,4 @@ export const datesMap = (date?: string) : LooseObj => {
   return map;
 };
 
-console.log(datesMap(dayjs().format()));
-
-export {};
+// console.log(datesMap(dayjs().format()));

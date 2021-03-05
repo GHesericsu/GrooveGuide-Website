@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import styled from 'styled-components';
 import { Event } from './Event';
 
@@ -34,7 +35,7 @@ export const EventsOnDate = ({ date, events } : EventsOnDateProps) => {
         </DateHeading>
       </DateWrapper>
       {events[0] && events.map((el: any) => (
-        <Event event={el} key={el.slug} />
+        <Event event={el} key={el._id} />
       ))}
     </Container>
   );

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Image from 'next/image';
+import NextLink from 'next/link';
 import { Link, CalendarPlus } from '@styled-icons/boxicons-regular';
 
 import { ShareBoxed } from '@styled-icons/open-iconic';
@@ -99,7 +100,7 @@ interface EventProps {
 
 export const Event = ({ event }: EventProps) => {
   const {
-    name, artists, liveStreamUrl, startTime, endTime, imageUrl,
+    name, artists, liveStreamUrl, startTime, endTime, imageUrl, slug,
   } = event;
 
   return (
@@ -107,7 +108,7 @@ export const Event = ({ event }: EventProps) => {
       <ContentContainer>
         <EventInfoContainer>
           <EventName>
-            {name}
+            <NextLink href={`/event/${slug}`} passHref><LinkText>{name}</LinkText></NextLink>
           </EventName>
           <ArtistNameWrapper>
             {artists && artists.map((el: any) => (

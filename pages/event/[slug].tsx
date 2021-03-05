@@ -16,7 +16,7 @@ interface EventDetailProps {
   event: any;
 }
 
-export const EventDetail = ({ event }: EventDetailProps) => {
+const EventDetail = ({ event }: EventDetailProps) => {
   const router = useRouter();
   const { slug } = router.query;
 
@@ -24,9 +24,9 @@ export const EventDetail = ({ event }: EventDetailProps) => {
     <>
       <Head>
         <title>
-          {event.name}
+          {event.name && event.name}
           -
-          {event.startTime.slice(5, 10)}
+          {event.startTime && event.startTime.slice(5, 10)}
         </title>
         <meta name="description" content={`Get updated live stream information on ${event.name}`} />
         <meta name="keywords" content="techno, house, live streams, dj" />
@@ -42,9 +42,10 @@ export const EventDetail = ({ event }: EventDetailProps) => {
   );
 };
 
+export default EventDetail;
+
 export const getStaticPaths: GetStaticPaths = async () => {
   const response = await fetchEventSlugs();
-  console.log('res', response);
   const paths = response.map((event: any) => (
     {
       params: {
@@ -52,7 +53,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
       },
     }
   ));
-  console.log('paths', paths);
+  console.log(paths);
   return {
     paths,
     fallback: false,
@@ -79,3 +80,4 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (context) => 
     },
   };
 };
+

@@ -32,16 +32,6 @@ export const fetchEventData = async (date: string) : Promise<any> => {
   }
 };
 
-// async function testFetcher() {
-//   const input = dayjs().format();
-
-//   const response = await fetchEventData(input);
-
-//   console.log(response);
-// }
-
-// testFetcher();
-
 export const fetchEventDetails = async (slug: string): Promise<any> => {
   const queryString = `*[_type == "event" && slug.current == "${slug}"] {
     _id,
@@ -84,14 +74,3 @@ export const fetchEventSlugs = async (): Promise<any> => {
     return false;
   }
 };
-
-// fetchEventSlugs()
-//   .then((res) => {
-//     console.log(res.map((event: any) => (
-//       {
-//         params: {
-//           slug: event.slug,
-//         },
-//       }
-//     )));
-//   });

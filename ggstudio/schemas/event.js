@@ -91,7 +91,8 @@ export default {
       title: 'Slug',
       description: 'Slug will be used as part of a URL',
       options: {
-        source: (doc) => `${doc.name}-${doc.startTime.slice(0, 10)}`,
+        source: (doc) => `${doc.name}-${doc.startTime.slice(5, 10)}`,
+        maxLength: 80,
       },
       validation: (Rule) => Rule.required(),
     },

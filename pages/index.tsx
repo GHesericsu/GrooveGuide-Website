@@ -2,7 +2,7 @@ import Head from 'next/head';
 import styled from 'styled-components';
 import dayjs from 'dayjs';
 import { useState, useEffect } from 'react';
-import { GetStaticProps, GetStaticPaths, GetServerSideProps } from 'next';
+import { GetStaticProps } from 'next';
 import { fetchEventData } from '../lib/fetcher';
 import { datesMap } from '../lib/datesHelper';
 

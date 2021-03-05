@@ -25,7 +25,7 @@ interface EventsOnDateProps {
 }
 
 export const EventsOnDate = ({ date, events } : EventsOnDateProps) => {
-  console.log('date', date, 'events', events);
+  console.log('events on dates success');
   return (
     <Container>
       <DateWrapper>

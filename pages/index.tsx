@@ -53,7 +53,6 @@ export const getStaticProps: GetStaticProps = async () => {
     }
   });
   const dataTuples = Object.entries(map);
-  console.log(dataTuples);
   return {
     props: {
       initialDate: dataTuples,

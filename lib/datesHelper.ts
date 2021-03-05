@@ -1,4 +1,5 @@
 import dayjs from 'dayjs';
+import { AnyRecordWithTtl, AnySoaRecord } from 'dns';
 
 
 // console.log(dayjs().format(), dayjs().add(1, 'day').format());
@@ -14,7 +15,7 @@ console.log(endDate, typeof endDate);
 
 
 interface LooseObj {
-  [key: string]: string[]
+  [key: string]: any[]
 }
 
 export const datesMap = (date?: string) : LooseObj => {
@@ -29,6 +30,6 @@ export const datesMap = (date?: string) : LooseObj => {
   return map;
 };
 
-console.log(Object.entries(datesMap(dayjs().format())));
+console.log(datesMap(dayjs().format()));
 
 export {};

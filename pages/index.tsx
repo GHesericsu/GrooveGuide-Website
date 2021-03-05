@@ -2,7 +2,7 @@ import Head from 'next/head';
 import styled from 'styled-components';
 import dayjs from 'dayjs';
 import { useState, useEffect } from 'react';
-import { GetStaticProps, GetStaticPaths, GetServerSideProps } from 'next';
+import { GetStaticProps } from 'next';
 import { fetchEventData } from '../lib/fetcher';
 import { datesMap } from '../lib/datesHelper';
 
@@ -16,11 +16,11 @@ const Container = styled.div`
 `;
 
 interface IndexProps {
-  initialData: any;
+  initialDate: any;
 }
 
-export const Index = ({ initialData }: IndexProps) => {
-  const [data, setData] = useState(initialData);
+export const Index = ({ initialDate }: IndexProps) => {
+  const [data, setData] = useState(initialDate);
 
   return (
     <>
@@ -31,7 +31,7 @@ export const Index = ({ initialData }: IndexProps) => {
       </Head>
       <Container>
         <Carousel />
-        <EventList data={data} />
+        <EventList dataTuples={data} />
       </Container>
     </>
   );
@@ -39,20 +39,24 @@ export const Index = ({ initialData }: IndexProps) => {
 
 export const getStaticProps: GetStaticProps = async () => {
   const todayDate = dayjs().format();
-  const initialData = await fetchEventData(todayDate);
+  const data = await fetchEventData(todayDate);
   const map = datesMap(todayDate);
 
-  for (let i = 0; i < initialData.length; i += 1) {
-    const parsedDate = dayjs(initialData[i].name).format('YYYY-MM-DD');
-
-    map[parsedDate] = initialData[i];
+  for (let i = 0; i < data.length; i += 1) {
+    const parsedDate: string = dayjs(data[i].startTime).format('YYYY-MM-DD');
+    map[parsedDate].push(data[i]);
   }
 
-  console.log(initialData);
-
+  Object.entries(map).forEach((el) => {
+    if (el[1].length === 0) {
+      delete map[el[0]];
+    }
+  });
+  const dataTuples = Object.entries(map);
+  console.log(dataTuples);
   return {
     props: {
-      initialData,
+      initialDate: dataTuples,
     },
   };
 };

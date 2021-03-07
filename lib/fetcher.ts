@@ -52,7 +52,7 @@ export const fetchEventDetails = async (slug: string): Promise<any> => {
 
   try {
     const response = await axios.get(`https://ny8bc8wr.api.sanity.io/v1/data/query/production?query=${encodedString}`);
-    return response.data.result;
+    return response.data.result[0];
   } catch (error) {
     console.log(error);
     return false;

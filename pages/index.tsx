@@ -25,11 +25,11 @@ export const Index = ({ initialDate }: IndexProps) => {
   return (
     <>
       <Head>
-        <title>🔥 DJ Live Streams 🔥</title>
+        <title>🔥 GrooveGuide.live 🔥 Techno & House Live Streams</title>
         <meta name="description" content="DJ Live Streams" />
         <meta name="keywords" content="techno, house, live streams, dj" />
       </Head>
-      <Container>
+      <Container> 
         <Carousel />
         <EventList dataTuples={data} />
       </Container>

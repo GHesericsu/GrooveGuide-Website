@@ -1,0 +1,3 @@
+
+
+{newUser ? <Welcome> : null}

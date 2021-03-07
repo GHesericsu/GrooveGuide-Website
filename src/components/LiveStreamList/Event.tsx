@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import Image from 'next/image';
 import NextLink from 'next/link';
 import { Link, CalendarPlus } from '@styled-icons/boxicons-regular';
-
 import { ShareBoxed } from '@styled-icons/open-iconic';
 import dayjs from 'dayjs';
 import { LinkText } from '../../utils/styles';
@@ -13,7 +12,8 @@ const Container = styled.div`
   background: #282828;
   border-radius: 15px;
   padding: 8px 20px;
-  margin: 8px 0px;
+  margin: 12px 0px;
+  box-shadow: 3px 3px 3px #070606;
 `;
 
 const ContentContainer = styled.div`
@@ -52,9 +52,9 @@ const EventName = styled.h3`
 
 `;
 
-const CalendarIcon = styled(CalendarPlus)`
+export const CalendarIcon = styled(CalendarPlus)`
   margin: auto;
-  
+  filter: drop-shadow(3px 3px 3px #070606);
   &:hover {
   transition: 0.2s;
   transform: rotate(5deg) scale(1.3);
@@ -63,9 +63,10 @@ const CalendarIcon = styled(CalendarPlus)`
   }
 `;
 
-const ShareIcon = styled(ShareBoxed)`
+export const ShareIcon = styled(ShareBoxed)`
   margin: auto;
   padding-left: 7px;
+  filter: drop-shadow(3px 3px 3px #070606);
   &:hover {
   transition: 0.2s;
   transform: rotate(5deg) scale(1.3);
@@ -108,14 +109,13 @@ export const Event = ({ event }: EventProps) => {
       <ContentContainer>
         <EventInfoContainer>
           <EventName>
-            <NextLink href={`/event/${slug}`} passHref><LinkText>{name}</LinkText></NextLink>
+            <NextLink href={`/event/${slug}`} passHref><LinkText title={name}>{name}</LinkText></NextLink>
           </EventName>
           <ArtistNameWrapper>
             {artists && artists.map((el: any) => (
               <ArtistName key={el.name}>
                 {el.name}
                 {' '}
-                |
               </ArtistName>
             ))}
           </ArtistNameWrapper>
@@ -126,10 +126,10 @@ export const Event = ({ event }: EventProps) => {
         </EventInfoContainer>
         <DateTimeContainer>
           <p>Start</p>
-          <p>{dayjs(startTime).format('MMM DD - HH:mm')}</p>
+          <p><time dateTime={startTime}>{dayjs(startTime).format('MMM DD - HH:mm')}</time></p>
           <br />
           <p>End</p>
-          <p>{endTime && dayjs(endTime).format('MMM DD - HH:mm')}</p>
+          <p><time dateTime={endTime}>{endTime && dayjs(endTime).format('MMM DD - HH:mm')}</time></p>
         </DateTimeContainer>
         <FlyerContainer>
           {imageUrl && <Image src={imageUrl} alt={name} width={140} height={140} />}

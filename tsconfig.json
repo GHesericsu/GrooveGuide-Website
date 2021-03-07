@@ -25,6 +25,7 @@
   },
   "exclude": [
     "node_modules",
+    "./linkedin.js"
   ],
   "include": [
     "next-env.d.ts",

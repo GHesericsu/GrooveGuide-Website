@@ -26,13 +26,13 @@ interface EventProps {
 export const EventList = ({ dataTuples }: EventProps) => (
   <Container>
     <ListContainer>
-      {dataTuples && dataTuples.map((el: any) => {
-        const date = el[0];
-        const events = el[1];
-        return (
-          <EventsOnDate date={date} events={events} key={date} />
-        );
-      })}
+        {dataTuples && dataTuples.map((el: any) => {
+          const date = el[0];
+          const events = el[1];
+          return (
+            <EventsOnDate date={date} events={events} key={date} />
+          );
+        })}
     </ListContainer>
   </Container>
 );

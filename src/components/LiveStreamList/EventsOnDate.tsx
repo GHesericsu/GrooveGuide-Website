@@ -33,6 +33,7 @@ export const EventsOnDate = ({ date, events } : EventsOnDateProps) => {
       <DateWrapper>
         <DateHeading>
           <time dateTime={date}>{dayjs(date).format('dddd, MMM DD')}</time>
+          {dayjs().format('YYYY-MM-DD') === dayjs(date).format('YYYY-MM-DD') && ' - Today'}
         </DateHeading>
       </DateWrapper>
       {events[0] && events.map((el: any) => (

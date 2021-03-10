@@ -75,7 +75,7 @@ export const ShareIcon = styled(ShareBoxed)`
   }
 `;
 
-const ArtistNameWrapper = styled.div`
+const ArtistNameWrapper = styled.p`
   width: 100%;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -86,14 +86,19 @@ const ArtistNameWrapper = styled.div`
 `;
 
 const ArtistName = styled.span`
-  padding-right: 10px;
+
+  + span::before {
+    white-space: pre;
+    content: ",  ";
+  }
   
 `;
 
-const LinkIcon = styled(Link)`
+export const LinkIcon = styled(Link)`
   color: #C71E1E;
   margin: 7px;
 `;
+
 
 interface EventProps {
   event: any;
@@ -112,12 +117,14 @@ export const Event = ({ event }: EventProps) => {
             <NextLink href={`/event/${slug}`} passHref><LinkText title={name}>{name}</LinkText></NextLink>
           </EventName>
           <ArtistNameWrapper>
-            {artists && artists.map((el: any) => (
-              <ArtistName key={el.name}>
+            {artists && artists.map((el: any) => {
+              return (
+                <ArtistName key={el.name}>
                 {el.name}
-                {' '}
-              </ArtistName>
-            ))}
+                </ArtistName>
+                )
+              }
+            )}
           </ArtistNameWrapper>
           <p>
             <LinkIcon size="20" />

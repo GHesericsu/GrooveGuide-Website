@@ -7,7 +7,7 @@ export const LinkText = styled.a`
   text-underline-position: under;
   &:hover {
     transition: 0.2s;
-    transform: scale(1.05);
+    transform: scale(1.01);
     cursor: pointer;
     color: #C71E1E;
     text-decoration: none;

@@ -16,20 +16,21 @@ const Container = styled.div`
 `;
 
 interface IndexProps {
-  initialDate: any;
+  initialData: any;
 }
 
-export const Index = ({ initialDate }: IndexProps) => {
-  const [data, setData] = useState(initialDate);
-
+export const Index = ({ initialData }: IndexProps) => {
+  const [data, setData] = useState(initialData);
+  const [currentDate, setCurrentDate] = useState(dayjs().format('YYYY-MM-DD'))
+  
   return (
     <>
       <Head>
-        <title>🔥 DJ Live Streams 🔥</title>
+        <title>🔥 GrooveGuide.live 🔥 Techno & House Live Streams</title>
         <meta name="description" content="DJ Live Streams" />
         <meta name="keywords" content="techno, house, live streams, dj" />
       </Head>
-      <Container>
+      <Container> 
         <Carousel />
         <EventList dataTuples={data} />
       </Container>
@@ -55,7 +56,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const dataTuples = Object.entries(map);
   return {
     props: {
-      initialDate: dataTuples,
+      initialData: dataTuples,
     },
   };
 };

@@ -23,6 +23,7 @@ const SiteLogoWrapper = styled.div`
   width: 40%;
   height: 100%;
   margin: auto;
+  min-width: 325
 `;
 
 const SiteLogo = styled.h1`

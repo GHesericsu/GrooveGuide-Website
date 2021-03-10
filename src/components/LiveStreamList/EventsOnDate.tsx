@@ -1,6 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 import styled from 'styled-components';
 import { Event } from './Event';
+import dayjs from 'dayjs';
 
 const Container = styled.div`
   width: 100%;
@@ -31,7 +32,8 @@ export const EventsOnDate = ({ date, events } : EventsOnDateProps) => {
     <Container>
       <DateWrapper>
         <DateHeading>
-          {date}
+          <time dateTime={date}>{dayjs(date).format('dddd, MMM DD')}</time>
+          {dayjs().format('YYYY-MM-DD') === dayjs(date).format('YYYY-MM-DD') && ' - Today'}
         </DateHeading>
       </DateWrapper>
       {events[0] && events.map((el: any) => (

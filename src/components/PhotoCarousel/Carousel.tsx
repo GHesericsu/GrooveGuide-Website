@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Image from 'next/image';
 
+
 const Container = styled.div`
   width: 100%;
   display: flex;

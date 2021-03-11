@@ -26,7 +26,7 @@ export const Index = ({ initialData }: IndexProps): JSX.Element => {
   useEffect(() => {
     console.log('USE EFFECT');
   });
-
+  
   const handleChangeDate = (number: number) => {
     if (number > 0) {
       const nextWeekDate = dayjs(currentDate).add(number, 'day').format('YYYY-MM-DD');

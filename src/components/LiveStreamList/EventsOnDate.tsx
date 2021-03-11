@@ -26,8 +26,7 @@ interface EventsOnDateProps {
   events: any[];
 }
 
-export const EventsOnDate = ({ date, events } : EventsOnDateProps) => {
-  console.log('events on dates success');
+export const EventsOnDate = ({ date, events } : EventsOnDateProps): JSX.Element => {
   return (
     <Container>
       <DateWrapper>

@@ -108,16 +108,16 @@ const IconsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-`
+`;
 
 const CalendarIconWithMargin = styled(CalendarIcon)`
   margin-bottom: 10px;
-`
+`;
 const ImageWrapper = styled.div`
   width: 100%;
   padding: 10px 10px;
   text-align: center;
-`
+`;
 
 interface EventDetailProps {
   event: any;

@@ -13,11 +13,11 @@ const AboutUsHeading = styled.h2`
 
 `;
 
-const AboutUsText = styled.p`
+const AboutUsText = styled.div`
 
 `;
 
-export const AboutUs = () => (
+export const AboutUs = (): JSX.Element => (
   <>
     <Head>
       <title>About Us</title>

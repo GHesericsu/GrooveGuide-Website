@@ -87,7 +87,7 @@ const Emojis = styled.p`
   padding-left: 30px;
 `;
 
-export const Header = () => (
+export const Header = (): JSX.Element => (
   <Container>
     <HeaderContainer>
       <SiteLogoWrapper>

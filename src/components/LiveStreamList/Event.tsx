@@ -99,13 +99,17 @@ export const LinkIcon = styled(Link)`
   margin: 7px;
 `;
 
+export const FeaturedEmoji = styled.span`
+
+`;
+
 interface EventProps {
   event: any;
 }
 
 export const Event = ({ event }: EventProps): JSX.Element => {
   const {
-    name, artists, liveStreamUrl, startTime, endTime, imageUrl, slug,
+    name, artists, liveStreamUrl, startTime, endTime, imageUrl, slug, isFeatured,
   } = event;
 
   return (
@@ -113,6 +117,12 @@ export const Event = ({ event }: EventProps): JSX.Element => {
       <ContentContainer>
         <EventInfoContainer>
           <EventName>
+            {isFeatured && (
+            <FeaturedEmoji>
+              🔥
+              {' '}
+            </FeaturedEmoji>
+            )}
             <NextLink href={`/event/${encodeURIComponent(slug)}`} passHref><LinkText title={name}>{name}</LinkText></NextLink>
           </EventName>
           <ArtistNameWrapper>

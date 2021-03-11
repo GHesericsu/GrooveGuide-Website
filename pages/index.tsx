@@ -27,17 +27,6 @@ export const Index = ({ initialData }: IndexProps): JSX.Element => {
     console.log('USE EFFECT');
   });
 
-  // const handleChangeDate = (number: number) => {
-  //   if (number > 0) {
-  //     const nextWeekDate = dayjs(currentDate).add(number, 'day').format('YYYY-MM-DD');
-  //     setCurrentDate(nextWeekDate);
-  //     console.log(currentDate);
-  //   } else {
-  //     const previousWeekDate = dayjs(currentDate).subtract(Math.abs(number), 'day').format('YYYY-MM-DD');
-  //     setCurrentDate(previousWeekDate);
-  //     console.log(currentDate);
-  //   }
-  // };
 
   if (!data) {
     return (

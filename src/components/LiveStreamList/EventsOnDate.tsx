@@ -41,5 +41,5 @@ export const EventsOnDate = ({ date, events } : EventsOnDateProps): JSX.Element 
         <Event event={el} key={el._id} />
       ))}
     </Container>
-  )
+  );
 };

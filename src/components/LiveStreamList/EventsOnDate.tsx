@@ -1,7 +1,8 @@
+/* eslint-disable arrow-body-style */
 /* eslint-disable no-underscore-dangle */
+import dayjs from 'dayjs';
 import styled from 'styled-components';
 import { Event } from './Event';
-import dayjs from 'dayjs';
 
 const Container = styled.div`
   width: 100%;
@@ -26,8 +27,8 @@ interface EventsOnDateProps {
   events: any[];
 }
 
-export const EventsOnDate = ({ date, events } : EventsOnDateProps) => {
-  console.log('events on dates success');
+export const EventsOnDate = ({ date, events } : EventsOnDateProps): JSX.Element => {
+  console.log(events)
   return (
     <Container>
       <DateWrapper>
@@ -40,5 +41,5 @@ export const EventsOnDate = ({ date, events } : EventsOnDateProps) => {
         <Event event={el} key={el._id} />
       ))}
     </Container>
-  );
+  )
 };

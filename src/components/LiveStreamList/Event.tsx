@@ -99,12 +99,11 @@ export const LinkIcon = styled(Link)`
   margin: 7px;
 `;
 
-
 interface EventProps {
   event: any;
 }
 
-export const Event = ({ event }: EventProps) => {
+export const Event = ({ event }: EventProps): JSX.Element => {
   const {
     name, artists, liveStreamUrl, startTime, endTime, imageUrl, slug,
   } = event;
@@ -114,17 +113,14 @@ export const Event = ({ event }: EventProps) => {
       <ContentContainer>
         <EventInfoContainer>
           <EventName>
-            <NextLink href={`/event/${slug}`} passHref><LinkText title={name}>{name}</LinkText></NextLink>
+            <NextLink href={`/event/${encodeURIComponent(slug)}`} passHref><LinkText title={name}>{name}</LinkText></NextLink>
           </EventName>
           <ArtistNameWrapper>
-            {artists && artists.map((el: any) => {
-              return (
-                <ArtistName key={el.name}>
+            {artists && artists.map((el: any) => (
+              <ArtistName key={el.name}>
                 {el.name}
-                </ArtistName>
-                )
-              }
-            )}
+              </ArtistName>
+            ))}
           </ArtistNameWrapper>
           <p>
             <LinkIcon size="20" />

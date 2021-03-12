@@ -11,7 +11,7 @@ const ContactHeading = styled.h2`
 
 `;
 
-export const Contact = () => (
+export const Contact = (): JSX.Element => (
   <>
     <Head>
       <title>About Us</title>

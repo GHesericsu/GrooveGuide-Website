@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import Document, {
   DocumentContext, Html, Head, Main, NextScript,
 } from 'next/document';

@@ -24,7 +24,7 @@ const SearchIcon = styled(Search)`
   }
 `;
 
-export const Nav = () => (
+export const Nav = (): JSX.Element => (
   <Container>
     <SearchWrapper>
       <SearchIcon title="Search" size="32" />

@@ -55,7 +55,7 @@ const ImageLink = styled.a`
 
 `;
 
-export const Footer = () => (
+export const Footer = (): JSX.Element => (
   <Wrapper>
     <IconsWrapper>
       <ImageLink href="https://www.facebook.com/grooveguidelive" target="_blank"><FacebookIcon size="32" /></ImageLink>

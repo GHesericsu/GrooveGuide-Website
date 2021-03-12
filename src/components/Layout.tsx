@@ -33,7 +33,7 @@ interface LayoutProps {
   children: React.ReactNode;
 }
 
-export const Layout = ({ children } : LayoutProps) => (
+export const Layout = ({ children } : LayoutProps): JSX.Element => (
   <Wrapper>
     <Header />
     <Nav />

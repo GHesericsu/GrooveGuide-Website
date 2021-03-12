@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { EventsOnDate } from './EventsOnDate';
- 
+
 const Container = styled.div`
   width: 95%;
   height: auto;
@@ -23,16 +23,16 @@ interface EventProps {
   dataTuples: any;
 }
 
-export const EventList = ({ dataTuples }: EventProps) => (
+export const EventList = ({ dataTuples }: EventProps): JSX.Element => (
   <Container>
     <ListContainer>
-        {dataTuples && dataTuples.map((el: any) => {
-          const date = el[0];
-          const events = el[1];
-          return (
-            <EventsOnDate date={date} events={events} key={date} />
-          );
-        })}
+      {dataTuples && dataTuples.map((el: any) => {
+        const date = el[0];
+        const events = el[1];
+        return (
+          <EventsOnDate date={date} events={events} key={date} />
+        );
+      })}
     </ListContainer>
   </Container>
 );

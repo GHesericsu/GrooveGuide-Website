@@ -80,6 +80,11 @@ const GlobalStyle = createGlobalStyle`
     height: auto;
     width: 100%;
     display: block;
+    --white: #C0C0C0;
+    --black: #070606;
+    --red: #C71E1E;
+    --dark-gray: #1B1717;
+    --gray: #282828
   }
   body {
     width: 100%;
@@ -94,7 +99,7 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({ Component, pageProps }: AppProps): JSX.Element {
   return (
     <>
       <Head>

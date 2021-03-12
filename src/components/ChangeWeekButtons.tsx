@@ -1,5 +1,7 @@
 /* eslint-disable arrow-body-style */
+import NextLink from 'next/link';
 import styled from 'styled-components';
+import dayjs from 'dayjs';
 
 const Container = styled.div`
   width: 100%;
@@ -62,25 +64,23 @@ const PreviousButton = styled(NextButton)`
 `;
 
 interface ChangeWeekProps {
-  handleChangeDate: (number: number) => void;
+  currentDate: string;
 }
 
-export const ChangeWeekButtons = ({ handleChangeDate }: ChangeWeekProps): JSX.Element => {
+export const ChangeWeekButtons = ({ currentDate }: ChangeWeekProps): JSX.Element => {
   return (
     <Container>
       <Wrapper>
-        <PreviousButton onClick={() => {
-          handleChangeDate(-7);
-        }}
-        >
-          Previous Week
-        </PreviousButton>
-        <NextButton onClick={() => {
-          handleChangeDate(7);
-        }}
-        >
-          Next Week
-        </NextButton>
+        <NextLink href={`/week/${dayjs(currentDate).subtract(7, 'day').format('YYYY-MM-DD')}`} as={`/week/${dayjs(currentDate).subtract(7, 'day').format('YYYY-MM-DD')}`} passHref>
+          <PreviousButton title="Previous Week">
+            Previous Week
+          </PreviousButton>
+        </NextLink>
+        <NextLink href={`/week/${dayjs(currentDate).add(7, 'day').format('YYYY-MM-DD')}`} as={`/week/${dayjs(currentDate).add(7, 'day').format('YYYY-MM-DD')}`} passHref>
+          <NextButton title="Next Week">
+            Next Week
+          </NextButton>
+        </NextLink>
       </Wrapper>
     </Container>
   );

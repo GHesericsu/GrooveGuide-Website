@@ -113,7 +113,7 @@ export const Event = ({ event }: EventProps): JSX.Element => {
       <ContentContainer>
         <EventInfoContainer>
           <EventName>
-            <NextLink href={`/event/${slug}`} passHref><LinkText title={name}>{name}</LinkText></NextLink>
+            <NextLink href={`/event/${encodeURIComponent(slug)}`} passHref><LinkText title={name}>{name}</LinkText></NextLink>
           </EventName>
           <ArtistNameWrapper>
             {artists && artists.map((el: any) => (

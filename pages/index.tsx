@@ -4,10 +4,10 @@ import dayjs from 'dayjs';
 import { useState, useEffect } from 'react';
 import { GetStaticProps } from 'next';
 import { fetchEventData } from '../lib/fetcher';
-import { datesMap } from '../lib/datesHelper';
 import { ChangeWeekButtons } from '../src/components/ChangeWeekButtons';
 import { Carousel } from '../src/components/PhotoCarousel/Carousel';
 import { EventList } from '../src/components/LiveStreamList/EventList';
+import { getDataTuples } from '../lib/dataHelper';
 
 const Container = styled.div`
   min-height: 600px;
@@ -26,22 +26,22 @@ export const Index = ({ initialData }: IndexProps): JSX.Element => {
   useEffect(() => {
     console.log('USE EFFECT');
   });
-  
-  const handleChangeDate = (number: number) => {
-    if (number > 0) {
-      const nextWeekDate = dayjs(currentDate).add(number, 'day').format('YYYY-MM-DD');
-      setCurrentDate(nextWeekDate);
-      console.log(currentDate);
-    } else {
-      const previousWeekDate = dayjs(currentDate).subtract(Math.abs(number), 'day').format('YYYY-MM-DD');
-      setCurrentDate(previousWeekDate);
-      console.log(currentDate);
-    }
-  };
+
+  // const handleChangeDate = (number: number) => {
+  //   if (number > 0) {
+  //     const nextWeekDate = dayjs(currentDate).add(number, 'day').format('YYYY-MM-DD');
+  //     setCurrentDate(nextWeekDate);
+  //     console.log(currentDate);
+  //   } else {
+  //     const previousWeekDate = dayjs(currentDate).subtract(Math.abs(number), 'day').format('YYYY-MM-DD');
+  //     setCurrentDate(previousWeekDate);
+  //     console.log(currentDate);
+  //   }
+  // };
 
   if (!data) {
     return (
-      <div>Loading...</div>
+      <div>No Events Yet</div>
     );
   }
 
@@ -56,9 +56,9 @@ export const Index = ({ initialData }: IndexProps): JSX.Element => {
       </Head>
       <Container>
         <Carousel />
-        <ChangeWeekButtons handleChangeDate={handleChangeDate} />
+        <ChangeWeekButtons currentDate={currentDate} />
         <EventList dataTuples={data} />
-        <ChangeWeekButtons handleChangeDate={handleChangeDate} />
+        <ChangeWeekButtons currentDate={currentDate} />
       </Container>
     </>
   );
@@ -67,22 +67,7 @@ export const Index = ({ initialData }: IndexProps): JSX.Element => {
 export const getStaticProps: GetStaticProps = async () => {
   const todayDate = dayjs().format();
   const data = await fetchEventData(todayDate);
-  const map = datesMap(todayDate);
-  console.log('getStaticProps Fetch');
-
-  for (let i = 0; i < data.length; i += 1) {
-    const parsedDate: string = dayjs(data[i].startTime).format('YYYY-MM-DD');
-    if (map.hasOwnProperty(parsedDate)) {
-      map[parsedDate].push(data[i]);
-    }
-  }
-
-  Object.entries(map).forEach((el) => {
-    if (el[1].length === 0) {
-      delete map[el[0]];
-    }
-  });
-  const dataTuples = Object.entries(map);
+  const dataTuples = getDataTuples(data, todayDate);
   return {
     props: {
       initialData: dataTuples,

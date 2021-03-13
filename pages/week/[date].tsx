@@ -22,11 +22,9 @@ interface EventsOnWeekProps {
 }
 
 const EventsOnWeek = ({ data }: EventsOnWeekProps): JSX.Element => {
-  const router = useRouter();
-  console.log(router);
-  const currentDate = router.asPath.slice(6).toString();
-
-  console.log('current date', currentDate, typeof currentDate);
+  // const router = useRouter();
+  // const currentDate = router.query.date || dayjs().format('YYYY-MM-DD');
+  // console.log('current date', currentDate, typeof currentDate);
 
   if (!data) {
     return (
@@ -45,9 +43,9 @@ const EventsOnWeek = ({ data }: EventsOnWeekProps): JSX.Element => {
       </Head>
       <Container>
         <Carousel />
-        <ChangeWeekButtons currentDate={currentDate} />
+        <ChangeWeekButtons />
         <EventList dataTuples={data} />
-        <ChangeWeekButtons currentDate={currentDate} />
+        <ChangeWeekButtons />
       </Container>
     </>
   );

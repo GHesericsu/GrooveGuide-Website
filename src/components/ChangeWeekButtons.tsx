@@ -2,6 +2,7 @@
 import NextLink from 'next/link';
 import styled from 'styled-components';
 import dayjs from 'dayjs';
+import { useRouter } from 'next/router';
 
 const Container = styled.div`
   width: 100%;
@@ -63,20 +64,19 @@ const PreviousButton = styled(NextButton)`
   margin-right: 10px;
 `;
 
-interface ChangeWeekProps {
-  currentDate: string;
-}
+export const ChangeWeekButtons = (): JSX.Element => {
+  const router = useRouter();
+  const curDate = router.query.date || dayjs().format('YYYY-MM-DD');
 
-export const ChangeWeekButtons = ({ currentDate }: ChangeWeekProps): JSX.Element => {
   return (
     <Container>
       <Wrapper>
-        <NextLink href={`/week/${dayjs(currentDate).subtract(7, 'day').format('YYYY-MM-DD')}`} as={`/week/${dayjs(currentDate).subtract(7, 'day').format('YYYY-MM-DD')}`} passHref>
+        <NextLink href={`/week/${dayjs(curDate).subtract(7, 'day').format('YYYY-MM-DD')}`} as={`/week/${dayjs(curDate).subtract(7, 'day').format('YYYY-MM-DD')}`} passHref>
           <PreviousButton title="Previous Week">
             Previous Week
           </PreviousButton>
         </NextLink>
-        <NextLink href={`/week/${dayjs(currentDate).add(7, 'day').format('YYYY-MM-DD')}`} as={`/week/${dayjs(currentDate).add(7, 'day').format('YYYY-MM-DD')}`} passHref>
+        <NextLink href={`/week/${dayjs(curDate).add(7, 'day').format('YYYY-MM-DD')}`} as={`/week/${dayjs(curDate).add(7, 'day').format('YYYY-MM-DD')}`} passHref>
           <NextButton title="Next Week">
             Next Week
           </NextButton>

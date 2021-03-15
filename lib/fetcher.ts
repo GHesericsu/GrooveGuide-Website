@@ -75,3 +75,9 @@ export const fetchEventSlugs = async (): Promise<any> => {
     return false;
   }
 };
+
+export const fetchFeaturedEvents = async (): Promise<any> => {
+  const queryString = `*[_type == "event"] {
+    "slug": slug.current
+  }`
+}

@@ -32,6 +32,12 @@ export const Index = ({ initialData }: IndexProps): JSX.Element => {
     );
   }
 
+  const getFeaturedImages = (data) => {
+    const images = data.map(() => {
+      
+    });
+  };
+
   console.log('RENDER');
 
   return (

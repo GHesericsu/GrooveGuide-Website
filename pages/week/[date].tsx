@@ -22,9 +22,8 @@ interface EventsOnWeekProps {
 }
 
 const EventsOnWeek = ({ data }: EventsOnWeekProps): JSX.Element => {
-  // const router = useRouter();
-  // const currentDate = router.query.date || dayjs().format('YYYY-MM-DD');
-  // console.log('current date', currentDate, typeof currentDate);
+  const router = useRouter();
+  const curDate: string = router.asPath.slice(6, 16) || dayjs().format('YYYY-MM-DD');
 
   if (!data) {
     return (
@@ -37,15 +36,16 @@ const EventsOnWeek = ({ data }: EventsOnWeekProps): JSX.Element => {
   return (
     <>
       <Head>
-        <title>🔥 GrooveGuide.live 🔥 Techno & House Live Streams</title>
+        <title>
+          Techno & House Live Streams - Week of
+          {` ${curDate}`}
+        </title>
         <meta name="description" content="DJ Live Streams" />
         <meta name="keywords" content="techno, house, live streams, dj" />
       </Head>
       <Container>
         <Carousel />
-        <ChangeWeekButtons />
         <EventList dataTuples={data} />
-        <ChangeWeekButtons />
       </Container>
     </>
   );

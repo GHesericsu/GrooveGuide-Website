@@ -66,8 +66,8 @@ const PreviousButton = styled(NextButton)`
 
 export const ChangeWeekButtons = (): JSX.Element => {
   const router = useRouter();
-  const curDate = router.query.date || dayjs().format('YYYY-MM-DD');
-
+  const curDate: string = router.asPath.slice(6, 16) || dayjs().format('YYYY-MM-DD');
+  console.log('ROUTER:', router, 'pathname:', router.asPath.slice(6, 16));
   return (
     <Container>
       <Wrapper>

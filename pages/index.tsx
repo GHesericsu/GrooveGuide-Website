@@ -21,12 +21,10 @@ interface IndexProps {
 
 export const Index = ({ initialData }: IndexProps): JSX.Element => {
   const [data, setData] = useState(initialData);
-  // const [currentDate, setCurrentDate] = useState(dayjs().format('YYYY-MM-DD'));
 
   useEffect(() => {
     console.log('USE EFFECT');
   });
-
 
   if (!data) {
     return (
@@ -45,9 +43,7 @@ export const Index = ({ initialData }: IndexProps): JSX.Element => {
       </Head>
       <Container>
         <Carousel />
-        <ChangeWeekButtons />
         <EventList dataTuples={data} />
-        <ChangeWeekButtons />
       </Container>
     </>
   );

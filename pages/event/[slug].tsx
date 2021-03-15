@@ -120,6 +120,12 @@ const EventDetail = ({ event }: EventDetailProps): JSX.Element => {
     name, startTime, endTime, organization, location, liveStreamUrl, isFeatured, information, imageUrl,
   } = event;
 
+  if (!event) {
+    return (
+      <div>No event detail yet</div>
+    );
+  }
+
   return (
     <>
       <Head>

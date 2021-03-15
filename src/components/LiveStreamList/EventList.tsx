@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 import { EventsOnDate } from './EventsOnDate';
+import { ChangeWeekButtons } from '../ChangeWeekButtons';
 
 const Container = styled.div`
   width: 95%;
   height: auto;
   display: flex;
   justify-content: center;
-  margin: 25px auto;
+  margin: 50px auto;
 `;
 
 const ListContainer = styled.div`
@@ -26,6 +27,7 @@ interface EventProps {
 export const EventList = ({ dataTuples }: EventProps): JSX.Element => (
   <Container>
     <ListContainer>
+      <ChangeWeekButtons />
       {dataTuples && dataTuples.map((el: any) => {
         const date = el[0];
         const events = el[1];
@@ -33,6 +35,7 @@ export const EventList = ({ dataTuples }: EventProps): JSX.Element => (
           <EventsOnDate date={date} events={events} key={date} />
         );
       })}
+      <ChangeWeekButtons />
     </ListContainer>
   </Container>
 );

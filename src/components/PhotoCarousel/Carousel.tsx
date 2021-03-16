@@ -1,58 +1,80 @@
 import styled from 'styled-components';
-import Image from 'next/image';
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
+import CarouselImage from './CarouselImage';
 
+const responsive = {
+  desktop: {
+    breakpoint: { max: 3000, min: 1200 },
+    items: 2,
+    slidesToSlide: 1, // optional, default to 1.
+  },
+  tabletLandscape: {
+    breakpoint: { max: 1200, min: 992 },
+    items: 2,
+    slidesToSlide: 1,
+  },
+  tabletPortrait: {
+    breakpoint: { max: 992, min: 768 },
+    items: 2,
+    slidesToSlide: 1, // optional, default to 1.
+  },
+  mobileLandscape: {
+    breakpoint: { max: 768, min: 480 },
+    items: 1,
+    slidesToSlide: 1,
+    partialVisibilityGutter: 20,
+  },
+  mobilePortrait: {
+    breakpoint: { max: 480, min: 0 },
+    items: 1,
+    slidesToSlide: 1,
+    partialVisibilityGutter: 20,
+  },
+};
 
 const Container = styled.div`
   width: 100%;
-  display: flex;
-  justify-content: center;
+  min-height: 400px;
+  text-align: center;
   margin: 25px auto;
 `;
 
 const Wrapper = styled.div`
   width: 88%;
-  display: flex;
-  justify-content: center;
+  margin: auto;
+  height: auto;
 `;
 
-const ImageWrapper = styled.div`
-  width: auto;
-  display: flex;
-  justify-content: center;
+const ImageDiv = styled.div`
+
 `;
 
-const StyledImage = styled(Image)`
-  &:hover {
-    cursor: pointer;
-  }
-`;
+interface CarouselProps {
+  featuredEvents:
+  {
+    name: string;
+    imageUrl: string;
+    slug: string;
+  }[]
+}
 
-export const Carousel = () => (
+export const ImageCarousel = ({ featuredEvents }: CarouselProps): JSX.Element => (
   <Container>
     <Wrapper>
-      <ImageWrapper>
-        <StyledImage
-          priority
-          src="/flyer1.jpg"
-          alt="flyer1"
-          width={400}
-          height={400}
-        />
-        <StyledImage
-          priority
-          src="/flyer2.jpg"
-          alt="flyer2"
-          width={400}
-          height={400}
-        />
-        <StyledImage
-          priority
-          src="/flyer3.jpg"
-          alt="flyer3"
-          width={400}
-          height={400}
-        />
-      </ImageWrapper>
+      <Carousel
+        responsive={responsive}
+        ssr
+        draggable={false}
+        showDots
+        renderDotsOutside
+        infinite
+        removeArrowOnDeviceType={['mobileLandscape', 'mobilePortrait']}
+      >
+        {featuredEvents && featuredEvents.map((el) => (
+          <CarouselImage event={el} />
+        ))}
+      </Carousel>
     </Wrapper>
   </Container>
 );

@@ -5,9 +5,9 @@ import { useRouter } from 'next/router';
 import { ParsedUrlQuery } from 'querystring';
 import { useState, useEffect } from 'react';
 import { GetStaticProps, GetStaticPaths } from 'next';
-import { fetchEventData } from '../../lib/fetcher';
+import { fetchEventData, fetchFeaturedEvents } from '../../lib/fetcher';
 import { ChangeWeekButtons } from '../../src/components/ChangeWeekButtons';
-import { Carousel } from '../../src/components/PhotoCarousel/Carousel';
+import { ImageCarousel } from '../../src/components/PhotoCarousel/Carousel';
 import { EventList } from '../../src/components/LiveStreamList/EventList';
 import { getDataTuples } from '../../lib/dataHelper';
 
@@ -19,9 +19,10 @@ const Container = styled.div`
 
 interface EventsOnWeekProps {
   data: any;
+  featuredEvents: any;
 }
 
-const EventsOnWeek = ({ data }: EventsOnWeekProps): JSX.Element => {
+const EventsOnWeek = ({ data, featuredEvents }: EventsOnWeekProps): JSX.Element => {
   const router = useRouter();
   const curDate: string = router.asPath.slice(6, 16) || dayjs().format('YYYY-MM-DD');
 
@@ -44,7 +45,7 @@ const EventsOnWeek = ({ data }: EventsOnWeekProps): JSX.Element => {
         <meta name="keywords" content="techno, house, live streams, dj" />
       </Head>
       <Container>
-        <Carousel />
+        <ImageCarousel featuredEvents={featuredEvents} />
         <EventList dataTuples={data} />
       </Container>
     </>
@@ -84,12 +85,14 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (context) => 
   const { date } = context.params as Params;
   console.log('DATE', date);
   const data = await fetchEventData(date);
+  const featuredEvents = await fetchFeaturedEvents(dayjs().format());
   const dataTuples = getDataTuples(data, date);
-  console.log(dataTuples);
+  console.log('featured Events', featuredEvents);
 
   return {
     props: {
       data: dataTuples,
+      featuredEvents,
     },
   };
 };

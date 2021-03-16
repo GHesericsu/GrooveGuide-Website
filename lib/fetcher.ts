@@ -76,8 +76,22 @@ export const fetchEventSlugs = async (): Promise<any> => {
   }
 };
 
-export const fetchFeaturedEvents = async (): Promise<any> => {
-  const queryString = `*[_type == "event"] {
+export const fetchFeaturedEvents = async (date: string): Promise<any> => {
+  const formattedDate = dayjs(date).format('YYYY-MM-DD');
+  const queryString = `*[_type == "event" && startTime >= "${formattedDate}" && isFeatured == true] | order(startTime asc) {
+    name,
+    "imageUrl": flyerImage.asset->url,
     "slug": slug.current
-  }`
-}
+
+  }`;
+
+  const encodedString = encodeURIComponent(queryString);
+
+  try {
+    const response = await axios.get(baseUrl + encodedString);
+    return response.data.result;
+  } catch (error) {
+    console.log(error);
+    return false;
+  }
+};

@@ -8,42 +8,74 @@ import { LinkText } from '../../utils/styles';
 
 const Container = styled.div`
   width: 100%;
-  height: 160px;
+  height: auto;
   background: #282828;
   border-radius: 15px;
   padding: 8px 20px;
   margin: 12px 0px;
   box-shadow: 3px 3px 3px #070606;
+  @media only screen and (max-width: 480px) {
+    
+  }
+
+  @media only screen and (min-width: 480px) and (max-width: 768px) {
+    
+  }
+  @media only screen and (min-width: 768px) and (max-width: 992px) {
+    
+  }
+  @media only screen and (min-width: 992px) and (max-width: 1200px) {
+  
+  }
+  @media only screen and (min-width: 1200px) {
+    
+  }
 `;
 
 const ContentContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
+
+  @media only screen and (max-width: 480px)  {
+    flex-direction: column;
+  }
+
+  @media only screen and (min-width: 480px) and (max-width: 768px) {
+    flex-direction: column;
+  }
+  @media only screen and (min-width: 768px) and (max-width: 992px) {
+    
+  }
+  @media only screen and (min-width: 992px) and (max-width: 1200px) {
+    
+  }
+  @media only screen and (min-width: 1200px) {
+    
+  }
 `;
 
 const EventInfoContainer = styled.div`
-  width: 55%;
+  flex: 0 0 55%;
   display: flex;
   flex-direction: column;
 `;
 
 const DateTimeContainer = styled.div`
-  width: 15%;
+  flex: 0 0 15%;
   display: flex;
   flex-direction: column;
-  font-size: 16px;
   padding-left: 10px;
 `;
 
 const FlyerContainer = styled.div`
-  width: 20%;
+  flex: 0 0 20%;
   display: flex;
   justify-content: center;
 `;
 
 const IconsContainer = styled.div`
-  width: 10%;
+  flex: 0 0 10%;
   display: flex;
   flex-direction: column;
 `;

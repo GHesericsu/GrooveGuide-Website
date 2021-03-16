@@ -95,7 +95,6 @@ const GlobalStyle = createGlobalStyle`
     margin-right: auto;
     font-size: 18px;
     color: #C0C0C0;
-    padding: 5px;
   }
 `;
 

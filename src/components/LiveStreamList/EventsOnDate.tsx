@@ -28,7 +28,6 @@ interface EventsOnDateProps {
 }
 
 export const EventsOnDate = ({ date, events } : EventsOnDateProps): JSX.Element => {
-  console.log(events)
   return (
     <Container>
       <DateWrapper>

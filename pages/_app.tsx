@@ -75,8 +75,7 @@ const GlobalStyle = createGlobalStyle`
       font-family: 'Nunito', arial;
       font-display: fallback;
   }
-  html {
-    background: #070606;
+  html { 
     height: auto;
     width: 100%;
     display: block;
@@ -87,13 +86,14 @@ const GlobalStyle = createGlobalStyle`
     --gray: #282828
   }
   body {
+    background: #070606;
     width: 100%;
     height: auto;
     display: flex;
     justify-content: center;
     margin-left: auto;
     margin-right: auto;
-    font-size: 18px;
+    font-size: 16px;
     color: #C0C0C0;
   }
 `;

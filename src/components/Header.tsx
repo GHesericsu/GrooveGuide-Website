@@ -16,25 +16,34 @@ const HeaderContainer = styled.div`
   width: 100%;
   margin: auto;
   display: flex;
-  flex-wrap: nowrap;
+  @media only screen and (max-width: 480px) {
+    flex-direction: column;
+  }
+
+  @media only screen and (min-width: 480px) and (max-width: 768px) {
+    flex-direction: column;
+  }
+  @media only screen and (min-width: 768px) and (max-width: 992px) {
+    
+  }
+  @media only screen and (min-width: 992px) and (max-width: 1200px) {
+  
+  }
+  @media only screen and (min-width: 1200px) {
+    
+  }
 `;
 
 const SiteLogoWrapper = styled.div`
-  width: 40%;
+  flex: 0 0 40%;
   height: 100%;
   margin: auto;
+  text-align: center;
   min-width: 325
 `;
 
 const SiteLogo = styled.h1`
-  margin: auto;
-  ::before {
-    content: '💃';
-  }
-
-  ::after {
-    content: '🕺';
-  }
+  /* margin: auto; */
 `;
 
 const SiteLogoLink = styled.a`
@@ -53,38 +62,18 @@ const SiteLogoLink = styled.a`
     text-decoration: none;
   }
 
-  @media only screen and (max-width: 480px) {
-    font-size: 40px;
-  }
-  @media only screen and (min-width: 480px) and (max-width: 768px) {
-    font-size: 50px;
-  }
 `;
 
 const SiteTitleWrapper = styled.div`
-  width: 100%;
+  flex: 0 0 60%;
   height: 100%;
   margin: auto;
-  @media only screen and (max-width: 480px) {
-    display: none;
-  }
+  padding: 0px 30px;
+  text-align: center;
 `;
 
-const SiteTitle = styled.h1`
-  font-size: 25px;
-
-  @media only screen and (max-width: 480px) {
-    display: none;
-  }
-  @media only screen and (min-width: 480px) and (max-width: 768px) {
-    font-size: 18px;
-  }
-`;
-
-const Emojis = styled.p`
-  margin: 10px;
-  word-spacing: 30px;
-  padding-left: 30px;
+const SiteTitle = styled.h2`
+  font-size: 1.2em;
 `;
 
 export const Header = (): JSX.Element => (
@@ -101,7 +90,6 @@ export const Header = (): JSX.Element => (
         <SiteTitle>
           We Curate All The 🔥 Techno & House Live Streams
         </SiteTitle>
-        <Emojis>❤️   🙌   🎉   🎊   🥳   👯‍♂️   👯‍♀️   🙌   ❤️</Emojis>
       </SiteTitleWrapper>
     </HeaderContainer>
   </Container>

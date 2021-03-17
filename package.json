@@ -7,8 +7,9 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "nodemon server.js",
-    "test": "jest --watchAll"
+    "start server": "nodemon server.js",
+    "test": "jest --watchAll",
+    "start": "next start"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.26",

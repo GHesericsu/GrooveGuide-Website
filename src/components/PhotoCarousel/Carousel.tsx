@@ -5,9 +5,9 @@ import CarouselImage from './CarouselImage';
 
 const responsive = {
   desktop: {
-    breakpoint: { max: 3000, min: 1200 },
-    items: 2,
-    slidesToSlide: 1, // optional, default to 1.
+    breakpoint: { max: 4000, min: 1200 },
+    items: 3,
+    slidesToSlide: 2, // optional, default to 1.
   },
   tabletLandscape: {
     breakpoint: { max: 1200, min: 992 },
@@ -23,13 +23,13 @@ const responsive = {
     breakpoint: { max: 768, min: 480 },
     items: 1,
     slidesToSlide: 1,
-    partialVisibilityGutter: 20,
+    // partialVisibilityGutter: 30,
   },
   mobilePortrait: {
     breakpoint: { max: 480, min: 0 },
     items: 1,
     slidesToSlide: 1,
-    partialVisibilityGutter: 20,
+    // partialVisibilityGutter: 30,
   },
 };
 
@@ -38,6 +38,8 @@ const Container = styled.div`
   min-height: 400px;
   text-align: center;
   margin: 25px auto;
+  padding-bottom: 30px;
+  position: relative;
 `;
 
 const Wrapper = styled.div`
@@ -50,6 +52,11 @@ const ImageDiv = styled.div`
 
 `;
 
+const ButtonOne = styled.button`
+`
+const ButtonTwo = styled.button`
+`
+
 interface CarouselProps {
   featuredEvents:
   {
@@ -59,16 +66,27 @@ interface CarouselProps {
   }[]
 }
 
+const ButtonGroup = ({ next, previous, ...rest }) => {
+  const { carouselState: { currentSlide } } = rest;
+  return (
+    <div className="carousel-button-group"> 
+      <ButtonOne onClick={() => previous()} />
+      <ButtonTwo onClick={() => next()} />
+    </div>
+  );
+};
+
 export const ImageCarousel = ({ featuredEvents }: CarouselProps): JSX.Element => (
   <Container>
     <Wrapper>
       <Carousel
         responsive={responsive}
+        infinite
         ssr
         draggable={false}
         showDots
+        renderButtonGroupOutside
         renderDotsOutside
-        infinite
         removeArrowOnDeviceType={['mobileLandscape', 'mobilePortrait']}
       >
         {featuredEvents && featuredEvents.map((el) => (

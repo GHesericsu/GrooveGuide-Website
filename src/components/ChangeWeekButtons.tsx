@@ -20,8 +20,8 @@ const NextButton = styled.button`
   border-radius: 0px 15px 15px 0px;
   margin-left: 10px;
   display: block;
-  height: 45px;
-  width: 170px;
+  min-height: 45px;
+  flex: 0 0 40%;
   cursor: pointer;
   background-color: var(--dark-gray);
   color: inherit;

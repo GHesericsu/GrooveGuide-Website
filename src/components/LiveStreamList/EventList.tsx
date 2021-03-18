@@ -3,11 +3,12 @@ import { EventsOnDate } from './EventsOnDate';
 import { ChangeWeekButtons } from '../ChangeWeekButtons';
 
 const Container = styled.div`
-  width: 95%;
+  width: 100%;
   height: auto;
   display: flex;
   justify-content: center;
   margin: 50px auto;
+
 `;
 
 const ListContainer = styled.div`
@@ -18,6 +19,13 @@ const ListContainer = styled.div`
   padding: 20px;
   display: flex;
   flex-direction: column;
+  @media only screen and (max-width: 480px) {
+    padding: 10px;
+  }
+
+  @media only screen and (min-width: 480px) and (max-width: 768px) {
+    padding: 10px;
+  }
 `;
 
 interface EventProps {

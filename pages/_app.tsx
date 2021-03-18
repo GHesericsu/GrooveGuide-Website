@@ -1,13 +1,8 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { config } from '@fortawesome/fontawesome-svg-core';
-import '@fortawesome/fontawesome-svg-core/styles.css';
 import { AppProps } from 'next/app';
 import { createGlobalStyle } from 'styled-components';
 import Head from 'next/head';
 import { Layout } from '../src/components/Layout';
-
-// Tell Font Awesome to skip adding the CSS automatically since it's being imported above
-config.autoAddCss = false;
 
 const GlobalStyle = createGlobalStyle`
 
@@ -75,8 +70,7 @@ const GlobalStyle = createGlobalStyle`
       font-family: 'Nunito', arial;
       font-display: fallback;
   }
-  html {
-    background: #070606;
+  html { 
     height: auto;
     width: 100%;
     display: block;
@@ -87,15 +81,15 @@ const GlobalStyle = createGlobalStyle`
     --gray: #282828
   }
   body {
+    background: #070606;
     width: 100%;
     height: auto;
     display: flex;
     justify-content: center;
     margin-left: auto;
     margin-right: auto;
-    font-size: 18px;
+    font-size: 16px;
     color: #C0C0C0;
-    padding: 5px;
   }
 `;
 

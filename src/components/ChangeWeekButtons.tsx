@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 
 const Container = styled.div`
   width: 100%;
+  margin-bottom: 20px;
 `;
 
 const Wrapper = styled.div`
@@ -19,8 +20,8 @@ const NextButton = styled.button`
   border-radius: 0px 15px 15px 0px;
   margin-left: 10px;
   display: block;
-  height: 45px;
-  width: 170px;
+  min-height: 45px;
+  flex: 0 0 40%;
   cursor: pointer;
   background-color: var(--dark-gray);
   color: inherit;
@@ -67,16 +68,15 @@ const PreviousButton = styled(NextButton)`
 export const ChangeWeekButtons = (): JSX.Element => {
   const router = useRouter();
   const curDate: string = router.asPath.slice(6, 16) || dayjs().format('YYYY-MM-DD');
-  console.log('ROUTER:', router, 'pathname:', router.asPath.slice(6, 16));
   return (
     <Container>
       <Wrapper>
-        <NextLink href={`/week/${dayjs(curDate).subtract(7, 'day').format('YYYY-MM-DD')}`} as={`/week/${dayjs(curDate).subtract(7, 'day').format('YYYY-MM-DD')}`} passHref>
+        <NextLink href={`/week/${dayjs(curDate).subtract(7, 'day').format('YYYY-MM-DD')}`} as={`/week/${dayjs(curDate).subtract(7, 'day').format('YYYY-MM-DD')}`} passHref scroll={false}>
           <PreviousButton title="Previous Week">
             Previous Week
           </PreviousButton>
         </NextLink>
-        <NextLink href={`/week/${dayjs(curDate).add(7, 'day').format('YYYY-MM-DD')}`} as={`/week/${dayjs(curDate).add(7, 'day').format('YYYY-MM-DD')}`} passHref>
+        <NextLink href={`/week/${dayjs(curDate).add(7, 'day').format('YYYY-MM-DD')}`} as={`/week/${dayjs(curDate).add(7, 'day').format('YYYY-MM-DD')}`} passHref scroll={false}>
           <NextButton title="Next Week">
             Next Week
           </NextButton>

@@ -1,49 +1,93 @@
 import styled from 'styled-components';
 import Image from 'next/image';
 import NextLink from 'next/link';
-import { Link, CalendarPlus } from '@styled-icons/boxicons-regular';
+import { Link, CalendarPlus, LinkExternal } from '@styled-icons/boxicons-regular';
 import { ShareBoxed } from '@styled-icons/open-iconic';
 import dayjs from 'dayjs';
 import { LinkText } from '../../utils/styles';
 
 const Container = styled.div`
   width: 100%;
-  height: 160px;
+  height: auto;
   background: #282828;
   border-radius: 15px;
   padding: 8px 20px;
   margin: 12px 0px;
   box-shadow: 3px 3px 3px #070606;
+  @media only screen and (max-width: 480px) {
+    padding: 8px 10px;
+  }
+
+  @media only screen and (min-width: 480px) and (max-width: 768px) {
+    padding: 8px 8px;
+  }
+  @media only screen and (min-width: 768px) and (max-width: 992px) {
+    
+  }
+  @media only screen and (min-width: 992px) and (max-width: 1200px) {
+  
+  }
+  @media only screen and (min-width: 1200px) {
+    
+  }
 `;
 
 const ContentContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
+
+  @media only screen and (max-width: 480px)  {
+    flex-direction: column;
+  }
+
+  @media only screen and (min-width: 480px) and (max-width: 768px) {
+    flex-direction: column;
+  }
+  @media only screen and (min-width: 768px) and (max-width: 992px) {
+    
+  }
+  @media only screen and (min-width: 992px) and (max-width: 1200px) {
+    
+  }
+  @media only screen and (min-width: 1200px) {
+    
+  }
 `;
 
 const EventInfoContainer = styled.div`
-  width: 55%;
+  flex: 0 0 55%;
   display: flex;
   flex-direction: column;
 `;
 
 const DateTimeContainer = styled.div`
-  width: 15%;
+  flex: 0 0 35%;
   display: flex;
+  padding-bottom: 20px;
+  text-align: center;
   flex-direction: column;
-  font-size: 16px;
+  align-content: center;
+  justify-content: space-around;
   padding-left: 10px;
+  white-space: pre-wrap;
+  @media only screen and (max-width: 480px) {
+    padding-left: 0px;
+  }
+
+  @media only screen and (min-width: 480px) and (max-width: 768px) {
+    padding-left: 0px;
+  }
 `;
 
 const FlyerContainer = styled.div`
-  width: 20%;
+  flex: 0 0 45%;
   display: flex;
   justify-content: center;
 `;
 
 const IconsContainer = styled.div`
-  width: 10%;
+  flex: 0 0 20%;
   display: flex;
   flex-direction: column;
 `;
@@ -86,7 +130,6 @@ const ArtistNameWrapper = styled.p`
 `;
 
 const ArtistName = styled.span`
-
   + span::before {
     white-space: pre;
     content: ",  ";
@@ -94,9 +137,42 @@ const ArtistName = styled.span`
   
 `;
 
+const TimeFlyerIconContainer = styled.div`
+  display: flex;
+  flex: 0 0 45%;
+  justify-content: space-around;
+  @media only screen and (max-width: 480px) {
+    margin-top: 20px;
+  }
+
+  @media only screen and (min-width: 480px) and (max-width: 768px) {
+    margin-top: 20px;
+  }
+`;
+
 export const LinkIcon = styled(Link)`
   color: #C71E1E;
-  margin: 7px;
+  margin-right: 4px;
+  padding-top: 2px;
+`;
+
+const LinkWrapper = styled.div`
+  text-align: left;
+  word-wrap: break-word;
+`;
+
+const LinkLine = styled.p`
+  display: flex;
+`;
+
+// const ExternalLinkText = styled(LinkText)`
+//   &:after {
+//     content:
+//   }
+// `;
+
+const ExternalLink = styled.a`
+
 `;
 
 interface EventProps {
@@ -122,25 +198,31 @@ export const Event = ({ event }: EventProps): JSX.Element => {
               </ArtistName>
             ))}
           </ArtistNameWrapper>
-          <p>
-            <LinkIcon size="20" />
-            <LinkText href={liveStreamUrl} target="_blank">{liveStreamUrl}</LinkText>
-          </p>
+          <LinkWrapper>
+            <LinkLine>
+              <LinkIcon size="20" />
+              <LinkText href={liveStreamUrl} target="_blank">
+                {liveStreamUrl}
+                <LinkExternal size={20} />
+              </LinkText>
+            </LinkLine>
+          </LinkWrapper>
         </EventInfoContainer>
-        <DateTimeContainer>
-          <p>Start</p>
-          <p><time dateTime={startTime}>{dayjs(startTime).format('MMM DD - HH:mm')}</time></p>
-          <br />
-          <p>End</p>
-          <p><time dateTime={endTime}>{endTime && dayjs(endTime).format('MMM DD - HH:mm')}</time></p>
-        </DateTimeContainer>
-        <FlyerContainer>
-          {imageUrl && <Image src={imageUrl} alt={name} width={140} height={140} />}
-        </FlyerContainer>
-        <IconsContainer>
-          <CalendarIcon title="Add to your calendar" size="45px" />
-          <ShareIcon title="Share this page" size="43px" />
-        </IconsContainer>
+        <TimeFlyerIconContainer>
+          <FlyerContainer>
+            {imageUrl && <Image src={imageUrl} alt={name} width={140} height={140} />}
+          </FlyerContainer>
+          <DateTimeContainer>
+            <p>From</p>
+            <p><time dateTime={startTime}>{dayjs(startTime).format('MMM DD - HH:mm')}</time></p>
+            <p>Until</p>
+            <p><time dateTime={endTime}>{endTime && dayjs(endTime).format('MMM DD - HH:mm')}</time></p>
+          </DateTimeContainer>
+          <IconsContainer>
+            <CalendarIcon title="Add to your calendar" size="40px" />
+            <ShareIcon title="Share this page" size="38px" />
+          </IconsContainer>
+        </TimeFlyerIconContainer>
       </ContentContainer>
     </Container>
   );

@@ -3,9 +3,8 @@ import styled from 'styled-components';
 import dayjs from 'dayjs';
 import { useState, useEffect } from 'react';
 import { GetStaticProps } from 'next';
-import { fetchEventData } from '../lib/fetcher';
-import { ChangeWeekButtons } from '../src/components/ChangeWeekButtons';
-import { Carousel } from '../src/components/PhotoCarousel/Carousel';
+import { fetchEventData, fetchFeaturedEvents } from '../lib/fetcher';
+import { ImageCarousel } from '../src/components/PhotoCarousel/Carousel';
 import { EventList } from '../src/components/LiveStreamList/EventList';
 import { getDataTuples } from '../lib/dataHelper';
 
@@ -17,26 +16,17 @@ const Container = styled.div`
 
 interface IndexProps {
   initialData: any;
+  featuredEvents: any[];
 }
 
-export const Index = ({ initialData }: IndexProps): JSX.Element => {
+export const Index = ({ initialData, featuredEvents }: IndexProps): JSX.Element => {
   const [data, setData] = useState(initialData);
-
-  useEffect(() => {
-    console.log('USE EFFECT');
-  });
 
   if (!data) {
     return (
       <div>No Events Yet</div>
     );
   }
-
-  const getFeaturedImages = (data) => {
-    const images = data.map(() => {
-      
-    });
-  };
 
   console.log('RENDER');
 
@@ -48,7 +38,7 @@ export const Index = ({ initialData }: IndexProps): JSX.Element => {
         <meta name="keywords" content="techno, house, live streams, dj" />
       </Head>
       <Container>
-        <Carousel />
+        <ImageCarousel featuredEvents={featuredEvents} />
         <EventList dataTuples={data} />
       </Container>
     </>
@@ -58,10 +48,13 @@ export const Index = ({ initialData }: IndexProps): JSX.Element => {
 export const getStaticProps: GetStaticProps = async () => {
   const todayDate = dayjs().format();
   const data = await fetchEventData(todayDate);
+  const featuredEvents = await fetchFeaturedEvents(todayDate);
   const dataTuples = getDataTuples(data, todayDate);
+  console.log('feature events:', featuredEvents);
   return {
     props: {
       initialData: dataTuples,
+      featuredEvents,
     },
   };
 };

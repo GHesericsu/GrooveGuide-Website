@@ -15,11 +15,8 @@ const DateWrapper = styled.div`
   margin: 0px 5px;
 `;
 
-const DateHeading = styled.h2`
+const DateHeading = styled.h3`
   color: #C71E1E;
-  /* border-bottom: 1px solid #C71E1E; */
-  /* text-decoration: underline; */
-  /* text-underline-position: under; */
 `;
 
 interface EventsOnDateProps {
@@ -28,7 +25,6 @@ interface EventsOnDateProps {
 }
 
 export const EventsOnDate = ({ date, events } : EventsOnDateProps): JSX.Element => {
-  console.log(events)
   return (
     <Container>
       <DateWrapper>

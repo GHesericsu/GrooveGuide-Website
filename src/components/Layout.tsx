@@ -8,9 +8,16 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding: 4px, 4px;
+  box-sizing: border-box;
 
-  @media only screen and (min-width: 544px) {
-    max-width: 576px;
+  @media only screen and (max-width: 480px) {
+    max-width: 400px;
+    font-size: 16px;
+  }
+
+  @media only screen and (min-width: 480px) {
+    max-width: 470px;
+
   }
   @media only screen and (min-width: 768px) {
     max-width: 720px;
@@ -26,6 +33,8 @@ const Wrapper = styled.div`
 const Main = styled.main`
   width: 100%;
   height: auto;
+  display: flex;
+  justify-content: center;
 `;
 
 interface LayoutProps {

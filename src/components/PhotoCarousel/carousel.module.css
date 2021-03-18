@@ -1,3 +1,8 @@
 .customCarouselContainer {
   padding-bottom: 10px;
+  
+}
+
+.customCarouselContainer:focus {
+  outline: 10px solid var(--red);
 }

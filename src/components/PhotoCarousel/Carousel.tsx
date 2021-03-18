@@ -62,56 +62,69 @@ const NextButton = styled.button`
   margin-left: 10px;
 `;
 
-const RightArrowButton = styled.button`
-  position: absolute !important;
-  right: 0px;
-  z-index: 100;
-  border: 1px solid grey;
-  border-width: 0 3px 3px 0;
-  display: inline-block;
-  padding: 6px;
-  opacity: 0.8;
-  cursor: pointer;
-  /* transform: rotate(-45deg); */
-`;
+// const RightArrowButton = styled.button`
+//   position: absolute !important;
+//   right: 0px;
+//   z-index: 100;
+//   border: 1px solid grey;
+//   border-width: 0 3px 3px 0;
+//   display: inline-block;
+//   padding: 6px;
+//   opacity: 0.8;
+//   cursor: pointer;
 
-const LeftArrowButton = styled(RightArrowButton)`
-  position: absolute !important;
-  left: 0px;
-  z-index: 5;
-  border: 1px solid grey;
-  border-width: 0 3px 3px 0;
-  display: inline-block;
-  padding: 6px;
-  opacity: 0.8;
-  cursor: pointer;
-  /* transform: rotate(135deg); */
-`;
+//   /* transform: rotate(-45deg); */
+// `;
+
+// const LeftArrowButton = styled(RightArrowButton)`
+//   position: absolute !important;
+//   left: 0px;
+//   z-index: 5;
+//   border: 1px solid grey;
+//   border-width: 0 3px 3px 0;
+//   display: inline-block;
+//   padding: 6px;
+//   opacity: 0.8;
+//   cursor: pointer;
+//   /* transform: rotate(135deg); */
+// `;
 
 const arrowHover = `&:hover {
   color: var(--red);
   transition: 0.2s;
+
+  
+}`;
+
+const ArrowButton = styled.button`
+  
+  &:focus {
+    outline: none;
+  }
   &:active {
     outline: none;
-    color: var(--red);
     transform: scale(1.2);
     transition: all 0.2s;
   }
-}`;
+  background-color: var(--black);
+  color: var(--white);
+  border: none;
+  margin: 3px 6px;
+`;
 
 const PreviousArrow = styled(LeftArrowCircle)`
   cursor: pointer;
-  margin-right: 10px;
-  outline: none;
+ 
   ${arrowHover}
 `;
 
 const NextArrow = styled(RightArrowCircle)`
   cursor: pointer;
-  margin-left: 10px;
-  outline: none;
+  
   ${arrowHover}
 `;
+
+
 
 interface CarouselProps {
   featuredEvents:
@@ -126,8 +139,12 @@ const ButtonGroup = ({ next, previous, ...rest }) => {
   const { carouselState: { currentSlide } } = rest;
   return (
     <div className="carousel-button-group">
-      <PreviousArrow title="previous image" aria-label="previous image" size={40} onClick={() => previous()} />
-      <NextArrow title="next image" aria-label="next image" size={40} onClick={() => next()} />
+      <ArrowButton>
+        <PreviousArrow title="previous image" aria-label="previous image" size={40} onClick={() => previous()} />
+      </ArrowButton>
+      <ArrowButton>
+        <NextArrow title="next image" aria-label="next image" size={40} onClick={() => next()} />
+      </ArrowButton>
     </div>
   );
 };

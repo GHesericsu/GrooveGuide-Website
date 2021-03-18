@@ -37,6 +37,16 @@ const NextButton = styled.button`
     border: 3px solid var(--red);
     transition: all 0.2s;
     background-color: var(--black);
+
+
+    &:active {
+      outline: none;
+      box-shadow: 0 0 0 5px var(--red);
+      color: var(--red);
+      border: 3px solid var(--red);
+      transition: all 0.2s;
+      background-color: var(--black);
+    }
   }
 
   &:focus {
@@ -45,17 +55,8 @@ const NextButton = styled.button`
     box-shadow: 0 0 0 1px var(--red);
     transition: all 0.2s;
     background-color: var(--black);
-  }
-
-
-  &:active {
-    outline: none;
-    box-shadow: 0 0 0 5px var(--red);
-    color: var(--red);
-    border: 3px solid var(--red);
-    transition: all 0.2s;
-    background-color: var(--black);
-  }
+    }
+  
  
 
 `;

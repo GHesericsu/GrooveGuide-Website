@@ -1,13 +1,8 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { config } from '@fortawesome/fontawesome-svg-core';
-import '@fortawesome/fontawesome-svg-core/styles.css';
 import { AppProps } from 'next/app';
 import { createGlobalStyle } from 'styled-components';
 import Head from 'next/head';
 import { Layout } from '../src/components/Layout';
-
-// Tell Font Awesome to skip adding the CSS automatically since it's being imported above
-config.autoAddCss = false;
 
 const GlobalStyle = createGlobalStyle`
 

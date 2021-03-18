@@ -54,12 +54,19 @@ const SiteLogoLink = styled.a`
   display:inline-block;
   position: relative;
   top: 7px;
+  
   &:hover {
     transition: 0.2s;
-    transform: scale(1.05);
+    transform: scale(1.05);     
     cursor: pointer;
     color: #C71E1E;
     text-decoration: none;
+  }
+
+  &:focus {
+    outline: 1px solid var(--red);
+    box-shadow: 0 0 0 1px var(--red);
+    color: #C71E1E;
   }
 
 `;

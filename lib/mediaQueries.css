@@ -1,17 +1,20 @@
 
 @media only screen and (max-width: 480px) {
-  
+  /* smartphones */
 }
 
 @media only screen and (min-width: 480px) and (max-width: 768px) {
-  
+  /* smartphone landscape */
 }
+
 @media only screen and (min-width: 768px) and (max-width: 992px) {
-  
+  /* tablet */
 }
+
 @media only screen and (min-width: 992px) and (max-width: 1200px) {
- 
+  /* tablet landscape */
 }
+
 @media only screen and (min-width: 1200px) {
-  
+  /* desktop, laptop */
 }

@@ -58,9 +58,9 @@ const ImageLink = styled.a`
 export const Footer = (): JSX.Element => (
   <Wrapper>
     <IconsWrapper>
-      <ImageLink href="https://www.facebook.com/grooveguidelive" target="_blank"><FacebookIcon size="32" /></ImageLink>
-      <ImageLink href="https://www.instagram.com/grooveguide.live" target="_blank"><InstagramIcon size="34" /></ImageLink>
-      <ImageLink href="https://twitter.com/grooveguidelive" target="_blank"><TwitterIcon size="32" /></ImageLink>
+      <ImageLink href="https://www.facebook.com/grooveguidelive" target="_blank" rel="noopener noreferrer"><FacebookIcon size="32" /></ImageLink>
+      <ImageLink href="https://www.instagram.com/grooveguide.live" target="_blank" rel="noopener noreferrer"><InstagramIcon size="34" /></ImageLink>
+      <ImageLink href="https://twitter.com/grooveguidelive" target="_blank" rel="noopener noreferrer"><TwitterIcon size="32" /></ImageLink>
     </IconsWrapper>
     <FooterTextWrapper>
       <Link href="/about-us" as="/about-us" passHref><LinkText title="about us">About Us</LinkText></Link>

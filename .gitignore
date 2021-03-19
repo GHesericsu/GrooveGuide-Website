@@ -16,3 +16,5 @@ mimi.ts
 
 .env
 .env*
+
+/lib/credentials.json

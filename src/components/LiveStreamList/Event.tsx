@@ -5,6 +5,7 @@ import { Link, CalendarPlus, LinkExternal } from '@styled-icons/boxicons-regular
 import { ShareBoxed } from '@styled-icons/open-iconic';
 import dayjs from 'dayjs';
 import { LinkText } from '../../utils/styles';
+import { getGoogleCalLink } from '../../../lib/generateCalLink';
 
 const Container = styled.div`
   width: 100%;
@@ -175,14 +176,24 @@ const ExternalLink = styled.a`
 
 `;
 
+const AddCalLink = styled.a`
+  color: inherit;
+  margin: auto;
+`;
+
 interface EventProps {
   event: any;
 }
 
 export const Event = ({ event }: EventProps): JSX.Element => {
+  
   const {
     name, artists, liveStreamUrl, startTime, endTime, imageUrl, slug,
   } = event;
+
+  if (artists) {
+    console.log('url', getGoogleCalLink(event))
+  }
 
   return (
     <Container>
@@ -201,7 +212,7 @@ export const Event = ({ event }: EventProps): JSX.Element => {
           <LinkWrapper>
             <LinkLine>
               <LinkIcon size="20" />
-              <LinkText href={liveStreamUrl} target="_blank">
+              <LinkText href={liveStreamUrl} target="_blank" rel="noopener noreferrer">
                 {liveStreamUrl}
                 <LinkExternal size={20} />
               </LinkText>
@@ -219,7 +230,15 @@ export const Event = ({ event }: EventProps): JSX.Element => {
             <p><time dateTime={endTime}>{endTime && dayjs(endTime).format('MMM DD - HH:mm')}</time></p>
           </DateTimeContainer>
           <IconsContainer>
-            <CalendarIcon title="Add to your calendar" size="40px" />
+            <AddCalLink href={event && getGoogleCalLink(event)} target="_blank" rel="noopener noreferrer">
+              <CalendarIcon
+                title="Add to your calendar"
+                size="40px"
+                onClick={() => {
+                  getGoogleCalLink(event);
+                }}
+              />
+            </AddCalLink>
             <ShareIcon title="Share this page" size="38px" />
           </IconsContainer>
         </TimeFlyerIconContainer>

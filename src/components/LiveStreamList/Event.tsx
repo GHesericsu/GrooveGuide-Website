@@ -1,18 +1,13 @@
 import styled from 'styled-components';
-import { useState, useEffect } from 'react';
-import {
-  isIOS, isMobile, isMacOs, getUA, osName,
-} from 'react-device-detect';
 import Image from 'next/image';
 import NextLink from 'next/link';
-import dynamic from 'next/dynamic';
 import { Link, CalendarPlus, LinkExternal } from '@styled-icons/boxicons-regular';
 import { ShareBoxed } from '@styled-icons/open-iconic';
 import dayjs from 'dayjs';
 import { LinkText } from '../../utils/styles';
-import { getGoogleCalLink, downloadIcs } from '../../../lib/generateCalLink';
+import { AddEventToCal } from './AddEventToCal';
+import { EventDataTypes } from '../../../lib/types/eventTypes';
 
-// const IcsComponent = dynamic(() => import('../ICalDownload'));
 
 const Container = styled.div`
   width: 100%;
@@ -180,43 +175,14 @@ const AddCalLink = styled.a`
 `;
 
 interface EventProps {
-  event: any;
+  event: EventDataTypes;
+  isIos: boolean;
 }
 
-export const Event = ({ event }: EventProps): JSX.Element => {
-  const [ios, setIos] = useState<boolean>(false);
-
-  useEffect(() => {
-    setIos(isIOS);
-    console.log('Is it iOS:', ios);
-  }, [ios]);
-
+export const Event = ({ event, isIos }: EventProps): JSX.Element => {
   const {
     name, artists, liveStreamUrl, startTime, endTime, imageUrl, slug,
   } = event;
-
-  const addEventIcon = (isIos: boolean | undefined) => {
-    if (isIos) {
-      return (
-
-        <CalendarIcon
-          title="Add to your apple calendar"
-          size="40px"
-          onClick={() => {
-            downloadIcs(event);
-          }}
-        />
-      );
-    }
-    return (
-      <AddCalLink ios={false} href={event && getGoogleCalLink(event)} target="_blank" rel="noopener noreferrer">
-        <CalendarIcon
-          title="Add to your calendar"
-          size="40px"
-        />
-      </AddCalLink>
-    );
-  };
 
   console.log('render event');
   return (
@@ -253,7 +219,7 @@ export const Event = ({ event }: EventProps): JSX.Element => {
             <p><time dateTime={endTime}>{endTime && dayjs(endTime).format('MMM DD - HH:mm')}</time></p>
           </DateTimeContainer>
           <IconsContainer>
-            {event && addEventIcon(ios)}
+            {event && <AddEventToCal event={event} isIos={isIos} />}
           </IconsContainer>
         </TimeFlyerIconContainer>
       </ContentContainer>

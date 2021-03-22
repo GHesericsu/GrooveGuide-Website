@@ -3,6 +3,7 @@
 import dayjs from 'dayjs';
 import styled from 'styled-components';
 import { Event } from './Event';
+import { EventDataTypes } from '../../../lib/types/eventTypes';
 
 const Container = styled.div`
   width: 100%;
@@ -21,10 +22,11 @@ const DateHeading = styled.h3`
 
 interface EventsOnDateProps {
   date: string;
-  events: any[];
+  events: EventDataTypes[];
+  isIos: boolean;
 }
 
-export const EventsOnDate = ({ date, events } : EventsOnDateProps): JSX.Element => {
+export const EventsOnDate = ({ date, events, isIos } : EventsOnDateProps): JSX.Element => {
   return (
     <Container>
       <DateWrapper>
@@ -34,8 +36,8 @@ export const EventsOnDate = ({ date, events } : EventsOnDateProps): JSX.Element 
         </DateHeading>
       </DateWrapper>
       {events[0] && events.map((el: any) => (
-        <Event event={el} key={el._id} />
+        <Event event={el} key={el._id} isIos={isIos} />
       ))}
     </Container>
-  )
+  );
 };

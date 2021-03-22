@@ -62,33 +62,6 @@ const NextButton = styled.button`
   margin-left: 10px;
 `;
 
-// const RightArrowButton = styled.button`
-//   position: absolute !important;
-//   right: 0px;
-//   z-index: 100;
-//   border: 1px solid grey;
-//   border-width: 0 3px 3px 0;
-//   display: inline-block;
-//   padding: 6px;
-//   opacity: 0.8;
-//   cursor: pointer;
-
-//   /* transform: rotate(-45deg); */
-// `;
-
-// const LeftArrowButton = styled(RightArrowButton)`
-//   position: absolute !important;
-//   left: 0px;
-//   z-index: 5;
-//   border: 1px solid grey;
-//   border-width: 0 3px 3px 0;
-//   display: inline-block;
-//   padding: 6px;
-//   opacity: 0.8;
-//   cursor: pointer;
-//   /* transform: rotate(135deg); */
-// `;
-
 const arrowHover = `&:hover {
   color: var(--red);
   transition: 0.2s;
@@ -149,23 +122,6 @@ const ButtonGroup = ({ next, previous, ...rest }) => {
   );
 };
 
-const CustomRightArrow = ({ onClick, ...rest }) => {
-  const {
-    onMove,
-    carouselState: { currentSlide, deviceType },
-  } = rest;
-  // onMove means if dragging or swiping in progress.
-  return <RightArrowButton onClick={() => onClick()}>{'>>>'}</RightArrowButton>;
-};
-
-const CustomLeftArrow = ({ onClick, ...rest }) => {
-  const {
-    onMove,
-    carouselState: { currentSlide, deviceType },
-  } = rest;
-  // onMove means if dragging or swiping in progress.
-  return <LeftArrowButton onClick={() => onClick()}>{'<<<'}</LeftArrowButton>;
-};
 
 export const ImageCarousel = ({ featuredEvents }: CarouselProps): JSX.Element => (
   <Container>
@@ -178,7 +134,7 @@ export const ImageCarousel = ({ featuredEvents }: CarouselProps): JSX.Element =>
         showDots
         arrows={false}
         renderButtonGroupOutside
-        customButtonGroup={<ButtonGroup/>}
+        customButtonGroup={<ButtonGroup />}
         containerClass={styles.customCarouselContainer}
         renderDotsOutside
         removeArrowOnDeviceType={['mobileLandscape', 'mobilePortrait']}

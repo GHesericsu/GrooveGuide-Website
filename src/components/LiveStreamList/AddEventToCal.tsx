@@ -1,8 +1,7 @@
 import styled from 'styled-components';
-import { useState, useEffect, useRef } from 'react';
-import { isIOS } from 'react-device-detect';
 import { CalendarPlus } from '@styled-icons/boxicons-regular';
 import { getGoogleCalLink, downloadIcs } from '../../../lib/generateCalLink';
+import { EventDataTypes } from '../../../lib/types/eventTypes';
 
 const AddCalLink = styled.a`
   color: inherit;
@@ -21,8 +20,12 @@ export const CalendarIcon = styled(CalendarPlus)`
   }
 `;
 
+interface AddEventProps {
+  event: EventDataTypes;
+  isIos: boolean;
+}
 
-const AddEventToCal = ({ event, isIos }) => {
+export const AddEventToCal = ({ event, isIos }: AddEventProps): JSX.Element => {
   if (isIos) {
     return (
       <CalendarIcon
@@ -35,12 +38,11 @@ const AddEventToCal = ({ event, isIos }) => {
     );
   }
   return (
-    <AddCalLink ios={false} href={event && getGoogleCalLink(event)} target="_blank" rel="noopener noreferrer">
+    <AddCalLink href={event && getGoogleCalLink(event)} target="_blank" rel="noopener noreferrer">
       <CalendarIcon
         title="Add to your calendar"
         size="40px"
       />
     </AddCalLink>
   );
-  
-}
+};

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { EventsOnDate } from './EventsOnDate';
 import { ChangeWeekButtons } from '../ChangeWeekButtons';
+import { EventDataTypes } from '../../../lib/types/eventTypes';
 
 const Container = styled.div`
   width: 100%;
@@ -28,34 +29,20 @@ const ListContainer = styled.div`
   }
 `;
 
-interface EventDataTypes {
-  _id: string;
-  name: string;
-  artist: { name: string }[];
-  endTime: string;
-  startTime: string;
-  imageUrl: string;
-  information: any[];
-  isFeatured: boolean;
-  liveStreamUrl: string;
-  location: string;
-  organizations: string[];
-  slug: string;
+interface EventTuplesProps {
+  dataTuples: [string, EventDataTypes[]][];
+  isIos: boolean;
 }
 
-interface EventProps {
-  dataTuples: [string, EventDataTypes][];
-}
-
-export const EventList = ({ dataTuples }: EventProps): JSX.Element => (
+export const EventList = ({ dataTuples, isIos }: EventTuplesProps): JSX.Element => (
   <Container>
     <ListContainer>
       <ChangeWeekButtons />
-      {dataTuples && dataTuples.map((el: any) => {
+      {dataTuples && dataTuples.map((el: [string, EventDataTypes[]]) => {
         const date = el[0];
         const events = el[1];
         return (
-          <EventsOnDate date={date} events={events} key={date} />
+          <EventsOnDate date={date} events={events} key={date} isIos={isIos} />
         );
       })}
       <ChangeWeekButtons />

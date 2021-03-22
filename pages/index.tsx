@@ -1,7 +1,8 @@
 import Head from 'next/head';
+import { isIOS, isMobile, isMacOs } from 'react-device-detect';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import dayjs from 'dayjs';
-import { useState, useEffect } from 'react';
 import { GetStaticProps } from 'next';
 import { fetchEventData, fetchFeaturedEvents } from '../lib/fetcher';
 import { ImageCarousel } from '../src/components/PhotoCarousel/Carousel';
@@ -21,7 +22,6 @@ interface IndexProps {
 
 export const Index = ({ initialData, featuredEvents }: IndexProps): JSX.Element => {
   const [data, setData] = useState(initialData);
-
   if (!data) {
     return (
       <div>No Events Yet</div>
@@ -29,7 +29,6 @@ export const Index = ({ initialData, featuredEvents }: IndexProps): JSX.Element 
   }
 
   console.log('RENDER');
-
   return (
     <>
       <Head>

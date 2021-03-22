@@ -28,8 +28,23 @@ const ListContainer = styled.div`
   }
 `;
 
+interface EventDataTypes {
+  _id: string;
+  name: string;
+  artist: { name: string }[];
+  endTime: string;
+  startTime: string;
+  imageUrl: string;
+  information: any[];
+  isFeatured: boolean;
+  liveStreamUrl: string;
+  location: string;
+  organizations: string[];
+  slug: string;
+}
+
 interface EventProps {
-  dataTuples: any;
+  dataTuples: [string, EventDataTypes][];
 }
 
 export const EventList = ({ dataTuples }: EventProps): JSX.Element => (

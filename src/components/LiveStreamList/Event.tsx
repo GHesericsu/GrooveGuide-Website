@@ -1,11 +1,18 @@
 import styled from 'styled-components';
+import { useState, useEffect } from 'react';
+import {
+  isIOS, isMobile, isMacOs, getUA, osName,
+} from 'react-device-detect';
 import Image from 'next/image';
 import NextLink from 'next/link';
+import dynamic from 'next/dynamic';
 import { Link, CalendarPlus, LinkExternal } from '@styled-icons/boxicons-regular';
 import { ShareBoxed } from '@styled-icons/open-iconic';
 import dayjs from 'dayjs';
 import { LinkText } from '../../utils/styles';
-import { getGoogleCalLink } from '../../../lib/generateCalLink';
+import { getGoogleCalLink, downloadIcs } from '../../../lib/generateCalLink';
+
+// const IcsComponent = dynamic(() => import('../ICalDownload'));
 
 const Container = styled.div`
   width: 100%;
@@ -100,6 +107,7 @@ const EventName = styled.h3`
 export const CalendarIcon = styled(CalendarPlus)`
   margin: auto;
   filter: drop-shadow(3px 3px 3px #070606);
+  
   &:hover {
   transition: 0.2s;
   transform: rotate(5deg) scale(1.3);
@@ -166,16 +174,6 @@ const LinkLine = styled.p`
   display: flex;
 `;
 
-// const ExternalLinkText = styled(LinkText)`
-//   &:after {
-//     content:
-//   }
-// `;
-
-const ExternalLink = styled.a`
-
-`;
-
 const AddCalLink = styled.a`
   color: inherit;
   margin: auto;
@@ -186,15 +184,41 @@ interface EventProps {
 }
 
 export const Event = ({ event }: EventProps): JSX.Element => {
-  
+  const [ios, setIos] = useState<boolean>(false);
+
+  useEffect(() => {
+    setIos(isIOS);
+    console.log('Is it iOS:', ios);
+  }, [ios]);
+
   const {
     name, artists, liveStreamUrl, startTime, endTime, imageUrl, slug,
   } = event;
 
-  if (artists) {
-    console.log('url', getGoogleCalLink(event))
-  }
+  const addEventIcon = (isIos: boolean | undefined) => {
+    if (isIos) {
+      return (
 
+        <CalendarIcon
+          title="Add to your apple calendar"
+          size="40px"
+          onClick={() => {
+            downloadIcs(event);
+          }}
+        />
+      );
+    }
+    return (
+      <AddCalLink ios={false} href={event && getGoogleCalLink(event)} target="_blank" rel="noopener noreferrer">
+        <CalendarIcon
+          title="Add to your calendar"
+          size="40px"
+        />
+      </AddCalLink>
+    );
+  };
+
+  console.log('render event');
   return (
     <Container>
       <ContentContainer>
@@ -211,7 +235,6 @@ export const Event = ({ event }: EventProps): JSX.Element => {
           </ArtistNameWrapper>
           <LinkWrapper>
             <LinkLine>
-              <LinkIcon size="20" />
               <LinkText href={liveStreamUrl} target="_blank" rel="noopener noreferrer">
                 {liveStreamUrl}
                 <LinkExternal size={20} />
@@ -230,16 +253,7 @@ export const Event = ({ event }: EventProps): JSX.Element => {
             <p><time dateTime={endTime}>{endTime && dayjs(endTime).format('MMM DD - HH:mm')}</time></p>
           </DateTimeContainer>
           <IconsContainer>
-            <AddCalLink href={event && getGoogleCalLink(event)} target="_blank" rel="noopener noreferrer">
-              <CalendarIcon
-                title="Add to your calendar"
-                size="40px"
-                onClick={() => {
-                  getGoogleCalLink(event);
-                }}
-              />
-            </AddCalLink>
-            <ShareIcon title="Share this page" size="38px" />
+            {event && addEventIcon(ios)}
           </IconsContainer>
         </TimeFlyerIconContainer>
       </ContentContainer>

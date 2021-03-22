@@ -49,18 +49,6 @@ const Wrapper = styled.div`
   height: auto;
 `;
 
-const ImageDiv = styled.div`
-
-`;
-
-const PreviousButton = styled.button`
-  margin-right: 10px;
-`;
-
-const NextButton = styled.button`
-  width: 100px;
-  margin-left: 10px;
-`;
 
 const arrowHover = `&:hover {
   color: var(--red);
@@ -96,8 +84,6 @@ const NextArrow = styled(RightArrowCircle)`
   
   ${arrowHover}
 `;
-
-
 
 interface CarouselProps {
   featuredEvents:

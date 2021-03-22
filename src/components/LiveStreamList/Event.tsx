@@ -8,7 +8,6 @@ import { LinkText } from '../../utils/styles';
 import { AddEventToCal } from './AddEventToCal';
 import { EventDataTypes } from '../../../lib/types/eventTypes';
 
-
 const Container = styled.div`
   width: 100%;
   height: auto;
@@ -169,11 +168,6 @@ const LinkLine = styled.p`
   display: flex;
 `;
 
-const AddCalLink = styled.a`
-  color: inherit;
-  margin: auto;
-`;
-
 interface EventProps {
   event: EventDataTypes;
   isIos: boolean;
@@ -193,7 +187,7 @@ export const Event = ({ event, isIos }: EventProps): JSX.Element => {
             <NextLink href={`/event/${encodeURIComponent(slug)}`} passHref><LinkText title={name}>{name}</LinkText></NextLink>
           </EventName>
           <ArtistNameWrapper>
-            {artists && artists.map((el: any) => (
+            {artists && artists.map((el: { name: string }) => (
               <ArtistName key={el.name}>
                 {el.name}
               </ArtistName>

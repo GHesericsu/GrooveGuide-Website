@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { isIOS, isMobile, isMacOs } from 'react-device-detect';
+import { isIOS } from 'react-device-detect';
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import dayjs from 'dayjs';

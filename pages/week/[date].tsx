@@ -6,7 +6,6 @@ import { ParsedUrlQuery } from 'querystring';
 import { useState, useEffect } from 'react';
 import { GetStaticProps, GetStaticPaths } from 'next';
 import { fetchEventData, fetchFeaturedEvents } from '../../lib/fetcher';
-import { ChangeWeekButtons } from '../../src/components/ChangeWeekButtons';
 import { ImageCarousel } from '../../src/components/PhotoCarousel/Carousel';
 import { EventList } from '../../src/components/LiveStreamList/EventList';
 import { getDataTuples } from '../../lib/dataHelper';

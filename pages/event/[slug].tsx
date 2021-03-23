@@ -1,5 +1,4 @@
 import { GetStaticProps, GetStaticPaths } from 'next';
-import { useRouter } from 'next/router';
 import { ParsedUrlQuery } from 'querystring';
 import Head from 'next/head';
 import styled from 'styled-components';
@@ -9,6 +8,7 @@ import BlockContent from '@sanity/block-content-to-react';
 import { LinkText } from '../../src/utils/styles';
 import { LinkIcon, CalendarIcon } from '../../src/components/LiveStreamList/Event';
 import { fetchEventDetails, fetchEventSlugs } from '../../lib/fetcher';
+import { EventDataTypes } from '../../lib/types/eventTypes';
 
 const Container = styled.div`
   min-height: 600px;
@@ -107,6 +107,10 @@ const EventName = styled.h3`
   color: #C71E1E;
 `;
 
+const OrganizationsNames = styled.p`
+
+`;
+
 const DateTime = styled.p`
 `;
 
@@ -124,6 +128,7 @@ const IconsWrapper = styled.div`
 const CalendarIconWithMargin = styled(CalendarIcon)`
   margin-bottom: 10px;
 `;
+
 const ImageWrapper = styled.div`
   width: 100%;
   padding: 10px 10px;
@@ -131,12 +136,12 @@ const ImageWrapper = styled.div`
 `;
 
 interface EventDetailProps {
-  event: any;
+  event: EventDataTypes;
 }
 
 const EventDetail = ({ event }: EventDetailProps): JSX.Element => {
   const {
-    name, startTime, endTime, organization, location, liveStreamUrl, isFeatured, information, imageUrl,
+    name, startTime, endTime, organizations, location, liveStreamUrl, isFeatured, information, imageUrl,
   } = event;
 
   if (!event) {
@@ -162,6 +167,10 @@ const EventDetail = ({ event }: EventDetailProps): JSX.Element => {
             <HeaderWrapper>
               <HeaderLeftWrapper>
                 <EventName>{name}</EventName>
+                <OrganizationsNames>
+                  {'By '}
+                  {organizations && organizations.join(', ')}
+                </OrganizationsNames>
                 <DateTime>
                   <time dateTime={startTime}>{`${dayjs(startTime).format('dddd, MMM DD, YYYY HH:mm')}`}</time>
                   {endTime && (

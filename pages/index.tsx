@@ -53,7 +53,7 @@ export const Index = ({ initialData, featuredEvents }: IndexProps): JSX.Element 
       </Head>
       <Container>
         <ImageCarousel featuredEvents={featuredEvents} />
-        <EventList dataTuples={data} isIos={ios}/>
+        <EventList dataTuples={data} isIos={ios} />
       </Container>
     </>
   );

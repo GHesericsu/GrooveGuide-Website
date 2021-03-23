@@ -108,7 +108,6 @@ const ButtonGroup = ({ next, previous, ...rest }) => {
   );
 };
 
-
 export const ImageCarousel = ({ featuredEvents }: CarouselProps): JSX.Element => (
   <Container>
     <Wrapper>

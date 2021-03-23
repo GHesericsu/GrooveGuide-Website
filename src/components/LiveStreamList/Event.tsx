@@ -23,15 +23,6 @@ const Container = styled.div`
   @media only screen and (min-width: 480px) and (max-width: 768px) {
     padding: 8px 8px;
   }
-  @media only screen and (min-width: 768px) and (max-width: 992px) {
-    
-  }
-  @media only screen and (min-width: 992px) and (max-width: 1200px) {
-  
-  }
-  @media only screen and (min-width: 1200px) {
-    
-  }
 `;
 
 const ContentContainer = styled.div`
@@ -45,15 +36,6 @@ const ContentContainer = styled.div`
 
   @media only screen and (min-width: 480px) and (max-width: 768px) {
     flex-direction: column;
-  }
-  @media only screen and (min-width: 768px) and (max-width: 992px) {
-    
-  }
-  @media only screen and (min-width: 992px) and (max-width: 1200px) {
-    
-  }
-  @media only screen and (min-width: 1200px) {
-    
   }
 `;
 
@@ -136,8 +118,7 @@ const ArtistName = styled.span`
   + span::before {
     white-space: pre;
     content: ",  ";
-  }
-  
+  } 
 `;
 
 const TimeFlyerIconContainer = styled.div`
@@ -178,7 +159,6 @@ export const Event = ({ event, isIos }: EventProps): JSX.Element => {
     name, artists, liveStreamUrl, startTime, endTime, imageUrl, slug,
   } = event;
 
-  console.log('render event');
   return (
     <Container>
       <ContentContainer>

@@ -1,8 +1,8 @@
 /* eslint-disable camelcase */
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import Head from 'next/head';
-import { useForm } from 'react-hook-form';
+import { useForm, SubmitHandler } from 'react-hook-form';
 import emailjs from 'emailjs-com';
 
 const Container = styled.div`
@@ -68,7 +68,7 @@ const SubmitButton = styled.button`
   font-size: 1.1em;
 `;
 
-interface formDataProps {
+interface FormDataProps {
   user_name: string;
   user_email: string;
   message: string;
@@ -79,26 +79,27 @@ export const Contact = (): JSX.Element => {
   const [successMessage, setSuccessMessage] = useState('');
 
   const {
-    register, handleSubmit, watch, errors, reset,
-  } = useForm();
+    register, handleSubmit, errors, reset,
+  } = useForm<FormDataProps>();
 
-  const onSubmit = (data: formDataProps, e) => {
-    e.preventDefault();
-    console.log('data', data);
-    emailjs.sendForm('service_32bexug', 'template_vrqfrqr', e.target, process.env.NEXT_PUBLIC_EMAILJSID)
+  const onSubmit: SubmitHandler<FormDataProps> = (data: FormDataProps, e) => {
+    if (e) {
+      e.preventDefault();
+    }
+    emailjs.send('service_32bexug', 'template_vrqfrqr', data, process.env.NEXT_PUBLIC_EMAILJSID)
       .then((result) => {
-        console.log(result.text);
+        console.log('Email Sent Success', result.text);
         setSuccessMessage(`Thank you ${data.user_name} for your message`);
         reset();
       }, (error) => {
         console.log(error.text);
+        setSuccessMessage(`Sorry ${data.user_name}, there's a problem with this. Please contact us in a different way.`);
       });
   };
 
   const errorMessage = (inputName: string) => (
     <ErrorMsg>{`Invalid ${inputName}`}</ErrorMsg>
   );
-  console.log('Watch', watch('userName'));
 
   return (
     <>
@@ -112,19 +113,19 @@ export const Contact = (): JSX.Element => {
         <br />
         <FormContainer>
           <Form onSubmit={handleSubmit(onSubmit)}>
-            {errors.emailAddress && errorMessage('Name')}
+            {errors.user_name && errorMessage('Name')}
             <Label htmlFor="user_name">Name:</Label>
             <Input
               name="user_name"
               ref={register({ required: true, maxLength: 80, pattern: /^[a-z ,.'-]+$/i })}
             />
-            {errors.emailAddress && errorMessage('Email')}
+            {errors.user_email && errorMessage('Email')}
             <Label htmlFor="user_email">Email:</Label>
             <Input
               name="user_email"
               ref={register({ required: true, maxLength: 200, pattern: /^\S+@\S+\.\S+$/ })}
             />
-            {errors.userMessage && errorMessage('Message')}
+            {errors.message && errorMessage('Message')}
             <Label htmlFor="message">Message:</Label>
             <TextArea
               name="message"

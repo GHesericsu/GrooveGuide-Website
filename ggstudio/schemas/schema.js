@@ -3,7 +3,6 @@ import createSchema from 'part:@sanity/base/schema-creator'
 
 // Then import schema types from any plugins that might expose them
 import schemaTypes from 'all:part:@sanity/base/schema-type'
-import richDate from 'part:@sanity/form-builder/input/rich-date/schema'
 
 import event from './event';
 import location from './location';

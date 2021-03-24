@@ -1,14 +1,17 @@
 import { GetStaticProps, GetStaticPaths } from 'next';
-import { useRouter } from 'next/router';
 import { ParsedUrlQuery } from 'querystring';
+import { isIOS } from 'react-device-detect';
+import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import styled from 'styled-components';
 import dayjs from 'dayjs';
 import Image from 'next/image';
 import BlockContent from '@sanity/block-content-to-react';
 import { LinkText } from '../../src/utils/styles';
-import { LinkIcon, ShareIcon, CalendarIcon } from '../../src/components/LiveStreamList/Event';
+import { LinkIcon } from '../../src/components/LiveStreamList/Event';
 import { fetchEventDetails, fetchEventSlugs } from '../../lib/fetcher';
+import { EventDataTypes } from '../../lib/types/eventTypes';
+import { AddEventToCal } from '../../src/components/LiveStreamList/AddEventToCal';
 
 const Container = styled.div`
   min-height: 600px;
@@ -20,12 +23,21 @@ const Container = styled.div`
 `;
 
 const TopAndBottomContainer = styled.div`
-  width: 95%;
+  width: 100%;
   background-color: #1B1717;
   border-radius: 15px;
   display: flex;
   flex-flow: column;
   padding: 0px 20px;
+  @media only screen and (max-width: 480px) {
+  /* smartphones */
+    padding: 0px 5px;
+  }
+
+  @media only screen and (min-width: 480px) and (max-width: 768px) {
+    /* smartphone landscape */
+    padding: 0px 5px;
+  }
 `;
 
 const TopContainer = styled.div`
@@ -65,6 +77,16 @@ const EventInfoWrapper = styled.div`
       text-decoration: none;
     }
   }
+
+  @media only screen and (max-width: 480px) {
+  /* smartphones */
+    padding: 12px 8px 30px 8px;
+  }
+
+  @media only screen and (min-width: 480px) and (max-width: 768px) {
+    /* smartphone landscape */
+    padding: 12px 8px 30px 8px;
+  }
 `;
 
 const HeaderWrapper = styled.div`
@@ -76,8 +98,8 @@ const HeaderWrapper = styled.div`
 `;
 
 const HeaderLeftWrapper = styled.div`
-  width: 90%;
   display: flex;
+  flex: 0 0 90%;
   flex-direction: column;
   text-align: center;
   justify-content: space-around;
@@ -88,23 +110,24 @@ const EventName = styled.h3`
   color: #C71E1E;
 `;
 
+const OrganizationsNames = styled.p`
+
+`;
+
 const DateTime = styled.p`
 `;
 
 const HeaderRightWrapper = styled.div`
   width: 10%;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 0 0 10%;
 `;
 
 const IconsWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
 `;
 
-const CalendarIconWithMargin = styled(CalendarIcon)`
-  margin-bottom: 10px;
-`;
 const ImageWrapper = styled.div`
   width: 100%;
   padding: 10px 10px;
@@ -112,13 +135,21 @@ const ImageWrapper = styled.div`
 `;
 
 interface EventDetailProps {
-  event: any;
+  event: EventDataTypes;
 }
 
 const EventDetail = ({ event }: EventDetailProps): JSX.Element => {
   const {
-    name, startTime, endTime, organization, location, liveStreamUrl, isFeatured, information, imageUrl,
+    name, startTime, endTime, organizations, location, liveStreamUrl, isFeatured, information, imageUrl,
   } = event;
+
+  const [ios, setIos] = useState(false);
+  useEffect(() => {
+    if (isIOS === true) {
+      setIos(isIOS);
+      console.log('index page ios', ios);
+    }
+  }, []);
 
   if (!event) {
     return (
@@ -143,6 +174,10 @@ const EventDetail = ({ event }: EventDetailProps): JSX.Element => {
             <HeaderWrapper>
               <HeaderLeftWrapper>
                 <EventName>{name}</EventName>
+                <OrganizationsNames>
+                  {'By '}
+                  {organizations && organizations.join(', ')}
+                </OrganizationsNames>
                 <DateTime>
                   <time dateTime={startTime}>{`${dayjs(startTime).format('dddd, MMM DD, YYYY HH:mm')}`}</time>
                   {endTime && (
@@ -163,8 +198,7 @@ const EventDetail = ({ event }: EventDetailProps): JSX.Element => {
               </HeaderLeftWrapper>
               <HeaderRightWrapper>
                 <IconsWrapper>
-                  <CalendarIconWithMargin title="Add to your calendar" size="40px" />
-                  <ShareIcon title="Share this page" size="38px" />
+                  <AddEventToCal event={event} isIos={ios} />
                 </IconsWrapper>
               </HeaderRightWrapper>
             </HeaderWrapper>
@@ -175,16 +209,6 @@ const EventDetail = ({ event }: EventDetailProps): JSX.Element => {
             </ImageWrapper>
             <EventInfoWrapper>
               {information && <BlockContent blocks={information} />}
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque non dui finibus, rutrum massa vitae, aliquet mauris. Curabitur faucibus accumsan nisi, ac congue sapien luctus ut. Praesent pulvinar dignissim risus, ut sollicitudin massa aliquet a. Donec et lacus consectetur lectus pharetra condimentum. Nulla bibendum id erat et fermentum. Suspendisse faucibus aliquam nisi eget aliquet. Etiam condimentum scelerisque odio sit amet viverra. Pellentesque molestie finibus sagittis. Nulla efficitur turpis nisi, sed dapibus libero gravida vulputate. Vivamus sit amet interdum purus. Fusce feugiat tristique porta.
-
-              Aliquam congue, odio blandit maximus congue, diam lorem ultrices est, ut gravida ex velit sit amet mi. Nullam vel orci velit. Proin venenatis viverra metus eget volutpat. Nunc in aliquam purus. Nullam et elit non mauris aliquam dictum id non erat. Vestibulum elit libero, auctor quis arcu vel, gravida iaculis erat. Sed non interdum risus, et rutrum sapien. Donec convallis erat sit amet ante faucibus egestas. Pellentesque tempus arcu ac nisi vehicula pellentesque. Suspendisse rutrum ornare urna, quis egestas ex. Donec id eros aliquam, iaculis ante aliquet, bibendum nisi. Proin sapien justo, lobortis id ante a, vulputate vulputate ex. Donec lorem urna, convallis eget dolor id, convallis consequat lectus.
-
-              Vestibulum tincidunt rutrum ipsum, sed semper mi iaculis in. Sed cursus, augue quis viverra ornare, arcu eros interdum mauris, id efficitur justo orci ac arcu. Sed ut purus ex. Vivamus elementum lorem non augue dictum volutpat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin in aliquet lorem. Integer commodo, sapien dictum convallis bibendum, diam lorem volutpat diam, quis pulvinar erat orci id massa. Fusce risus massa, suscipit et sollicitudin sit amet, congue feugiat ex. Quisque eu euismod tellus. Nullam tristique purus sed ante feugiat, euismod luctus nibh vestibulum. Donec interdum volutpat lorem ut blandit. Proin commodo eget arcu eget molestie. Suspendisse efficitur id dolor at suscipit. Praesent et nulla bibendum, vehicula enim sed, viverra leo.
-
-              Donec maximus convallis pulvinar. Suspendisse vel hendrerit metus. Fusce efficitur sem non tortor faucibus lacinia. Nunc pretium metus a ligula molestie, et gravida ante varius. Etiam aliquam sapien ultrices mattis vestibulum. Sed sollicitudin ornare mollis. Duis gravida, urna et convallis lacinia, risus risus porttitor ante, at efficitur sapien est nec magna. Vestibulum in nibh et tortor condimentum bibendum sit amet nec leo.
-
-              Proin euismod cursus euismod. Mauris pretium vel odio vel faucibus. Nam ornare mauris id erat feugiat placerat. Morbi nec interdum nisi, eu dignissim justo. Donec diam felis, semper eu rutrum vitae, pellentesque vitae metus. Vestibulum convallis mattis nisi quis pharetra. Duis euismod quam lacus, eget elementum sapien ultrices sit amet. Integer velit mauris, pretium ut ipsum sed, euismod dignissim nibh. Vivamus sed mi venenatis, sagittis elit in, eleifend ipsum. Duis lacus mauris, egestas eget suscipit ac, faucibus eu mauris. Nulla malesuada volutpat ornare. Aliquam erat volutpat. Etiam in felis aliquam, ultrices dui non, imperdiet sem. Nullam sit amet nisl maximus elit dapibus sodales eu sed mauris.
-
             </EventInfoWrapper>
           </BottomContainer>
         </TopAndBottomContainer>

@@ -1,6 +1,7 @@
 .customCarouselContainer {
   padding-bottom: 10px;
-  
+  height: auto;
+  box-sizing: border-box;
 }
 
 .customCarouselContainer:focus {

@@ -1,12 +1,14 @@
 import Head from 'next/head';
+import { isIOS } from 'react-device-detect';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import dayjs from 'dayjs';
-import { useState, useEffect } from 'react';
 import { GetStaticProps } from 'next';
 import { fetchEventData, fetchFeaturedEvents } from '../lib/fetcher';
 import { ImageCarousel } from '../src/components/PhotoCarousel/Carousel';
 import { EventList } from '../src/components/LiveStreamList/EventList';
 import { getDataTuples } from '../lib/dataHelper';
+import { EventDataTypes } from '../lib/types/eventTypes';
 
 const Container = styled.div`
   min-height: 600px;
@@ -15,12 +17,24 @@ const Container = styled.div`
 `;
 
 interface IndexProps {
-  initialData: any;
-  featuredEvents: any[];
+  initialData: [string, EventDataTypes[]][];
+  featuredEvents: {
+    name: string;
+    imageUrl: string;
+    slug: string;
+  }[];
 }
 
 export const Index = ({ initialData, featuredEvents }: IndexProps): JSX.Element => {
   const [data, setData] = useState(initialData);
+  const [ios, setIos] = useState(false);
+
+  useEffect(() => {
+    if (isIOS === true) {
+      setIos(isIOS);
+      console.log('index page ios', ios);
+    }
+  }, []);
 
   if (!data) {
     return (
@@ -29,7 +43,7 @@ export const Index = ({ initialData, featuredEvents }: IndexProps): JSX.Element 
   }
 
   console.log('RENDER');
-
+  console.log('ios is', ios);
   return (
     <>
       <Head>
@@ -39,7 +53,7 @@ export const Index = ({ initialData, featuredEvents }: IndexProps): JSX.Element 
       </Head>
       <Container>
         <ImageCarousel featuredEvents={featuredEvents} />
-        <EventList dataTuples={data} />
+        <EventList dataTuples={data} isIos={ios} />
       </Container>
     </>
   );
@@ -50,7 +64,6 @@ export const getStaticProps: GetStaticProps = async () => {
   const data = await fetchEventData(todayDate);
   const featuredEvents = await fetchFeaturedEvents(todayDate);
   const dataTuples = getDataTuples(data, todayDate);
-  console.log('feature events:', featuredEvents);
   return {
     props: {
       initialData: dataTuples,

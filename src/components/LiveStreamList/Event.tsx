@@ -5,6 +5,8 @@ import { Link, CalendarPlus, LinkExternal } from '@styled-icons/boxicons-regular
 import { ShareBoxed } from '@styled-icons/open-iconic';
 import dayjs from 'dayjs';
 import { LinkText } from '../../utils/styles';
+import { AddEventToCal } from './AddEventToCal';
+import { EventDataTypes } from '../../../lib/types/eventTypes';
 
 const Container = styled.div`
   width: 100%;
@@ -21,15 +23,6 @@ const Container = styled.div`
   @media only screen and (min-width: 480px) and (max-width: 768px) {
     padding: 8px 8px;
   }
-  @media only screen and (min-width: 768px) and (max-width: 992px) {
-    
-  }
-  @media only screen and (min-width: 992px) and (max-width: 1200px) {
-  
-  }
-  @media only screen and (min-width: 1200px) {
-    
-  }
 `;
 
 const ContentContainer = styled.div`
@@ -43,15 +36,6 @@ const ContentContainer = styled.div`
 
   @media only screen and (min-width: 480px) and (max-width: 768px) {
     flex-direction: column;
-  }
-  @media only screen and (min-width: 768px) and (max-width: 992px) {
-    
-  }
-  @media only screen and (min-width: 992px) and (max-width: 1200px) {
-    
-  }
-  @media only screen and (min-width: 1200px) {
-    
   }
 `;
 
@@ -99,6 +83,7 @@ const EventName = styled.h3`
 export const CalendarIcon = styled(CalendarPlus)`
   margin: auto;
   filter: drop-shadow(3px 3px 3px #070606);
+  
   &:hover {
   transition: 0.2s;
   transform: rotate(5deg) scale(1.3);
@@ -133,8 +118,7 @@ const ArtistName = styled.span`
   + span::before {
     white-space: pre;
     content: ",  ";
-  }
-  
+  } 
 `;
 
 const TimeFlyerIconContainer = styled.div`
@@ -153,7 +137,7 @@ const TimeFlyerIconContainer = styled.div`
 export const LinkIcon = styled(Link)`
   color: #C71E1E;
   margin-right: 4px;
-  padding-top: 2px;
+
 `;
 
 const LinkWrapper = styled.div`
@@ -165,21 +149,12 @@ const LinkLine = styled.p`
   display: flex;
 `;
 
-// const ExternalLinkText = styled(LinkText)`
-//   &:after {
-//     content:
-//   }
-// `;
-
-const ExternalLink = styled.a`
-
-`;
-
 interface EventProps {
-  event: any;
+  event: EventDataTypes;
+  isIos: boolean;
 }
 
-export const Event = ({ event }: EventProps): JSX.Element => {
+export const Event = ({ event, isIos }: EventProps): JSX.Element => {
   const {
     name, artists, liveStreamUrl, startTime, endTime, imageUrl, slug,
   } = event;
@@ -192,7 +167,7 @@ export const Event = ({ event }: EventProps): JSX.Element => {
             <NextLink href={`/event/${encodeURIComponent(slug)}`} passHref><LinkText title={name}>{name}</LinkText></NextLink>
           </EventName>
           <ArtistNameWrapper>
-            {artists && artists.map((el: any) => (
+            {artists && artists.map((el: { name: string }) => (
               <ArtistName key={el.name}>
                 {el.name}
               </ArtistName>
@@ -200,8 +175,8 @@ export const Event = ({ event }: EventProps): JSX.Element => {
           </ArtistNameWrapper>
           <LinkWrapper>
             <LinkLine>
-              <LinkIcon size="20" />
-              <LinkText href={liveStreamUrl} target="_blank">
+              <LinkIcon size={25} />
+              <LinkText href={liveStreamUrl} target="_blank" rel="noopener noreferrer">
                 {liveStreamUrl}
                 <LinkExternal size={20} />
               </LinkText>
@@ -219,8 +194,7 @@ export const Event = ({ event }: EventProps): JSX.Element => {
             <p><time dateTime={endTime}>{endTime && dayjs(endTime).format('MMM DD - HH:mm')}</time></p>
           </DateTimeContainer>
           <IconsContainer>
-            <CalendarIcon title="Add to your calendar" size="40px" />
-            <ShareIcon title="Share this page" size="38px" />
+            {event && <AddEventToCal event={event} isIos={isIos} />}
           </IconsContainer>
         </TimeFlyerIconContainer>
       </ContentContainer>

@@ -1,16 +1,29 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import styled from 'styled-components';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const ImageWrapper = styled.div`
   width: auto;
-  display: flex;
-  justify-content: center;
+  height: auto;
+  border-top: 5px solid transparent;
+  &:hover {
+    cursor: pointer;
+    border-top: 5px solid var(--red);
+  }
+  
+  
+`;
+
+const ImageAnchorLink = styled.a`
+  
 `;
 
 const StyledImage = styled(Image)`
-  position: relative;
-  &:hover {
-    cursor: pointer;
+  border-top: 5px solid transparent;
+  &:active {
+    transform: scale(0.95);
+    transition: 0.5s;
   }
 `;
 
@@ -23,33 +36,21 @@ interface ImageProps {
 }
 
 const CarouselImage = ({ event }: ImageProps): JSX.Element => {
-  const imgTag = () => (
-    <img
-      src={`${event.imageUrl}?auto=format&h=400&w=400`}
-      alt={event.name}
-      width={400}
-      height={400}
-      key={event.name}
-    />
-  );
-
+  const { name, slug, imageUrl } = event;
   return (
     <ImageWrapper>
-      {/* <img
-        src={`${event.imageUrl}?auto=format&h=400&w=400`}
-        alt={event.name}
-        width={400}
-        height={400}
-        key={event.name}
-      /> */}
-      <StyledImage
-        priority
-        src={`${event.imageUrl}?auto=format&h=400&w=400`}
-        alt={event.name}
-        width={400}
-        height={400}
-        key={event.name}
-      />
+      <Link href={`/event/${encodeURIComponent(slug)}`} passHref>
+        <ImageAnchorLink>
+          <StyledImage
+            priority
+            src={`${imageUrl}?auto=format&h=400&w=400`}
+            alt={name}
+            width={400}
+            height={400}
+            key={name}
+          />
+        </ImageAnchorLink>
+      </Link>
     </ImageWrapper>
   );
 };

@@ -1,14 +1,17 @@
 import { GetStaticProps, GetStaticPaths } from 'next';
 import { ParsedUrlQuery } from 'querystring';
+import { isIOS } from 'react-device-detect';
+import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import styled from 'styled-components';
 import dayjs from 'dayjs';
 import Image from 'next/image';
 import BlockContent from '@sanity/block-content-to-react';
 import { LinkText } from '../../src/utils/styles';
-import { LinkIcon, CalendarIcon } from '../../src/components/LiveStreamList/Event';
+import { LinkIcon } from '../../src/components/LiveStreamList/Event';
 import { fetchEventDetails, fetchEventSlugs } from '../../lib/fetcher';
 import { EventDataTypes } from '../../lib/types/eventTypes';
+import { AddEventToCal } from '../../src/components/LiveStreamList/AddEventToCal';
 
 const Container = styled.div`
   min-height: 600px;
@@ -125,10 +128,6 @@ const HeaderRightWrapper = styled.div`
 const IconsWrapper = styled.div`
 `;
 
-const CalendarIconWithMargin = styled(CalendarIcon)`
-  margin-bottom: 10px;
-`;
-
 const ImageWrapper = styled.div`
   width: 100%;
   padding: 10px 10px;
@@ -143,6 +142,14 @@ const EventDetail = ({ event }: EventDetailProps): JSX.Element => {
   const {
     name, startTime, endTime, organizations, location, liveStreamUrl, isFeatured, information, imageUrl,
   } = event;
+
+  const [ios, setIos] = useState(false);
+  useEffect(() => {
+    if (isIOS === true) {
+      setIos(isIOS);
+      console.log('index page ios', ios);
+    }
+  }, []);
 
   if (!event) {
     return (
@@ -191,7 +198,7 @@ const EventDetail = ({ event }: EventDetailProps): JSX.Element => {
               </HeaderLeftWrapper>
               <HeaderRightWrapper>
                 <IconsWrapper>
-                  <CalendarIconWithMargin title="Add to your calendar" size="40px" />
+                  <AddEventToCal event={event} isIos={ios} />
                 </IconsWrapper>
               </HeaderRightWrapper>
             </HeaderWrapper>

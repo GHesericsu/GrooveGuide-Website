@@ -137,7 +137,7 @@ const TimeFlyerIconContainer = styled.div`
 export const LinkIcon = styled(Link)`
   color: #C71E1E;
   margin-right: 4px;
-  padding-top: 2px;
+
 `;
 
 const LinkWrapper = styled.div`
@@ -175,6 +175,7 @@ export const Event = ({ event, isIos }: EventProps): JSX.Element => {
           </ArtistNameWrapper>
           <LinkWrapper>
             <LinkLine>
+              <LinkIcon size={25} />
               <LinkText href={liveStreamUrl} target="_blank" rel="noopener noreferrer">
                 {liveStreamUrl}
                 <LinkExternal size={20} />

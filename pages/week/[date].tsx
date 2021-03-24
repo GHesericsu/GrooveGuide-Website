@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import styled from 'styled-components';
 import dayjs from 'dayjs';
+import { isIOS } from 'react-device-detect';
 import { useRouter } from 'next/router';
 import { ParsedUrlQuery } from 'querystring';
 import { useState, useEffect } from 'react';
@@ -24,6 +25,13 @@ interface EventsOnWeekProps {
 const EventsOnWeek = ({ data, featuredEvents }: EventsOnWeekProps): JSX.Element => {
   const router = useRouter();
   const curDate: string = router.asPath.slice(6, 16) || dayjs().format('YYYY-MM-DD');
+  const [ios, setIos] = useState(false);
+  useEffect(() => {
+    if (isIOS === true) {
+      setIos(isIOS);
+      console.log('index page ios', ios);
+    }
+  }, []);
 
   if (!data) {
     return (
@@ -45,7 +53,7 @@ const EventsOnWeek = ({ data, featuredEvents }: EventsOnWeekProps): JSX.Element 
       </Head>
       <Container>
         <ImageCarousel featuredEvents={featuredEvents} />
-        <EventList dataTuples={data} />
+        <EventList dataTuples={data} isIos={ios} />
       </Container>
     </>
   );

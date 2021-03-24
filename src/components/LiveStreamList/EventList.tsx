@@ -34,18 +34,32 @@ interface EventTuplesProps {
   isIos: boolean;
 }
 
-export const EventList = ({ dataTuples, isIos }: EventTuplesProps): JSX.Element => (
-  <Container>
-    <ListContainer>
-      <ChangeWeekButtons />
-      {dataTuples && dataTuples.map((el: [string, EventDataTypes[]]) => {
-        const date = el[0];
-        const events = el[1];
-        return (
-          <EventsOnDate date={date} events={events} key={date} isIos={isIos} />
-        );
-      })}
-      <ChangeWeekButtons />
-    </ListContainer>
-  </Container>
-);
+export const EventList = ({ dataTuples, isIos }: EventTuplesProps): JSX.Element => {
+  if (dataTuples.length < 1) {
+    return (
+      <Container>
+        <ListContainer>
+          <ChangeWeekButtons />
+          No Events This Week
+        </ListContainer>
+      </Container>
+
+    );
+  }
+
+  return (
+    <Container>
+      <ListContainer>
+        <ChangeWeekButtons />
+        {dataTuples && dataTuples.map((el: [string, EventDataTypes[]]) => {
+          const date = el[0];
+          const events = el[1];
+          return (
+            <EventsOnDate date={date} events={events} key={date} isIos={isIos} />
+          );
+        })}
+        <ChangeWeekButtons />
+      </ListContainer>
+    </Container>
+  );
+};

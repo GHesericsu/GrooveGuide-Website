@@ -84,8 +84,9 @@ const NextArrow = styled(RightArrowCircle)`
   ${arrowHover}
 `;
 
-const FeaturedHeading = styled.h3`
-  
+const FeaturedHeading = styled.h2`
+  color: var(--red);
+  margin: 10px auto;
 `;
 
 interface CarouselProps {
@@ -113,6 +114,7 @@ const ButtonGroup = ({ next, previous, ...rest }) => {
 
 export const ImageCarousel = ({ featuredEvents }: CarouselProps): JSX.Element => (
   <Container>
+    <FeaturedHeading id="featured">Featured</FeaturedHeading>
     <Wrapper>
       <Carousel
         responsive={responsive}

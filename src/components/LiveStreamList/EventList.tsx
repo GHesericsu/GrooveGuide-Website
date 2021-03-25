@@ -71,7 +71,7 @@ export const EventList = ({ dataTuples, isIos }: EventTuplesProps): JSX.Element 
       <ListContainer>
         <TimeZoneWrapper>
           <TimeZoneText>
-            All times are display in your time zone:
+            Times displayed in your time zone:
             {' '}
             {Intl.DateTimeFormat().resolvedOptions().timeZone}
           </TimeZoneText>

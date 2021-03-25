@@ -56,9 +56,6 @@ const NextButton = styled.button`
     transition: all 0.2s;
     background-color: var(--black);
     }
-  
- 
-
 `;
 
 const PreviousButton = styled(NextButton)`

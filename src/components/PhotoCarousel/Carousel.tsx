@@ -49,7 +49,6 @@ const Wrapper = styled.div`
   height: auto;
 `;
 
-
 const arrowHover = `&:hover {
   color: var(--red);
   transition: 0.2s;
@@ -83,6 +82,10 @@ const NextArrow = styled(RightArrowCircle)`
   cursor: pointer;
   
   ${arrowHover}
+`;
+
+const FeaturedHeading = styled.h3`
+  
 `;
 
 interface CarouselProps {

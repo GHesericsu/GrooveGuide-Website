@@ -37,8 +37,13 @@ const Input = styled.input<InputProps>`
   width: 100%;
   height: 30px;
   margin-bottom: 15px;
+  text-indent: 5px;
+  border-radius: 5px;
+  outline: none;
   &:focus {
     background: var(--white);
+    /* outline: solid var(--red); */
+    box-shadow: 0 0 3px 3px var(--red);
   }
 `;
 
@@ -46,10 +51,14 @@ const TextArea = styled.textarea`
   width: 100%;
   height: 140px;
   margin-bottom: 15px;
+  border-radius: 5px;
+  outline: none;
+  /* text-indent: 5px; */
+  padding: 5px;
   &:focus {
     background: var(--white);
+    box-shadow: 0 0 3px 3px var(--red);
   }
-  
 `;
 
 const ErrorMsg = styled.p`
@@ -65,7 +74,28 @@ const SubmitButton = styled.button`
   margin-top: 10px;
   font-style: inherit;
   font-weight: 700;
-  font-size: 1.1em;
+  font-size: 1.05em;
+  text-align: center;
+  color: inherit;
+  background-color: var(--dark-gray);
+  border: 2px solid var(--white);
+  border-radius: 15px;
+  &:hover {
+    color: var(--red);
+    border: 3px solid var(--red);
+    transition: all 0.2s;
+    background-color: var(--black);
+
+
+    &:active {
+      outline: none;
+      box-shadow: 0 0 0 5px var(--red);
+      color: var(--red);
+      border: 3px solid var(--red);
+      transition: all 0.2s;
+      background-color: var(--black);
+    }
+  }
 `;
 
 interface FormDataProps {

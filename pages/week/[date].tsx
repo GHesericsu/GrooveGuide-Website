@@ -90,11 +90,9 @@ interface Params extends ParsedUrlQuery {
 
 export const getStaticProps: GetStaticProps<Props, Params> = async (context) => {
   const { date } = context.params as Params;
-  console.log('DATE', date);
   const data = await fetchEventData(date);
   const featuredEvents = await fetchFeaturedEvents(dayjs().format());
   const dataTuples = getDataTuples(data, date);
-  console.log('featured Events', featuredEvents);
 
   return {
     props: {

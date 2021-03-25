@@ -140,7 +140,7 @@ interface EventDetailProps {
 
 const EventDetail = ({ event }: EventDetailProps): JSX.Element => {
   const {
-    name, startTime, endTime, organizations, location, liveStreamUrl, isFeatured, information, imageUrl,
+    name, startTime, endTime, organizations, liveStreamUrl, isFeatured, information, imageUrl,
   } = event;
 
   const [ios, setIos] = useState(false);

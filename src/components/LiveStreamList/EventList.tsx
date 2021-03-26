@@ -29,6 +29,25 @@ const ListContainer = styled.div`
   }
 `;
 
+const TimeZoneWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  margin-bottom: 15px;
+  @media only screen and (max-width: 480px) {
+    justify-content: center;
+  }
+
+  @media only screen and (min-width: 480px) and (max-width: 768px) {
+    justify-content: center;
+  }
+`;
+
+const TimeZoneText = styled.p`
+  font-style: italic;
+  font-size: 0.8em;
+`;
+
 interface EventTuplesProps {
   dataTuples: [string, EventDataTypes[]][];
   isIos: boolean;
@@ -48,8 +67,15 @@ export const EventList = ({ dataTuples, isIos }: EventTuplesProps): JSX.Element 
   }
 
   return (
-    <Container>
+    <Container id="events">
       <ListContainer>
+        <TimeZoneWrapper>
+          <TimeZoneText>
+            Times displayed in your time zone:
+            {' '}
+            {Intl.DateTimeFormat().resolvedOptions().timeZone}
+          </TimeZoneText>
+        </TimeZoneWrapper>
         <ChangeWeekButtons />
         {dataTuples && dataTuples.map((el: [string, EventDataTypes[]]) => {
           const date = el[0];

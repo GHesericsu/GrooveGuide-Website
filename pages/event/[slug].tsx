@@ -49,7 +49,6 @@ const TopContainer = styled.div`
 `;
 
 const BottomContainer = styled.div`
-  /* border: 1px solid green; */
   border-radius: 15px;
   background-color: #282828;
   min-height: 500px;
@@ -140,14 +139,13 @@ interface EventDetailProps {
 
 const EventDetail = ({ event }: EventDetailProps): JSX.Element => {
   const {
-    name, startTime, endTime, organizations, liveStreamUrl, isFeatured, information, imageUrl,
+    name, startTime, endTime, organizations, liveStreamUrl, information, imageUrl,
   } = event;
 
   const [ios, setIos] = useState(false);
   useEffect(() => {
     if (isIOS === true) {
       setIos(isIOS);
-      console.log('index page ios', ios);
     }
   }, []);
 
@@ -221,7 +219,7 @@ export default EventDetail;
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const response = await fetchEventSlugs();
-  const paths = response.map((event: any) => (
+  const paths = response.map((event: { slug: string }) => (
     {
       params: {
         slug: event.slug,

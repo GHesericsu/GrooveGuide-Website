@@ -1,3 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+interface BlockContentProps {
+  blocks: any[] | [];
+}
 
 export interface EventDataTypes {
   _id: string;
@@ -6,7 +10,7 @@ export interface EventDataTypes {
   endTime: string;
   startTime: string;
   imageUrl: string;
-  information: any[];
+  information: BlockContentProps[];
   isFeatured: boolean;
   liveStreamUrl: string;
   location: string;

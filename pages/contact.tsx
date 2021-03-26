@@ -42,7 +42,6 @@ const Input = styled.input<InputProps>`
   outline: none;
   &:focus {
     background: var(--white);
-    /* outline: solid var(--red); */
     box-shadow: 0 0 3px 3px var(--red);
   }
 `;
@@ -53,7 +52,6 @@ const TextArea = styled.textarea`
   margin-bottom: 15px;
   border-radius: 5px;
   outline: none;
-  /* text-indent: 5px; */
   padding: 5px;
   &:focus {
     background: var(--white);
@@ -117,12 +115,10 @@ export const Contact = (): JSX.Element => {
       e.preventDefault();
     }
     emailjs.send('service_32bexug', 'template_vrqfrqr', data, process.env.NEXT_PUBLIC_EMAILJSID)
-      .then((result) => {
-        console.log('Email Sent Success', result.text);
+      .then(() => {
         setSuccessMessage(`Thank you ${data.user_name} for your message`);
         reset();
-      }, (error) => {
-        console.log(error.text);
+      }, () => {
         setSuccessMessage(`Sorry ${data.user_name}, there's a problem with this. Please contact us in a different way.`);
       });
   };

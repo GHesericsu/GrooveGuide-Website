@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Carousel from 'react-multi-carousel';
+import { ButtonGroupProps } from 'react-multi-carousel/lib/types';
 import { LeftArrowCircle, RightArrowCircle } from '@styled-icons/boxicons-regular';
 import 'react-multi-carousel/lib/styles.css';
 import CarouselImage from './CarouselImage';
@@ -84,8 +85,9 @@ const NextArrow = styled(RightArrowCircle)`
   ${arrowHover}
 `;
 
-const FeaturedHeading = styled.h3`
-  
+const FeaturedHeading = styled.h2`
+  color: var(--red);
+  margin: 10px auto;
 `;
 
 interface CarouselProps {
@@ -97,22 +99,20 @@ interface CarouselProps {
   }[]
 }
 
-const ButtonGroup = ({ next, previous, ...rest }) => {
-  const { carouselState: { currentSlide } } = rest;
-  return (
-    <div className="carousel-button-group">
-      <ArrowButton>
-        <PreviousArrow title="previous image" aria-label="previous image" size={40} onClick={() => previous()} />
-      </ArrowButton>
-      <ArrowButton>
-        <NextArrow title="next image" aria-label="next image" size={40} onClick={() => next()} />
-      </ArrowButton>
-    </div>
-  );
-};
+const ButtonGroup = ({ next, previous }: ButtonGroupProps) => (
+  <div className="carousel-button-group">
+    <ArrowButton>
+      {previous && <PreviousArrow title="previous image" aria-label="previous image" size={40} onClick={() => previous()} />}
+    </ArrowButton>
+    <ArrowButton>
+      {next && <NextArrow title="next image" aria-label="next image" size={40} onClick={() => next()} />}
+    </ArrowButton>
+  </div>
+);
 
 export const ImageCarousel = ({ featuredEvents }: CarouselProps): JSX.Element => (
   <Container>
+    <FeaturedHeading id="featured">Featured</FeaturedHeading>
     <Wrapper>
       <Carousel
         responsive={responsive}

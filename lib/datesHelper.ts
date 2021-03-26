@@ -1,7 +1,8 @@
 import dayjs from 'dayjs';
+import { EventDataTypes } from './types/eventTypes';
 
 interface LooseObj {
-  [key: string]: any[]
+  [key: string]: EventDataTypes[];
 }
 
 export const datesMap = (date?: string) : LooseObj => {

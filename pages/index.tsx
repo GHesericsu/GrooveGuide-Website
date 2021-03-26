@@ -17,7 +17,7 @@ const Container = styled.div`
 `;
 
 interface IndexProps {
-  initialData: [string, EventDataTypes[]][];
+  dataTuples: [string, EventDataTypes[]][];
   featuredEvents: {
     name: string;
     imageUrl: string;
@@ -25,25 +25,21 @@ interface IndexProps {
   }[];
 }
 
-export const Index = ({ initialData, featuredEvents }: IndexProps): JSX.Element => {
-  const [data, setData] = useState(initialData);
+export const Index = ({ dataTuples, featuredEvents }: IndexProps): JSX.Element => {
   const [ios, setIos] = useState(false);
 
   useEffect(() => {
     if (isIOS === true) {
       setIos(isIOS);
-      console.log('index page ios', ios);
     }
   }, []);
 
-  if (!data) {
+  if (!dataTuples) {
     return (
       <div>No Events Yet</div>
     );
   }
 
-  console.log('RENDER');
-  console.log('ios is', ios);
   return (
     <>
       <Head>
@@ -53,7 +49,7 @@ export const Index = ({ initialData, featuredEvents }: IndexProps): JSX.Element 
       </Head>
       <Container>
         <ImageCarousel featuredEvents={featuredEvents} />
-        <EventList dataTuples={data} isIos={ios} />
+        <EventList dataTuples={dataTuples} isIos={ios} />
       </Container>
     </>
   );
@@ -66,7 +62,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const dataTuples = getDataTuples(data, todayDate);
   return {
     props: {
-      initialData: dataTuples,
+      dataTuples,
       featuredEvents,
     },
   };

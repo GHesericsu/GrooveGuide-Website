@@ -10,8 +10,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Thousanddeep-Regular';
     src: url('../fonts/Thousanddeep-Regular.otf') format('opentype');
   }
- /* nunito-regular - latin */
-  /* nunito-regular - latin */
+ 
   @font-face {
     font-family: 'Nunito';
     font-style: normal;
@@ -24,7 +23,7 @@ const GlobalStyle = createGlobalStyle`
         url('../fonts/nunito-v16-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
         url('../fonts/nunito-v16-latin-regular.svg#Nunito') format('svg'); /* Legacy iOS */
   }
-  /* nunito-600 - latin */
+ 
   @font-face {
     font-family: 'Nunito';
     font-style: normal;

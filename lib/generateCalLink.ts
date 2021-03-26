@@ -14,9 +14,9 @@ export const getGoogleCalLink = (event: EventProps): string => {
     name, liveStreamUrl, startTime, endTime, artists,
   } = event;
 
-  const start = dayjs(startTime).toISOString().replace(/[-!$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/g, '');
+  const start = dayjs(startTime).toISOString().replace(/[-!$%^&*()_+|~=`{}[\]:";'<>?,./]/g, '');
 
-  const end = dayjs(endTime).toISOString().replace(/[-!$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/g, '');
+  const end = dayjs(endTime).toISOString().replace(/[-!$%^&*()_+|~=`{}[\]:";'<>?,./]/g, '');
 
   const artistNames = artists && artists.map((el) => `${el.name}\n`).reduce((artistName, string) => artistName + string, '');
 

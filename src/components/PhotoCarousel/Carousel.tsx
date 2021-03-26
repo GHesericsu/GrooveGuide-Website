@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Carousel from 'react-multi-carousel';
+import { ButtonGroupProps } from 'react-multi-carousel/lib/types';
 import { LeftArrowCircle, RightArrowCircle } from '@styled-icons/boxicons-regular';
 import 'react-multi-carousel/lib/styles.css';
 import CarouselImage from './CarouselImage';
@@ -98,19 +99,16 @@ interface CarouselProps {
   }[]
 }
 
-const ButtonGroup = ({ next, previous, ...rest }) => {
-  const { carouselState: { currentSlide } } = rest;
-  return (
-    <div className="carousel-button-group">
-      <ArrowButton>
-        <PreviousArrow title="previous image" aria-label="previous image" size={40} onClick={() => previous()} />
-      </ArrowButton>
-      <ArrowButton>
-        <NextArrow title="next image" aria-label="next image" size={40} onClick={() => next()} />
-      </ArrowButton>
-    </div>
-  );
-};
+const ButtonGroup = ({ next, previous }: ButtonGroupProps) => (
+  <div className="carousel-button-group">
+    <ArrowButton>
+      {previous && <PreviousArrow title="previous image" aria-label="previous image" size={40} onClick={() => previous()} />}
+    </ArrowButton>
+    <ArrowButton>
+      {next && <NextArrow title="next image" aria-label="next image" size={40} onClick={() => next()} />}
+    </ArrowButton>
+  </div>
+);
 
 export const ImageCarousel = ({ featuredEvents }: CarouselProps): JSX.Element => (
   <Container>

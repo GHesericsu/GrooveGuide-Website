@@ -32,7 +32,6 @@ export const Index = ({ initialData, featuredEvents }: IndexProps): JSX.Element 
   useEffect(() => {
     if (isIOS === true) {
       setIos(isIOS);
-      console.log('index page ios', ios);
     }
   }, []);
 
@@ -42,8 +41,6 @@ export const Index = ({ initialData, featuredEvents }: IndexProps): JSX.Element 
     );
   }
 
-  console.log('RENDER');
-  console.log('ios is', ios);
   return (
     <>
       <Head>

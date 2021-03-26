@@ -115,12 +115,10 @@ export const Contact = (): JSX.Element => {
       e.preventDefault();
     }
     emailjs.send('service_32bexug', 'template_vrqfrqr', data, process.env.NEXT_PUBLIC_EMAILJSID)
-      .then((result) => {
-        console.log('Email Sent Success', result.text);
+      .then(() => {
         setSuccessMessage(`Thank you ${data.user_name} for your message`);
         reset();
-      }, (error) => {
-        console.log(error.text);
+      }, () => {
         setSuccessMessage(`Sorry ${data.user_name}, there's a problem with this. Please contact us in a different way.`);
       });
   };

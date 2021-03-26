@@ -39,8 +39,6 @@ const EventsOnWeek = ({ data, featuredEvents }: EventsOnWeekProps): JSX.Element 
     );
   }
 
-  console.log('RENDER');
-
   return (
     <>
       <Head>

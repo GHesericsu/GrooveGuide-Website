@@ -2,11 +2,11 @@ import dayjs from 'dayjs';
 import { ICalendar } from 'datebook';
 
 interface EventProps {
-  name: string,
-  liveStreamUrl: string,
-  startTime: string,
-  endTime: string,
-  artists: Array<{ name: string }>
+  name: string;
+  liveStreamUrl: string;
+  startTime: string;
+  endTime: string;
+  artists: { name: string }[];
 }
 
 export const getGoogleCalLink = (event: EventProps): string => {
@@ -15,7 +15,7 @@ export const getGoogleCalLink = (event: EventProps): string => {
   } = event;
 
   const start = dayjs(startTime).toISOString().replace(/[-!$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/g, '');
-  
+
   const end = dayjs(endTime).toISOString().replace(/[-!$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/g, '');
 
   const artistNames = artists && artists.map((el) => `${el.name}\n`).reduce((artistName, string) => artistName + string, '');

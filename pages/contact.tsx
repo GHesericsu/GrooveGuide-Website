@@ -42,7 +42,6 @@ const Input = styled.input<InputProps>`
   outline: none;
   &:focus {
     background: var(--white);
-    /* outline: solid var(--red); */
     box-shadow: 0 0 3px 3px var(--red);
   }
 `;
@@ -53,7 +52,6 @@ const TextArea = styled.textarea`
   margin-bottom: 15px;
   border-radius: 5px;
   outline: none;
-  /* text-indent: 5px; */
   padding: 5px;
   &:focus {
     background: var(--white);

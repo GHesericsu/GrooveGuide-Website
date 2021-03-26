@@ -1,10 +1,11 @@
+/* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-var-requires */
 const axios = require('axios');
 const dayjs = require('dayjs');
 
 const baseUrl = `https://${process.env.SANITY_PROJECT_ID}.api.sanity.io/v1/data/query/production?query=`;
 
-export const fetchEventData = async (date: string) : Promise<any> => {
+export const fetchEventData = async (date: string) : Promise<void> => {
   const startDate = dayjs(date).format('YYYY-MM-DD');
   const endDate = dayjs(date).add(7, 'day').format('YYYY-MM-DD');
   const queryString = `*[_type == "event" && startTime >= "${startDate}" && startTime <= "${endDate}"] | order(startTime asc) {
@@ -29,11 +30,11 @@ export const fetchEventData = async (date: string) : Promise<any> => {
     return response.data.result;
   } catch (error) {
     console.log(error);
-    return false;
+    return error.response;
   }
 };
 
-export const fetchEventDetails = async (slug: string): Promise<any> => {
+export const fetchEventDetails = async (slug: string): Promise<void> => {
   const queryString = `*[_type == "event" && slug.current == "${slug}"] {
     _id,
     name,
@@ -56,11 +57,11 @@ export const fetchEventDetails = async (slug: string): Promise<any> => {
     return response.data.result[0];
   } catch (error) {
     console.log(error);
-    return false;
+    return error.response;
   }
 };
 
-export const fetchEventSlugs = async (): Promise<any> => {
+export const fetchEventSlugs = async (): Promise<boolean> => {
   const queryString = `*[_type == "event"] {
     "slug": slug.current
   }`;
@@ -72,11 +73,11 @@ export const fetchEventSlugs = async (): Promise<any> => {
     return response.data.result;
   } catch (error) {
     console.log(error);
-    return false;
+    return error.response;
   }
 };
 
-export const fetchFeaturedEvents = async (date: string): Promise<any> => {
+export const fetchFeaturedEvents = async (date: string): Promise<void> => {
   const formattedDate = dayjs(date).format('YYYY-MM-DD');
   const queryString = `*[_type == "event" && startTime >= "${formattedDate}" && isFeatured == true] | order(startTime asc) {
     name,
@@ -92,6 +93,6 @@ export const fetchFeaturedEvents = async (date: string): Promise<any> => {
     return response.data.result;
   } catch (error) {
     console.log(error);
-    return false;
+    return error.response;
   }
 };

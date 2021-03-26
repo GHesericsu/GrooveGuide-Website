@@ -37,9 +37,11 @@
     "*.d.ts",
     "sanityClient.js",
     "next.config.js",
+    "jest.config.js"
   ],
   "files": [
     "sanityClient.js",
-    "next.config.js"
+    "next.config.js",
+    "jest.config.js"
   ]
 }

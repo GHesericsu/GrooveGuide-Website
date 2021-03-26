@@ -36,7 +36,7 @@ export const Index = ({ dataTuples, featuredEvents }: IndexProps): JSX.Element =
 
   if (!dataTuples) {
     return (
-      <div>No Events Yet</div>
+      <div>No Events Yet. Check back later</div>
     );
   }
 

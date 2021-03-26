@@ -30,12 +30,10 @@ const TopAndBottomContainer = styled.div`
   flex-flow: column;
   padding: 0px 20px;
   @media only screen and (max-width: 480px) {
-  /* smartphones */
     padding: 0px 5px;
   }
 
   @media only screen and (min-width: 480px) and (max-width: 768px) {
-    /* smartphone landscape */
     padding: 0px 5px;
   }
 `;
@@ -78,12 +76,10 @@ const EventInfoWrapper = styled.div`
   }
 
   @media only screen and (max-width: 480px) {
-  /* smartphones */
     padding: 12px 8px 30px 8px;
   }
 
   @media only screen and (min-width: 480px) and (max-width: 768px) {
-    /* smartphone landscape */
     padding: 12px 8px 30px 8px;
   }
 `;

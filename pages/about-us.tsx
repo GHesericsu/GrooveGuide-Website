@@ -46,13 +46,10 @@ export const AboutUs = (): JSX.Element => (
         <br />
         <p>
           -
-          <span>Carson</span>
-          ,
+          <a href="https://www.linkedin.com/in/carsontlee/" rel="noreferrer" target="_blank"><span>Carson</span></a>
+          and
           {' '}
-          <span>Max</span>
-          ,
-          {' '}
-          <span>Eric</span>
+          <a href="https://portfolio.ericsu.net/" rel="noreferrer" target="_blank"><span>Eric</span></a>
         </p>
       </AboutUsText>
     </Container>

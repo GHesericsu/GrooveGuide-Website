@@ -10,6 +10,7 @@ import { fetchEventData, fetchFeaturedEvents } from '../../lib/fetcher';
 import { ImageCarousel } from '../../src/components/PhotoCarousel/Carousel';
 import { EventList } from '../../src/components/LiveStreamList/EventList';
 import { getDataTuples } from '../../lib/dataHelper';
+import { EventDataTypes } from '../../lib/types/eventTypes';
 
 const Container = styled.div`
   min-height: 600px;
@@ -18,8 +19,12 @@ const Container = styled.div`
 `;
 
 interface EventsOnWeekProps {
-  data: any;
-  featuredEvents: any;
+  data: [string, EventDataTypes[]][];
+  featuredEvents: {
+    name: string;
+    imageUrl: string;
+    slug: string;
+  }[];
 }
 
 const EventsOnWeek = ({ data, featuredEvents }: EventsOnWeekProps): JSX.Element => {
@@ -29,7 +34,6 @@ const EventsOnWeek = ({ data, featuredEvents }: EventsOnWeekProps): JSX.Element 
   useEffect(() => {
     if (isIOS === true) {
       setIos(isIOS);
-      console.log('index page ios', ios);
     }
   }, []);
 
@@ -79,7 +83,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 type Props = {
-  data: any[][];
+  data: [string, EventDataTypes[]][];
 };
 
 interface Params extends ParsedUrlQuery {
